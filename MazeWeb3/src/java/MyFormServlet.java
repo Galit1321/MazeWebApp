@@ -30,13 +30,28 @@ public class MyFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("username").equals("admin")
+        String act = request.getParameter("act");
+        if (act == null) {
+            //no button has been selected
+        } else if (act.equals("Subscribe")) {
+            HttpSession session = request.getSession();
+            response.sendRedirect("secured/MyPrivateData");
+        } else if (act.equals("Enter")) {
+             HttpSession session = request.getSession();
+            response.sendRedirect("secured/MyPrivateData");
+        } else {
+             request.setAttribute("error", true);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+      /*  if (request.getParameter("username").equals("admin")
                 && request.getParameter("password").equals("123")) {
+           
+        } else if (request.getParameter("Sub") != null) {
             HttpSession session = request.getSession();
             response.sendRedirect("secured/MyPrivateData");
         } else {
             request.setAttribute("error", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        }*/
     }
 }
