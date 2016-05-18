@@ -5,13 +5,16 @@
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import objects.Record;
 
 /**
  *
@@ -24,14 +27,12 @@ public class MyPrivateData extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html><head>");
-            out.println("<title>My Form Servlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<div>Welcome " + session.getAttribute("name") + "!</div>");
-            out.println("</body></html>");
-        }
+        List<Record> list = new ArrayList<Record>();
+        list.add(new Record(100, "Lunch", false));
+        list.add(new Record(5000, "Salary", true));
+        list.add(new Record(300, "Gift", true));
+        request.getSession().setAttribute("list", list);
+        request.getRequestDispatcher("data.jsp").forward(request, response);
+
     }
 }

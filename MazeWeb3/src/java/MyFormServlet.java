@@ -31,7 +31,7 @@ public class MyFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("username").equals("admin")
-                && request.getParameter("password").equals("p@ssw@rd")) {
+                && request.getParameter("password").equals("123")) {
             HttpSession session = request.getSession();
             response.sendRedirect("secured/MyPrivateData");
         } else {

@@ -6,16 +6,15 @@
     <head>
         <title>My Form</title>
     </head>
+     <link  rel="stylesheet" type="text/css" href="loginStyle.css"></link>
     <body>
-        <form action="MyFormServlet" method="post">
-            <%
-                Calendar cal = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-                out.println("<div>Current time=" + sdf.format(cal.getTime()) + "</div>");
-            %>
-            <div><%= (new Double(8))%></div>
-            <div>Username:</div>
-            <input type="text" name="username" />
+        <div class="Main">
+            <form action="MyFormServlet" method="post">
+            <div>Username:
+                <div>
+                    <input class="Field" type="text" name="username" />
+                </div>
+                </div>
             <div>Password:</div>
             <input type="password" name="password" />
             <input type="submit"/>
@@ -24,5 +23,7 @@
             <div>Wrong username/password. Please try again</div>
             <% }%>
         </form>
+        </div>
+       
     </body>
 </html>
