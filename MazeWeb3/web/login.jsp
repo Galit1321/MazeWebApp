@@ -11,9 +11,7 @@
     <script src="login.js">
     </script>
     <body>
-
         <div class="Main">
-
             <form action="MyFormServlet" method="post">
                 <div>Username:
                     <div>

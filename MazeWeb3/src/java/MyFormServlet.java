@@ -6,6 +6,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"})
 public class MyFormServlet extends HttpServlet {
 
+    public Map<String,String> ls;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,8 +37,7 @@ public class MyFormServlet extends HttpServlet {
         if (act == null) {
             //no button has been selected
         } else if (act.equals("Subscribe")) {
-            HttpSession session = request.getSession();
-            response.sendRedirect("secured/MyPrivateData");
+             response.sendRedirect("Subscribe.jsp");
         } else if (act.equals("Enter")) {
              HttpSession session = request.getSession();
             response.sendRedirect("secured/MyPrivateData");
@@ -43,15 +45,5 @@ public class MyFormServlet extends HttpServlet {
              request.setAttribute("error", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-      /*  if (request.getParameter("username").equals("admin")
-                && request.getParameter("password").equals("123")) {
-           
-        } else if (request.getParameter("Sub") != null) {
-            HttpSession session = request.getSession();
-            response.sendRedirect("secured/MyPrivateData");
-        } else {
-            request.setAttribute("error", true);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }*/
     }
 }
