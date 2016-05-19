@@ -17,8 +17,9 @@ body{
 }
 .Main{
     padding: 20px 20px 20px 20px;
-    background-color: cornsilk;
+    background-color: lightpink;
     border-style: groove;
+    border-radius: 15px/50px;
     position: absolute;
     top: 50%;
     left: 50%;
