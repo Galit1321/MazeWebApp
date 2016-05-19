@@ -8,9 +8,7 @@
        <script src="jquery-1.12.2.min.js"></script>
         <script src="login.js"></script>
         <link  rel="stylesheet" type="text/css" href="loginStyle.css">
-        
     </head>
-
     <body>
         <div class="Main">
             <form action="MyFormServlet" method="post">
