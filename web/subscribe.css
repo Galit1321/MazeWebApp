@@ -1,0 +1,39 @@
+.Main{
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: italic normal bold 20px/1 "almendra", Helvetica, sans-serif;
+  color: black;
+  text-align: center;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  text-shadow: 4px 0 9px rgba(86,170,255,0.9) ;
+  -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1) 10ms;
+  -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1) 10ms;
+  -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1) 10ms;
+  transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1) 10ms;
+  -webkit-transform: rotateX(0.5729577951308232deg) rotateY(-12.032113697747288deg)   ;
+  transform: rotateX(0.5729577951308232deg) rotateY(-12.032113697747288deg)   ;
+}
+body{
+     background-image: url("pic/sub-city.jpg");
+       background-size: cover;
+}
+.Main{
+    position: absolute;
+    top:30%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    text-align: center;
+    background-color: transparent;
+    border-style:outset;
+    border-radius: 15px/50px;
+}
+.Field{
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+

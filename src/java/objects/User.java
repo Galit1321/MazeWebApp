@@ -48,6 +48,8 @@ public class User {
     return true;
     }
   
-    
+    public boolean checkPassword(String pass){
+        return this.password.equals(pass);
+    }
    
 }

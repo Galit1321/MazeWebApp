@@ -14,18 +14,18 @@
             <form action="MyFormServlet" method="post">
                 <div>Username:
                     <div>
-                        <input class="Field" type="text" name="username" />
+                        <input type="text" name="username" />
                     </div>
                 </div>
                 <div>Password:</div>
-                <input class="Field" type="password" name="password" />
+                <input  type="password" name="password" />
+                <% if (request.getAttribute("error") != null
+                                && (Boolean) request.getAttribute("error")) {%>
+                    <div class="text">Wrong username/password. Please try again</div>
+                    <% }%>
                 <div>
                     <input type="submit" class="bnt" name="act" value="Subscribe"/>
                     <input type="submit" class="bnt" name="act" value="Enter"/>
-                    <% if (request.getAttribute("error") != null
-                                && (Boolean) request.getAttribute("error")) {%>
-                    <div>Wrong username/password. Please try again</div>
-                    <% }%>
                 </div>
 
             </form>

@@ -7,6 +7,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ import objects.User;
 @WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"})
 public class MyFormServlet extends HttpServlet {
 
-    public List<User> ls;
+    public Map<String, User> Users;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,8 +44,16 @@ public class MyFormServlet extends HttpServlet {
         } else if (act.equals("Subscribe")) {
             response.sendRedirect("Subscribe.jsp");
         } else if (act.equals("Enter")) {
-            HttpSession session = request.getSession();
-            response.sendRedirect("secured/MyPrivateData");
+            User curr = this.Users.get(request.getParameter("username"));
+            if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
+                HttpSession session = request.getSession();
+                request.getSession().setAttribute("Curr", curr);
+                request.getRequestDispatcher("secured/data.jsp").forward(request, response);
+               // response.sendRedirect("secured/MyPrivateData");
+            } else {
+                request.setAttribute("error", true);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
         } else {
             request.setAttribute("error", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -52,14 +61,14 @@ public class MyFormServlet extends HttpServlet {
     }
 
     public void AddUser(HttpServletRequest request) {
-        if (ls == null) {
-            ls = new ArrayList<User>();
+        if (Users == null) {
+            Users = new HashMap<String, User>();
         }
-        String name=request.getParameter("name");
-        String userName=request.getParameter("username");
-        String password=request.getParameter("password");
-        String mail=request.getParameter("mail");
-        String icon=request.getParameter("icon");
-       ls.add( new User(name,userName,password,mail,icon));
+        String name = request.getParameter("name");
+        String userName = request.getParameter("username");
+        String password = request.getParameter("password");
+        String mail = request.getParameter("mail");
+        String icon = "groom";
+        Users.put(userName, new User(name, userName, password, mail, icon));
     }
 }

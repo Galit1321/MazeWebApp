@@ -1,5 +1,6 @@
-<%@page import="objects.Record" %>
+
 <%@page import="java.util.List"%>
+<%@page import="objects.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 <!DOCTYPE html>
@@ -11,12 +12,7 @@
     <body>
         <div>
             <div>Your balance:</div>
-            <%List<Record> list = (ArrayList) session.getAttribute("list");
-    for (Record r : list) {%>
-            <div><%= r.getDesc()%></div>
-            <div><%= r.getValue()%></div>
-            <div><%= r.isDeposite()%></div>
-            <%}%>
+            
         </div>
     </body>
 </html>

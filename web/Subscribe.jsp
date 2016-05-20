@@ -6,12 +6,9 @@
         <title>Subsribe page</title>
        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
         <script src="Subscribe.js"></script>
-        <link  rel="stylesheet" type="text/css" href="loginStyle.css">
+        <link  rel="stylesheet" type="text/css" href="subscribe.css">
     </head>
-   
     <body>
-       
-        <h1>Hello World!</h1>
         <div class="Main">
             <form action="MyFormServlet" method="get">
                 <div>Username:
