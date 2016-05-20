@@ -16,23 +16,24 @@
             <form action="MyFormServlet" method="get">
                 <div>Username:
                     <div>
-                        <input class="Field" type="text" name="username" />
+                        <input class="Field" type="text" name="username" required  />
                     </div>
                 </div>
                 <div>Password:</div>
-                <input class="Field" type="password" name="password" />
-                <div> First and Last Name<input  class="Field" type="text" name="name" /></div>
-                <div> Email <input class="Field"  type="email" id="myEmail" name="mail"/> </div>
+                <input class="Field" type="password" name="password" required />
+                <div> First and Last Name<input  class="Field" type="text" name="name" required  /></div>
+                <div> Email <input class="Field"  type="email" id="myEmail" name="mail" required /> </div>
                 <div>Logo
                     <div >
-                        <input type="Checkbox" name="myCheck" /><div> <image  src="groom4.png" alt="groom" width="42" height="42"/></div>
+                        <input type="Checkbox" name="myCheck" /><div> <image  src="groom4.png" alt="groom" name="icon" width="42" height="42"/></div>
                         
                     </div>   
                     <div>
                         <input type="Checkbox" name="myCheck" />
-                         <image  src="groom4.png" alt="groom" width="42" height="42"/>
+                         <image  src="groom4.png" alt="groom" name="icon" width="42" height="42"/>
                     </div>
-                    <input type="submit" class="bnt" name="act" value="Done"/>
+                    <button type="submit" class="bnt" name="act" value="Done">Done</button>
+                    <button type="reset"  class="bnt" value="Reset">Reset</button>
                 </div>
 
             </form>

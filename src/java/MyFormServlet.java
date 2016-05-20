@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import objects.User;
 
 /**
  * *
@@ -23,10 +25,12 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"})
 public class MyFormServlet extends HttpServlet {
 
-    public Map<String,String> ls;
+    public List<User> ls;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        AddUser(request);
         response.sendRedirect("login.jsp");
     }
 
@@ -37,13 +41,25 @@ public class MyFormServlet extends HttpServlet {
         if (act == null) {
             //no button has been selected
         } else if (act.equals("Subscribe")) {
-             response.sendRedirect("Subscribe.jsp");
+            response.sendRedirect("Subscribe.jsp");
         } else if (act.equals("Enter")) {
-             HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
             response.sendRedirect("secured/MyPrivateData");
         } else {
-             request.setAttribute("error", true);
+            request.setAttribute("error", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+    }
+
+    public void AddUser(HttpServletRequest request) {
+        if (ls == null) {
+            ls = new ArrayList<User>();
+        }
+        String name=request.getParameter("name");
+        String userName=request.getParameter("username");
+        String password=request.getParameter("password");
+        String mail=request.getParameter("mail");
+        String icon=request.getParameter("icon");
+       ls.add( new User(name,userName,password,mail,icon));
     }
 }
