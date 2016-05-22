@@ -8,12 +8,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Private data</title>
+          <link  rel="stylesheet" type="text/css" href="secured/data.css">
     </head>
     <body>
         <div >
-            <div>Your balance:</div>
             <% User u = (User) session.getAttribute("Curr"); %>
-            <div><%=u.name %></div>
+            <div class="sqr">
+            <div>Name: <%=u.name %></div>
+            <div>Logo: </div>
+            </div>
+            <div class="Main">
+                <div>
+                      <button class="btn1" type="submit" value="SingleGame" >Single Game</button>
+                </div>
+                <div>
+                       <button class="btn1" type="submit" value="MultiGame" >MultiGame</button>
+                </div>
+              
+            </div>
         </div>
     </body>
 </html>

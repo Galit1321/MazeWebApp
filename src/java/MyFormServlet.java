@@ -5,10 +5,7 @@
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,11 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import objects.User;
 
-/**
- * *
- *
- * @author galit
- */
+
 @WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"})
 public class MyFormServlet extends HttpServlet {
 
@@ -32,7 +25,7 @@ public class MyFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AddUser(request);
-        response.sendRedirect("login.jsp");
+       response.sendRedirect("login.jsp");
     }
 
     @Override
@@ -48,8 +41,8 @@ public class MyFormServlet extends HttpServlet {
             if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
                 HttpSession session = request.getSession();
                 request.getSession().setAttribute("Curr", curr);
-                request.getRequestDispatcher("secured/data.jsp").forward(request, response);
-               // response.sendRedirect("secured/MyPrivateData");
+                request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);
+    
             } else {
                 request.setAttribute("error", true);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -68,7 +61,7 @@ public class MyFormServlet extends HttpServlet {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
         String mail = request.getParameter("mail");
-        String icon = "groom";
+        String icon =request.getParameter("icon");
         Users.put(userName, new User(name, userName, password, mail, icon));
     }
 }
