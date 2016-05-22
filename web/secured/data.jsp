@@ -10,9 +10,10 @@
         <title>Private data</title>
     </head>
     <body>
-        <div>
+        <div >
             <div>Your balance:</div>
-            
+            <% User u = (User) session.getAttribute("Curr"); %>
+            <div><%=u.name %></div>
         </div>
     </body>
 </html>

@@ -38,6 +38,15 @@ body{
 input[type=text]:focus {
     background-color: lightblue;
 }
+input[type=password]:focus{
+    background-color: lightslategray;
+}
+input[type=password]{
+    width:100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
