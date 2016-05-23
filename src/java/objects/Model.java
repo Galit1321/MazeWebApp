@@ -18,21 +18,20 @@ import java.util.Map;
  *
  */
 public class Model {
-
-    public int Port;
-    public String port;
-    public PrintWriter out;
-    BufferedReader in;
-    Map<String,User> m;
+   
+    public Map<String, User> Users;
+    private int Port;
+    private String port;
+    private PrintWriter out;
+   private BufferedReader in;
+   
     private static Model singleton = new Model( );
     private Model() {
         try {
-            m=new HashMap<String,User>();
+            Users=new HashMap<String,User>();
             Socket socket = new Socket("127.1.1.0", 5555);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            sendMsn();
-            getMsn();
         } catch (Exception e) {
              
         }
@@ -47,8 +46,11 @@ public class Model {
         char[] c=new char[4001];
        try{
      in.read(c);      
-    }catch(Exception e) {}
-       System.out.print(c);
+    }catch(Exception e) {}  
    return c.toString();
+   }
+   
+   public Map<String, User>  getUsers(){
+      return Users;
    }
 }

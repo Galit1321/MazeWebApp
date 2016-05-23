@@ -8,4 +8,7 @@ package objects;
 
 public class singleMaze {
     
+    public singleMaze(){
+        
+    }
 }

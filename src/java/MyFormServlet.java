@@ -19,9 +19,10 @@ import objects.User;
 
 @WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"})
 public class MyFormServlet extends HttpServlet {
-
-    public Map<String, User> Users;
+    
+    
     public Model m=Model.getInstance();
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {     
@@ -41,7 +42,7 @@ public class MyFormServlet extends HttpServlet {
             response.sendRedirect("login.jsp");
         }
         else if (act.equals("Enter")) {
-            User curr = this.Users.get(request.getParameter("username"));
+            User curr = this.m.getUsers().get(request.getParameter("username"));
             if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
                 request.getSession().setAttribute("Curr", curr);
                 request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);                        
@@ -56,14 +57,12 @@ public class MyFormServlet extends HttpServlet {
     }
 
     public void AddUser(HttpServletRequest request) {
-        if (Users == null) {
-            Users = new HashMap<String, User>();
-        }
+        
         String name = request.getParameter("name");
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
         String mail = request.getParameter("mail");
         String icon =request.getParameter("myCheck");
-        Users.put(userName, new User(name, userName, password, mail, icon));
+        m.getUsers().put(userName, new User(name, userName, password, mail, icon));
     }
 }

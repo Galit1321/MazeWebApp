@@ -23,22 +23,22 @@
                 <div>Logo
                     <div >
                         <div>
-                            <input type="Checkbox" name="myCheck"  value="pic/bee1.jpg" /><image  src="pic/bee1.jpg" name="icon" width="50" height="50"/>
-                            <input type="Checkbox" name="myCheck" value="pic/bee2.jpg"/>
+                            <input type="radio" name="myCheck"  value="pic/bee1.jpg" /><image  src="pic/bee1.jpg" name="icon" width="50" height="50"/>
+                            <input type="radio" name="myCheck" value="pic/bee2.jpg"/>
                             <image  src="pic/bee2.jpg" name="icon" width="50" height="50"/>
-                            <input type="Checkbox" name="myCheck" value="pic/bee3.png" />
+                            <input type="radio" name="myCheck" value="pic/bee3.png" />
                             <image  src="pic/bee3.png" name="icon" width="50" height="50"/>
                         </div>
                         <div>
-                            <input type="Checkbox" name="myCheck" value="pic/bird.png"/>
+                            <input type="radio" name="myCheck" value="pic/bird.png"/>
                             <image  src="pic/bird.png" name="icon" width="50" height="50"/>
-                            <input type="Checkbox" name="myCheck" value="pic/bird2.png"/>
+                            <input type="radio" name="myCheck" value="pic/bird2.png"/>
                             <image  src="pic/bird2.png" name="icon" width="50" height="50"/>  
                         </div>
                         <div>
-                            <input type="Checkbox" name="myCheck" value="pic/butterfly.png"/>
+                            <input type="radio" name="myCheck" value="pic/butterfly.png"/>
                         <image  src="pic/butterfly.png" name="icon" width="50" height="50"/>
-                            <input type="Checkbox" name="myCheck" value="pic/butterfly02.png"/>
+                            <input type="radio" name="myCheck" value="pic/butterfly02.png"/>
                             <image  src="pic/butterfly02.png" name="icon" width="50" height="50"/>
                         </div>
                     </div>
