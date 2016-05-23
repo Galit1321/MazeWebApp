@@ -20,7 +20,6 @@ import objects.User;
 @WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"})
 public class MyFormServlet extends HttpServlet {
     
-    
     public Model m=Model.getInstance();
     
     @Override
