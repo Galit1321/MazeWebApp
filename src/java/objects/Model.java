@@ -22,16 +22,19 @@ public class Model {
     public Map<String, User> Users;
     private int Port;
     private String port;
-    private PrintWriter out;
+    private PrintWriter out1;
    private BufferedReader in;
+   private ConvertFromJson json;
    
     private static Model singleton = new Model( );
     private Model() {
         try {
             Users=new HashMap<String,User>();
             Socket socket = new Socket("127.1.1.0", 5555);
-            out = new PrintWriter(socket.getOutputStream(), true);
+            out1 = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            sendMsn();
+            getMsn();
         } catch (Exception e) {
              
         }
@@ -40,12 +43,20 @@ public class Model {
       return singleton;
    }
      public void sendMsn(){
-          out.println("generate maze 1");
+          out1.println("generate maze 1");
      }
    public String getMsn(){
         char[] c=new char[4001];
        try{
-     in.read(c);      
+     in.read(c);
+     //this.json = new ConvertFromJson(c.toString());
+     System.out.print(c.toString());
+    /* for (Map.Entry<String,String> entry: this.json.Serlize.entrySet()){
+     System.out.println(entry.getKey());
+     System.out.println(entry.getValue());
+     }
+     */
+     
     }catch(Exception e) {}  
    return c.toString();
    }
