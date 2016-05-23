@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import objects.Model;
 import objects.User;
 
 
@@ -20,11 +21,10 @@ import objects.User;
 public class MyFormServlet extends HttpServlet {
 
     public Map<String, User> Users;
-
+    public Model m=Model.getInstance();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-     
+            throws ServletException, IOException {     
        response.sendRedirect("login.jsp");
     }
 
@@ -43,10 +43,8 @@ public class MyFormServlet extends HttpServlet {
         else if (act.equals("Enter")) {
             User curr = this.Users.get(request.getParameter("username"));
             if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
-               // HttpSession session = request.getSession();
                 request.getSession().setAttribute("Curr", curr);
-                request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);
-                        
+                request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);                        
             } else {
                 request.setAttribute("error", true);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
