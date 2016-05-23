@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="Main">
-            <form action="MyFormServlet" method="get">
+            <form  id="subscribe" action="MyFormServlet" method="get">
                 <div>Username:
                     <div>
                         <input class="Field" type="text" name="username" required  />
@@ -22,11 +22,27 @@
                 <div> Email <input class="Field"  type="email" id="myEmail" name="mail" required /> </div>
                 <div>Logo
                     <div >
-                        <input type="Checkbox" name="myCheck" /><image  src="pic/pinkly.jpg" alt="pinkly.jpg" name="icon" width="42" height="42"/>
-                        <input type="Checkbox" name="myCheck" />
-                        <image  src="groom4.png" alt="groom" name="icon" width="42" height="42"/>
-                    </div> 
-                    <button type="submit" class="bnt" name="act" value="Done" onclick="submitTheForm()" >Done</button>
+                        <div>
+                            <input type="Checkbox" name="myCheck"  value="pic/bee1.jpg" /><image  src="pic/bee1.jpg" name="icon" width="50" height="50"/>
+                            <input type="Checkbox" name="myCheck" value="pic/bee2.jpg"/>
+                            <image  src="pic/bee2.jpg" name="icon" width="50" height="50"/>
+                            <input type="Checkbox" name="myCheck" value="pic/bee3.png" />
+                            <image  src="pic/bee3.png" name="icon" width="50" height="50"/>
+                        </div>
+                        <div>
+                            <input type="Checkbox" name="myCheck" value="pic/bird.png"/>
+                            <image  src="pic/bird.png" name="icon" width="50" height="50"/>
+                            <input type="Checkbox" name="myCheck" value="pic/bird2.png"/>
+                            <image  src="pic/bird2.png" name="icon" width="50" height="50"/>  
+                        </div>
+                        <div>
+                            <input type="Checkbox" name="myCheck" value="pic/butterfly.png"/>
+                        <image  src="pic/butterfly.png" name="icon" width="50" height="50"/>
+                            <input type="Checkbox" name="myCheck" value="pic/butterfly02.png"/>
+                            <image  src="pic/butterfly02.png" name="icon" width="50" height="50"/>
+                        </div>
+                    </div>
+                    <button type="submit" class="bnt" name="act" value="Done"  >Done</button>
                     <button type="reset"  class="bnt" value="Reset">Reset</button>
                 </div>
 

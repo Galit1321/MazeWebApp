@@ -15,7 +15,7 @@
             <% User u = (User) session.getAttribute("Curr"); %>
             <div class="sqr">
             <div>Name: <%=u.name %></div>
-            <div>Logo: </div>
+            <div>Logo: <image src="<%=u.icon%>" width="50" height="50"/></div>
             </div>
             <div class="Main">
                 <div>

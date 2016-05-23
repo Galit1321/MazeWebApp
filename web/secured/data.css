@@ -1,7 +1,7 @@
 
 
 .sqr{
-    background-color: aqua;
+    background-image: url("sqr.jpg");
     border-style: double;
     border-width: thick;
     position: absolute;
@@ -9,14 +9,19 @@
     background-position-y: 0;
     width: fit-content;
     box-sizing: border-box;
-    
+     color: rgba(48,48,48,1);  
+     text-align: left;
+     text-shadow: 1px 1px 0 rgba(140,140,140,0.6) , -1px -1px 1px rgba(0,0,0,0.67) ;
+     font: normal 30px/1 "Aladin", Helvetica, sans-serif;
 }
-
 .btn1{
         background-color: gray;
         font-size: 20px;
-        font-family: cursive;
-        
+        font-family: cursive;    
+}
+body{
+    background-image: url("pupflower.jpg");
+    background-size: cover;
 }
 .Main{
     position: absolute;

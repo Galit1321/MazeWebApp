@@ -61,7 +61,7 @@ public class MyFormServlet extends HttpServlet {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
         String mail = request.getParameter("mail");
-        String icon =request.getParameter("icon");
+        String icon =request.getParameter("myCheck");
         Users.put(userName, new User(name, userName, password, mail, icon));
     }
 }

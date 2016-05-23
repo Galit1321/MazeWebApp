@@ -10,9 +10,9 @@ and open the template in the editor.
 body{
     margin: 0;
     padding: 0;
-    background-image: url("pic/letter.jpg");
+    background-image: url("pic/main.jpg");
     background-size: cover;
-
+  
 }
 .text{
     text-align: center;
@@ -23,7 +23,8 @@ body{
 
 .Main{
     padding: 20px 20px 20px 20px;
-    background-color: transparent;
+     background-color: lightpink;
+
     border-style: groove;
     border-radius: 15px/50px;
     position: absolute;
