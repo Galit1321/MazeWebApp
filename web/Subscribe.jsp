@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="Main">
-            <form  id="subscribe" action="MyFormServlet" method="get">
+            <form  id="subscribe" action="MyFormServlet" method="post">
                 <div>Username:
                     <div>
                         <input class="Field" type="text" name="username" required  />

@@ -22,7 +22,8 @@ import objects.User;
 
 /**
  *
- * @author ׳’׳׳™׳×׳•׳ ׳•׳₪׳¨
+ * servlet that is a portol to
+ * our private data
  */
 @WebServlet(name = "MyPrivateData", urlPatterns = {"/secured/MyPrivateData"})
 public class MyPrivateData extends HttpServlet {
@@ -30,7 +31,7 @@ public class MyPrivateData extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         processRequest(request, response, "Post");
+        
     }
 
     @Override
@@ -40,21 +41,4 @@ public class MyPrivateData extends HttpServlet {
       request.getRequestDispatcher("data.jsp").forward(request, response);
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response, String type)
-            throws ServletException, IOException {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html><head>");
-            out.println("<title>Servlet MyServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" + type + " request at "
-                    + sdf.format(cal.getTime()) + "</h1>");
-            out.println("</body></html>");
-        }
-
-    }
 }

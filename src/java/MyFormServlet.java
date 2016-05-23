@@ -24,7 +24,7 @@ public class MyFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AddUser(request);
+     
        response.sendRedirect("login.jsp");
     }
 
@@ -36,13 +36,17 @@ public class MyFormServlet extends HttpServlet {
             //no button has been selected
         } else if (act.equals("Subscribe")) {
             response.sendRedirect("Subscribe.jsp");
-        } else if (act.equals("Enter")) {
+        }else if (act.equals("Done")) {
+           AddUser(request);
+            response.sendRedirect("login.jsp");
+        }
+        else if (act.equals("Enter")) {
             User curr = this.Users.get(request.getParameter("username"));
             if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
-                HttpSession session = request.getSession();
+               // HttpSession session = request.getSession();
                 request.getSession().setAttribute("Curr", curr);
                 request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);
-    
+                        
             } else {
                 request.setAttribute("error", true);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
