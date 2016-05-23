@@ -20,8 +20,7 @@ import java.util.Map;
 public class Model {
    
     public Map<String, User> Users;
-    private int Port;
-    private String port;
+   
     private PrintWriter out1;
    private BufferedReader in;
    private ConvertFromJson json;
@@ -49,13 +48,19 @@ public class Model {
         char[] c=new char[4001];
        try{
      in.read(c);
-     //this.json = new ConvertFromJson(c.toString());
-     System.out.print(c.toString());
-    /* for (Map.Entry<String,String> entry: this.json.Serlize.entrySet()){
+     int i =0;
+            String s = "";
+            while(c[i]!=0) {
+                s+=c[i];
+                i++;
+            }
+     this.json = new ConvertFromJson(s);
+     System.out.print(s);
+     for (Map.Entry<String,String> entry: this.json.Serlize.entrySet()){
      System.out.println(entry.getKey());
      System.out.println(entry.getValue());
      }
-     */
+     
      
     }catch(Exception e) {}  
    return c.toString();
