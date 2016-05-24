@@ -18,10 +18,9 @@
             <div>Logo: <image src="<%=u.icon%>" width="50" height="50"/></div>
             </div></div>
             <div class="Main">
-                <div><button class="btn1" type="submit" value="SingleGame" >Single Game</button></div>
-                      
-                      <div>
-                          <button class="btn1" type="submit" value="MultiGame" >MultiGame</button>
+                <div ><button class="btn1" type="submit" value="SingleGame" >Single Game</button></div>
+                      <div >
+                          <button class="btn2" type="submit" value="MultiGame" >MultiGame</button>
                       </div>
                        
             </div>
