@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.util.Pair;
 
 public class ConvertFromJson {
 
@@ -31,7 +32,74 @@ public class ConvertFromJson {
         String s = map.get("Content");
          Map<String, String> map2 = new HashMap<String, String>();
          this.Serlize = (Map<String,String>)deserializer.fromJson(s, map2.getClass());
-        
     }
+    
+            /// <summary>
+        /// create a single game by the value of serlize dictionary 
+        /// </summary>
+        /// <returns>that single maze this serlize repersent</returns>
+        public void CreateMaze()
+        {
+            String maze = this.Serlize.get("Maze");
+            String n = this.Serlize.get("Name");
+            Pair start = CreatePair(this.Serlize.get("Start"));
+            Pair end = CreatePair(this.Serlize.get("End"));
+           // SingleMaze m = new SingleMaze(start,end,maze,n);
+           // this.maze = m;
+        }
+        
+        /// create coordinate of start and end of serlize sting in this.Serlize
+        /// </summary>
+        /// <param name="pair">selize pair</param>
+        /// <returns>deselize of pair</returns>
+        public Pair CreatePair(String pair)
+        {
+            String[] des = pair.split("@");
+            int r = Integer.valueOf(des[0]);
+            int c = Integer.valueOf(des[1]);
+            return new Pair(r, c);
+        }
+        
+                 /// <summary>
+         /// convert the maze in game
+         /// </summary>
+         /// <param name="game"></param>
+         /// <returns></returns>
+        public singleMaze WithoutName(String game )
+        {
+            Map<String, String> ser = new HashMap<String, String>();
+            ser = (Map<String,String>) deserializer.fromJson(game, map.getClass());
+            //ser = JsonConvert.DeserializeObject<Dictionary<string, string>>(game);
+            String maze = ser.get("Maze");
+            Pair start = CreatePair(ser.get("Start"));
+            Pair end = CreatePair(ser.get("End"));
+            singleMaze sm = new singleMaze();
+            //singleMaze sm = new singleMaze(start, end, maze);
+            return sm;
+        }
 
+        /// <summary>
+        /// convert the msg of game
+        /// </summary>
+        public void ConvertStartGame()
+        {
+            String name=this.Serlize.get("Name");
+            String mazename=this.Serlize.get("MazeName");
+            singleMaze u=WithoutName(this.Serlize.get("You"));
+            //u.Name= this.Serlize.get("MazeName");
+            singleMaze other= WithoutName(this.Serlize.get("Other"));
+            //Game g = new Game(name, mazename, u, other);
+            //this.g=g;
+        }
+        
+        /// <summary>
+        ///   convert a move of the yriv 
+        /// </summary>
+
+        public void ConvertPlay()
+        {
+            String name=this.Serlize.get("Name");
+            String move = this.Serlize.get("Move");
+           //this.move= new Play(name, move);
+        }
 }
