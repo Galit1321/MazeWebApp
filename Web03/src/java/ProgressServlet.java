@@ -71,8 +71,9 @@ public class ProgressServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if(!this.sendrq){
-            String msn="generate maze"+random.nextInt(100)+" 1";
+            String msn="generate maze"+" 1";
             m.sendMsn(msn);
+            this.sendrq=true;
         }
         if (random.nextInt(10)==7 ) {
             counter += 10;
@@ -81,11 +82,17 @@ public class ProgressServlet extends HttpServlet {
             }
         }
         JSONObject obj = new JSONObject();
+
+            if (m.getJson().maze!=null){
+            try {
+                obj.put("SingleMaze",m.getJson().maze);
+                counter=100;
+            } catch (JSONException ex) {
+                Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            }
         try {
-             if (m.getJson().maze!=null){
-            obj.put("SingleMaze",m.getJson().maze);
-            counter=100;
-        }
             obj.put("progress", counter);
         } catch (JSONException ex) {
             Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -19,6 +19,11 @@ public class ConvertFromJson {
    public String Type;
     public Gson deserializer = new Gson();
 
+    
+    
+     public ConvertFromJson(){
+         
+     }
     /// <summary>
     /// constructor that get serlize string and turn it to a dictionary 
     /// </summary>
@@ -30,8 +35,30 @@ public class ConvertFromJson {
         String s = map.get("Content");
          Map<String, String> map2 = new HashMap<String, String>();
          this.Serlize = (Map<String,String>)deserializer.fromJson(s, map2.getClass());
+         findClass();
     }
-    
+    public void findClass(){
+        switch (this.Type)
+            {
+                case "1":
+                    CreateMaze();
+                    break;
+                case "2":
+                    CreateMaze();
+                   
+                    break;
+                case "3":
+                   ConvertStartGame();
+                    break;
+                case "4":
+                    ConvertPlay();
+                    break;
+                case "6":
+                    ConvertPlay();
+                    break;
+
+            }
+    }
          /***
         /// create a single game by the value of serlize dictionary 
         

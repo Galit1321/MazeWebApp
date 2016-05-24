@@ -9,7 +9,7 @@
         <script type="text/javascript">
             $(function ($) {
                 function long_polling() {
-                    $.getJSON('Progress', function (data) {
+                    $.getJSON('LongPolling', function (data) {
                         $('.progressBar').width(data.progress).text(data.progress + '%');
                         if (data.progress < 100)
                             long_polling();
