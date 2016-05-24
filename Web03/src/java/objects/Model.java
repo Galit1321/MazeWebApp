@@ -28,12 +28,10 @@ public class Model {
     private static Model singleton = new Model( );
     private Model() {
         try {
-            Users=new HashMap<String,User>();
+            Users=new HashMap<>();
             Socket socket = new Socket("127.1.1.0", 5555);
             out1 = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            sendMsn();
-            getMsn();
         } catch (Exception e) {
              
         }
@@ -41,8 +39,8 @@ public class Model {
      public static Model getInstance( ) {
       return singleton;
    }
-     public void sendMsn(){
-          out1.println("generate maze 1");
+     public void sendMsn(String msg){
+          out1.println(msg);
      }
    public String getMsn(){
         char[] c=new char[4001];

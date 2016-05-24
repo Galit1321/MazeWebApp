@@ -6,20 +6,21 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import objects.User;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author גליתונופר
  */
-@WebServlet(urlPatterns = {"/SuscribeServlet"})
-public class SuscribeServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/SingleServlet"})
+public class SingleServlet extends HttpServlet {
+
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,16 +39,16 @@ public class SuscribeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SuscribeServlet</title>");            
+            out.println("<title>Servlet SingleServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SuscribeServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SingleServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -59,7 +60,7 @@ public class SuscribeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+          processRequest(request, response);
     }
 
     /**
@@ -73,7 +74,16 @@ public class SuscribeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         String submit=request.getParameter("button");
+       if ( submit==null){
+           //noting is press
+       }else if ( submit.equals("SingleGame")){
+             HttpSession session = request.getSession(false);
+             request.getRequestDispatcher("single.jsp").forward(request, response);
+       }else {//we chose multiplayer
+            processRequest(request, response);
+       }
+    
     }
 
     /**

@@ -38,7 +38,7 @@ public class MyFormServlet extends HttpServlet {
             response.sendRedirect("Subscribe.jsp");
         }else if (act.equals("Done")) {
            AddUser(request);
-            response.sendRedirect("login.jsp");
+           response.sendRedirect("login.jsp");
         }
         else if (act.equals("Enter")) {
             User curr = this.m.getUsers().get(request.getParameter("username"));
