@@ -23,9 +23,9 @@
                 <div>Logo
                     <div >
                         <div>
-                            <input type="radio" name="myCheck"  value="pic/bee1.jpg" /><image  src="pic/bee1.jpg" name="icon" width="50" height="50"/>
-                            <input type="radio" name="myCheck" value="pic/bee2.jpg"/>
-                            <image  src="pic/bee2.jpg" name="icon" width="50" height="50"/>
+                            <input type="radio" name="myCheck"  value="pic/large_cute-flying-ladybug6.png" /><image  src="pic/large_cute-flying-ladybug6.png" name="icon" width="50" height="50"/>
+                            <input type="radio" name="myCheck" value="pic/large_cute-ladybug.png"/>
+                            <image  src="pic/large_cute-ladybug.png" name="icon" width="50" height="50"/>
                             <input type="radio" name="myCheck" value="pic/bee3.png" />
                             <image  src="pic/bee3.png" name="icon" width="50" height="50"/>
                         </div>

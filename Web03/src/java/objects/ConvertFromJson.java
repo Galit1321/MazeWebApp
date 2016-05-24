@@ -6,8 +6,6 @@
 package objects;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.util.Pair;
@@ -15,10 +13,10 @@ import javafx.util.Pair;
 public class ConvertFromJson {
 
     public Map<String, String> Serlize;
-    // public SingleMaze maze;
-    // public Game g;
-    //  public Play move;
-    // public String Type;
+    public singleMaze maze;
+    public Game g;
+    public Play move;
+   public String Type;
     public Gson deserializer = new Gson();
 
     /// <summary>
@@ -34,18 +32,18 @@ public class ConvertFromJson {
          this.Serlize = (Map<String,String>)deserializer.fromJson(s, map2.getClass());
     }
     
-            /// <summary>
+         /***
         /// create a single game by the value of serlize dictionary 
-        /// </summary>
-        /// <returns>that single maze this serlize repersent</returns>
+        
+        /returns that single maze this serlize repersent*/
         public void CreateMaze()
         {
             String maze = this.Serlize.get("Maze");
             String n = this.Serlize.get("Name");
             Pair start = CreatePair(this.Serlize.get("Start"));
             Pair end = CreatePair(this.Serlize.get("End"));
-           // SingleMaze m = new SingleMaze(start,end,maze,n);
-           // this.maze = m;
+            singleMaze m = new singleMaze(start,end,maze,n);
+           this.maze = m;
         }
         
         /// create coordinate of start and end of serlize sting in this.Serlize
@@ -87,8 +85,8 @@ public class ConvertFromJson {
             singleMaze u=WithoutName(this.Serlize.get("You"));
             //u.Name= this.Serlize.get("MazeName");
             singleMaze other= WithoutName(this.Serlize.get("Other"));
-            //Game g = new Game(name, mazename, u, other);
-            //this.g=g;
+            Game g = new Game(name, mazename, u, other);
+           this.g=g;
         }
         
         /// <summary>
@@ -99,6 +97,6 @@ public class ConvertFromJson {
         {
             String name=this.Serlize.get("Name");
             String move = this.Serlize.get("Move");
-           //this.move= new Play(name, move);
+            this.move=new Play(name, move);
         }
 }

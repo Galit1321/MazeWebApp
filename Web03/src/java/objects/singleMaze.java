@@ -26,4 +26,20 @@ public class singleMaze {
         this.end = end;
         this.maze = maze;
     }
+    
+    public Pair getStart(){
+        return this.start;
+    }
+    public Pair getEnd(){
+        return this.end;
+    }
+    public void setName(String name){
+        this.name=name;  
+    }
+    public String getName(){
+        return this.name;
+    }
+    public String getMaze(){
+        return this.maze;
+    }
 }
