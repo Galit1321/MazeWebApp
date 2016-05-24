@@ -98,6 +98,3 @@ public class ProgressServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
-}
