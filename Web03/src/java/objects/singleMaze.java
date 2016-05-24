@@ -5,10 +5,25 @@
  */
 package objects;
 
+import javafx.util.Pair;
 
 public class singleMaze {
-    
-    public singleMaze(){
-        
+
+    private Pair start;
+    private Pair end;
+    private String name;
+    private String maze;
+
+    public singleMaze(Pair start, Pair end, String maze, String name) {
+        this.start = start;
+        this.end = end;
+        this.maze = maze;
+        this.name = name;
+    }
+
+    public singleMaze(Pair start, Pair end, String maze) {
+        this.start = start;
+        this.end = end;
+        this.maze = maze;
     }
 }

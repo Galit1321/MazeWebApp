@@ -68,13 +68,12 @@ public class ConvertFromJson {
         public singleMaze WithoutName(String game )
         {
             Map<String, String> ser = new HashMap<String, String>();
-            ser = (Map<String,String>) deserializer.fromJson(game, map.getClass());
+            ser = (Map<String,String>) deserializer.fromJson(game, ser.getClass());
             //ser = JsonConvert.DeserializeObject<Dictionary<string, string>>(game);
             String maze = ser.get("Maze");
             Pair start = CreatePair(ser.get("Start"));
             Pair end = CreatePair(ser.get("End"));
-            singleMaze sm = new singleMaze();
-            //singleMaze sm = new singleMaze(start, end, maze);
+            singleMaze sm = new singleMaze(start, end, maze);
             return sm;
         }
 
