@@ -4,24 +4,33 @@
  * and open the template in the editor.
  */
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import objects.Model;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
  * @author revit
  */
-@WebServlet(urlPatterns = {"/ProgressServlet"})
+@WebServlet(urlPatterns = {"/Progress"})
 public class ProgressServlet extends HttpServlet {
 
     private static int counter = 0;
     private Random random = new Random();
+    private Boolean sendrq=false; 
+    private Model m=Model.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +49,7 @@ public class ProgressServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProgressServlet</title>");            
+            out.println("<title>Servlet ProgressServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ProgressServlet at " + request.getContextPath() + "</h1>");
@@ -61,18 +70,32 @@ public class ProgressServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (random.nextInt(10) == 7){
-        counter += 10;
-        if (counter > 100)
-        counter = 100;
+        if(!this.sendrq){
+            String msn="generate maze"+random.nextInt(100)+" 1";
+            m.sendMsn(msn);
         }
-        response.setContentType("text/html;charset=UTF-8");
+        if (random.nextInt(10)==7 ) {
+            counter += 10;
+            if (counter>90) {
+                counter-=10;
+            }
+        }
+        JSONObject obj = new JSONObject();
+        try {
+             if (m.getJson().maze!=null){
+            obj.put("SingleMaze",m.getJson().maze);
+            counter=100;
+        }
+            obj.put("progress", counter);
+        } catch (JSONException ex) {
+            Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.setContentType("appliation/json");
         try (PrintWriter out = response.getWriter()) {
-        out.println("<!DOCTYPE html><html><body><h1>Statring</h1><div>Progress:</div>");
-        out.println("<div style=\"background-color:green;width:"+counter+"px\">" + counter + "%</div>");
-        out.println("<script>setTimeout(function(){ window.location = window.location; }, 3000);</script>");
-        out.println("</body></html>");
-        }}
+            out.println(obj);
+        }
+    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
