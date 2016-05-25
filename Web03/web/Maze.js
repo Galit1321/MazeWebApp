@@ -30,6 +30,7 @@ function generate_table(mazeString, size) {
             if (mazeString.charAt(x) === '1') {
                 cell.style.background = "pink";
             }
+            
             x++;
         }
 
