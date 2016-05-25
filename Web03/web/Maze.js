@@ -22,8 +22,6 @@ function generate_table(mazeString, size) {
             var cell = document.createElement("td");
             //var cellText = document.createTextNode("cell in row "+i+", column "+j);
             //cell.appendChild(cellText);
-            cell.style.width = "100px";
-            cell.style.height = "100px";
             // cell.style.border="0px";
             //cell.style.borderSpacing = "0px";
             row.appendChild(cell);
@@ -42,6 +40,8 @@ function generate_table(mazeString, size) {
     tbl.appendChild(tblBody);
     tbl.style.background="white";
     tbl.style.borderSpacing="0px";
+    tbl.style.width = "500px";
+    tbl.style.height = "500px";
     // appends <table> into <body>
     body.appendChild(tbl);
     // sets the border attribute of tbl to 2;
