@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25/05/2016, 16:33:28
+    Author     : גליתונופר
+*/
+
+.sqr{
+    background-image: url("sqr1.jpg");
+    background-size: cover;
+    border-style: double;
+    border-width: thick;
+    position: absolute;
+    background-position-x: 0;
+    background-position-y: 0;
+    width: fit-content;
+    box-sizing: border-box;
+     color: rgba(48,48,48,1);  
+     text-align: left;
+     text-shadow: 1px 1px 0 rgba(140,140,140,0.6) , -1px -1px 1px rgba(0,0,0,0.67) ;
+     font: normal 30px/1 "Aladin", Helvetica, sans-serif;
+}
