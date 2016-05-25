@@ -22,8 +22,8 @@ function generate_table(mazeString, size) {
             var cell = document.createElement("td");
             //var cellText = document.createTextNode("cell in row "+i+", column "+j);
             //cell.appendChild(cellText);
-            cell.style.width = "100px";
-            cell.style.height = "100px";
+            cell.style.width = "10px";
+            cell.style.height = "10px";
             // cell.style.border="0px";
             //cell.style.borderSpacing = "0px";
             row.appendChild(cell);
