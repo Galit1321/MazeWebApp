@@ -93,7 +93,8 @@ public class ProgressServlet extends HttpServlet {
                 obj.put("Name", s.getName());
                 obj.put("Start_i", s.getStart().getKey());
                 obj.put("Start_j", s.getStart().getValue());
-                
+                obj.put("End_i",s.getEnd().getKey());
+                obj.put("End_j",s.getEnd().getValue());
                 
                 counter = 100;
             } catch (JSONException ex) {
