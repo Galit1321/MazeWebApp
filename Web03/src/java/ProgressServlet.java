@@ -78,10 +78,11 @@ public class ProgressServlet extends HttpServlet {
         this.m=u.mode;
       System.out.print(u);
         if (!this.sendrq) {
-            String msn = "generate maze" + " 1";
+            String msn = "generate maze" +random.nextInt(100)+ " 1";
             m.sendMsn(msn);
             this.sendrq = true;
             m.getMsn();
+           
         }
         if (random.nextInt(10) == 7) {
             counter += 10;
@@ -101,7 +102,7 @@ public class ProgressServlet extends HttpServlet {
                 obj.put("Start_j", s.getStart().getValue());
                 obj.put("End_i",s.getEnd().getKey());
                 obj.put("End_j",s.getEnd().getValue());
-                
+                this.sendrq=false;
                 counter = 100;
             } catch (JSONException ex) {
                 Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);

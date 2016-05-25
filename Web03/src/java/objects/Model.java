@@ -25,7 +25,7 @@ public class Model {
     private BufferedReader in;
     private ConvertFromJson json ;
 
- private static Model singleton = new Model();
+
 
   public  Model() {
         try {
@@ -37,9 +37,7 @@ public class Model {
         }
     }
 
-    public static Model getInstance() {
-        return singleton;
-    }
+   
 
     public void sendMsn(String msg) {
         out1.println(msg);
