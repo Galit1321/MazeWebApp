@@ -21,9 +21,7 @@ public class ConvertFromJson {
 
     
     
-     public ConvertFromJson(){
-         
-     }
+    
     /// <summary>
     /// constructor that get serlize string and turn it to a dictionary 
     /// </summary>
@@ -32,10 +30,11 @@ public class ConvertFromJson {
         Map<String, String> map = new HashMap<String, String>();
         map = (Map<String,String>) deserializer.fromJson(json, map.getClass());
        // Map<String, String> dic = deserializer.fromJson(response, String);
-        String s = map.get("Content");
+       this.Type=map.get("Type");
+       String s = map.get("Content");
          Map<String, String> map2 = new HashMap<String, String>();
          this.Serlize = (Map<String,String>)deserializer.fromJson(s, map2.getClass());
-         findClass();
+          findClass();
     }
     public void findClass(){
         switch (this.Type)

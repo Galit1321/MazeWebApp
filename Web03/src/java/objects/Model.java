@@ -23,7 +23,7 @@ public class Model {
 
     private PrintWriter out1;
     private BufferedReader in;
-    private ConvertFromJson json = new ConvertFromJson();
+    private ConvertFromJson json ;
 
     private static Model singleton = new Model();
 
@@ -56,7 +56,7 @@ public class Model {
                 s += c[i];
                 i++;
             }
-            
+            this.json = new ConvertFromJson(s);
             System.out.print(s);
             for (Map.Entry<String, String> entry : this.json.Serlize.entrySet()) {
                 System.out.println(entry.getKey());

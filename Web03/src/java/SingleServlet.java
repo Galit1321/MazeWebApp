@@ -77,7 +77,7 @@ public class SingleServlet extends HttpServlet {
          String submit=request.getParameter("button");
        if ( submit==null){
            //noting is press
-       }else if ( submit.equals("SingleGame")){
+           }else if ( submit.equals("SingleGame")){
              HttpSession session = request.getSession(false);
              request.getRequestDispatcher("single.jsp").forward(request, response);
        }else {//we chose multiplayer

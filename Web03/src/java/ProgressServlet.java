@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import objects.Model;
+import objects.singleMaze;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,8 +30,8 @@ public class ProgressServlet extends HttpServlet {
 
     private static int counter = 0;
     private Random random = new Random();
-    private Boolean sendrq=false; 
-    private Model m=Model.getInstance();
+    private Boolean sendrq = false;
+    private Model m = Model.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,28 +71,36 @@ public class ProgressServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(!this.sendrq){
-            String msn="generate maze"+" 1";
+        if (!this.sendrq) {
+            String msn = "generate maze" + " 1";
             m.sendMsn(msn);
-            this.sendrq=true;
+            this.sendrq = true;
+            m.getMsn();
         }
-        if (random.nextInt(10)==7 ) {
+        if (random.nextInt(10) == 7) {
             counter += 10;
-            if (counter>90) {
-                counter-=10;
+            if (counter > 90) {
+                counter -= 10;
             }
         }
+        
+      
         JSONObject obj = new JSONObject();
-
-            if (m.getJson().maze!=null){
+        singleMaze s= m.getJson().maze;
+        if (m.getJson() != null) {
             try {
-                obj.put("SingleMaze",m.getJson().maze);
-                counter=100;
+                obj.put("Maze",s.getMaze());
+                obj.put("Name", s.getName());
+                obj.put("Start_i", s.getStart().getKey());
+                obj.put("Start_j", s.getStart().getValue());
+                
+                
+                counter = 100;
             } catch (JSONException ex) {
                 Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            }
+
+        }
         try {
             obj.put("progress", counter);
         } catch (JSONException ex) {
