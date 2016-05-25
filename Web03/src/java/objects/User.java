@@ -17,10 +17,11 @@ public class User {
     public String password;
     public String mail;
     public String icon ;
-    
+    public Model mode;
     public User(String name,String un,String pw,String mail,String icon ){
         this.name=name;
         this.mail=mail;
+       mode=new Model(); 
         this.userName=un;
         this.password=pw;
         this.icon=icon;

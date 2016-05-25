@@ -19,8 +19,8 @@ import objects.User;
 
 @WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"})
 public class MyFormServlet extends HttpServlet {
-    
-    public Model m=Model.getInstance();
+    public Map<String, User> Users=new HashMap<>();
+ //   public Model m=Model.getInstance();
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +41,7 @@ public class MyFormServlet extends HttpServlet {
            response.sendRedirect("login.jsp");
         }
         else if (act.equals("Enter")) {
-            User curr = this.m.getUsers().get(request.getParameter("username"));
+             User curr =Users.get(request.getParameter("username"));
             if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
                 request.getSession().setAttribute("Curr", curr);
                 request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);                        
@@ -62,6 +62,6 @@ public class MyFormServlet extends HttpServlet {
         String password = request.getParameter("password");
         String mail = request.getParameter("mail");
         String icon =request.getParameter("myCheck");
-        m.getUsers().put(userName, new User(name, userName, password, mail, icon));
+        Users.put(userName, new User(name, userName, password, mail, icon));
     }
 }
