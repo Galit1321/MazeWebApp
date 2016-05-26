@@ -19,17 +19,16 @@ import java.util.Map;
  */
 public class Model {
 
-    public Map<String, User> Users;
+   // public Map<String, User> Users;
 
     private PrintWriter out1;
     private BufferedReader in;
     private ConvertFromJson json ;
 
-    private static Model singleton = new Model();
 
-    private Model() {
+
+  public  Model() {
         try {
-            Users = new HashMap<>();
             Socket socket = new Socket("127.1.1.0", 5555);
             out1 = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -38,9 +37,7 @@ public class Model {
         }
     }
 
-    public static Model getInstance() {
-        return singleton;
-    }
+   
 
     public void sendMsn(String msg) {
         out1.println(msg);
@@ -68,10 +65,10 @@ public class Model {
         return c.toString();
     }
 
-    public Map<String, User> getUsers() {
+   /** public Map<String, User> getUsers() {
         return Users;
     }
-
+*/
     public ConvertFromJson getJson() {
         return this.json;
     }

@@ -15,7 +15,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import objects.Model;
+import objects.User;
 import objects.singleMaze;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,10 +29,11 @@ import org.json.JSONObject;
 @WebServlet(urlPatterns = {"/Progress"})
 public class ProgressServlet extends HttpServlet {
 
+    public Model model;
     private static int counter = 0;
     private Random random = new Random();
     private Boolean sendrq = false;
-    private Model m = Model.getInstance();
+   private Model m;// = Model.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,7 +60,7 @@ public class ProgressServlet extends HttpServlet {
             out.println("</html>");
         }
     }
-
+   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -70,11 +73,16 @@ public class ProgressServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        User u = (User) session.getAttribute("Curr");
+        this.m=u.mode;
+      System.out.print(u);
         if (!this.sendrq) {
-            String msn = "generate maze" + " 1";
+            String msn = "generate maze" +random.nextInt(100)+ " 1";
             m.sendMsn(msn);
             this.sendrq = true;
             m.getMsn();
+           
         }
         if (random.nextInt(10) == 7) {
             counter += 10;
@@ -94,7 +102,7 @@ public class ProgressServlet extends HttpServlet {
                 obj.put("Start_j", s.getStart().getValue());
                 obj.put("End_i",s.getEnd().getKey());
                 obj.put("End_j",s.getEnd().getValue());
-                
+                this.sendrq=false;
                 counter = 100;
             } catch (JSONException ex) {
                 Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);

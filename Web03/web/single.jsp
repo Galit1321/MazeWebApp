@@ -12,7 +12,7 @@
                 <% User u = (User) session.getAttribute("Curr");%>
                 <div class="sqr">
                     <div>Name: <%=u.name%></div>
-                    <div>Logo: <image src="<%=u.icon%>" width="50" height="50"/></div>
+                    <div>Logo: <image src="<%=u.icon%>" width="50" height="50"/></div>     
                 </div></div>
         <div class="progressBar" style="background-color:green;width:0px">0%</div>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
