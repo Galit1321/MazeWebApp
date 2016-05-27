@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-function generate_table(mazeString, size) {
+function generate_table(mazeString, size, startRow, startCol, endRow, endCol) {
     // get the reference for the body
-    var body = document.getElementsByTagName("body")[0];
+    var body=document.getElementsByClassName("Main")[0];
+   // var body = document.getElementsByTagName("body")[0];
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
     var tblBody = document.createElement("tbody");
@@ -30,7 +31,14 @@ function generate_table(mazeString, size) {
             if (mazeString.charAt(x) === '1') {
                 cell.style.background = "pink";
             }
-            
+            if ((i === (parseInt(startRow) *2) && j === (parseInt(startCol) * 2))) {
+               // var u = session.getAttribute("Curr");
+              //  cell.style.backgroundImage = "url('u.icon')";
+            } 
+            if (i === (parseInt(endRow) * 2) && j === (parseInt(endCol) * 2)) {
+                cell.style.backgroundImage = "url('/../pic/yellowflower.jpg')";
+                cell.style.backgroundSize = "cover";
+            }
             x++;
         }
 
