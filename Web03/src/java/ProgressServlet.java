@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
@@ -33,7 +32,7 @@ public class ProgressServlet extends HttpServlet {
     private static int counter = 0;
     private Random random = new Random();
     private Boolean sendrq = false;
-   private Model m;// = Model.getInstance();
+    private Model m;// = Model.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -60,7 +59,7 @@ public class ProgressServlet extends HttpServlet {
             out.println("</html>");
         }
     }
-   
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -70,19 +69,28 @@ public class ProgressServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    public Thread t = new Thread(() -> {
+        try {
+            Thread.sleep(random.nextInt(1000));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        m.getMsn();
+            
+    });
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
-        this.m=u.mode;
-      System.out.print(u);
+        this.m = u.mode;
+        System.out.print(u);
         if (!this.sendrq) {
-            String msn = "generate maze" +random.nextInt(100)+ " 1";
+            String msn = "generate maze" + random.nextInt(100) + " 1";
             m.sendMsn(msn);
             this.sendrq = true;
-            m.getMsn();
-           
+            t.start();
         }
         if (random.nextInt(10) == 7) {
             counter += 10;
@@ -90,19 +98,17 @@ public class ProgressServlet extends HttpServlet {
                 counter -= 10;
             }
         }
-        
-      
         JSONObject obj = new JSONObject();
-        singleMaze s= m.getJson().maze;
         if (m.getJson() != null) {
             try {
-                obj.put("Maze",s.getMaze());
+                singleMaze s = m.getJson().maze;
+                obj.put("Maze", s.getMaze());
                 obj.put("Name", s.getName());
                 obj.put("Start_i", s.getStart().getKey());
                 obj.put("Start_j", s.getStart().getValue());
-                obj.put("End_i",s.getEnd().getKey());
-                obj.put("End_j",s.getEnd().getValue());
-                this.sendrq=false;
+                obj.put("End_i", s.getEnd().getKey());
+                obj.put("End_j", s.getEnd().getValue());
+                this.sendrq = false;
                 counter = 100;
             } catch (JSONException ex) {
                 Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
