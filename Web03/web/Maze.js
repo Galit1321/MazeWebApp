@@ -34,7 +34,7 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
             if ((i === (parseInt(startRow) *2) && j === (parseInt(startCol) * 2))) {
                // var u = session.getAttribute("Curr");
             //   cell.style.background = "yellow";
-           // var str = "url(" + icon + ")";
+               var str = "url(" + icon + ")";
                cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
             } 
