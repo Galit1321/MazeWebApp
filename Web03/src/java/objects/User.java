@@ -19,7 +19,7 @@ public class User {
     public String mail;
     public String icon;
     public Model mode;
-    
+ 
     
     public User(String name, String un, String pw, String mail, String icon) {
         this.name = name;

@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,28 +21,34 @@ import java.util.Map;
  */
 public class Model {
 
-   // public Map<String, User> Users;
-
+    // public Map<String, User> Users;
     private PrintWriter out1;
     private BufferedReader in;
-    private ConvertFromJson json ;
+    private ConvertFromJson json;
+    private Socket socket;
 
+    public Model()  {
 
-
-  public  Model() {
         try {
-            Socket socket = new Socket("127.1.1.0", 5555);
-            out1 = new PrintWriter(socket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        } catch (Exception e) {
-
+            socket = new Socket("127.1.1.0", 5555);
+        } catch (IOException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
-  public void Close() throws IOException{
-  out1.close();
-  in.close();
-  } 
+    public void Start() {
+        try{
+        out1 = new PrintWriter(socket.getOutputStream(), true);
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    }catch(Exception e){
+    }
+    }
+
+    public void Close() throws IOException {
+        out1.close();
+        in.close();
+    }
 
     public void sendMsn(String msg) {
         out1.println(msg);
@@ -68,10 +76,9 @@ public class Model {
         return c.toString();
     }
 
-   /** public Map<String, User> getUsers() {
-        return Users;
-    }
-*/
+    /**
+     * public Map<String, User> getUsers() { return Users; }
+     */
     public ConvertFromJson getJson() {
         return this.json;
     }

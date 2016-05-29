@@ -5,6 +5,8 @@
  */
 package objects;
 
+import javafx.util.Pair;
+
 /**
  *
  * @author גליתונופר
@@ -22,4 +24,22 @@ public class Game {
             this.you = u;
             this.other = other;
         }
+   
+
+    public String getMaze() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getName() {
+        return this.mazename;
+    }
+
+    public singleMaze getYou() {
+        return this.you;
+    } 
+    
+    public singleMaze getOther(){
+    return this.other;
+    }
+
 }

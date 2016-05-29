@@ -6,21 +6,32 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import objects.Model;
+import objects.User;
+import objects.singleMaze;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
  * @author גליתונופר
  */
-@WebServlet(urlPatterns = {"/SingleServlet"})
-public class SingleServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/GameLounge"})
+public class GameLounge extends HttpServlet {
 
-    
+    private static int counter = 0;
+    private Random random = new Random();
+    private Boolean sendrq = false;
+    private Model m;// = Model.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +50,10 @@ public class SingleServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SingleServlet</title>");            
+            out.println("<title>Servlet GameLounge</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SingleServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet GameLounge at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +71,7 @@ public class SingleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
+        response.sendRedirect("GameLounge.jsp");
     }
 
     /**
@@ -74,26 +85,14 @@ public class SingleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         HttpSession session = request.getSession(false);
-         String submit=request.getParameter("button");
-       if ( submit==null){
-           //noting is press
-           }else if ( submit.equals("SingleGame")){
-             request.getRequestDispatcher("single.jsp").forward(request, response);
-       }else {//we chose multiplayer
-            request.getRequestDispatcher("GameLounge.jsp").forward(request, response);
-       }
-    
+        
+        HttpSession session = request.getSession(false);
+        User u = (User) session.getAttribute("Curr");
+        String act = request.getParameter("act");
+        this.m = u.mode;
+        String msn = "multiplayer " + act;
+        m.sendMsn(msn);
+        request.getRequestDispatcher("Multiplayer.jsp").forward(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

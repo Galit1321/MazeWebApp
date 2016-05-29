@@ -43,8 +43,10 @@ public class MyFormServlet extends HttpServlet {
         else if (act.equals("Enter")) {
              User curr =Users.get(request.getParameter("username"));
             if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
+                curr.mode.Start();
                 request.getSession().setAttribute("Curr", curr);
-                request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);                        
+                request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);  
+                //esponse.sendRedirect("secured/MyPrivateData");
             } else {
                 request.setAttribute("error", true);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
