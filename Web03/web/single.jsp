@@ -14,7 +14,7 @@
                 <div class="sqr">
                 <div>Name: <%=u.name%></div>
                 <div>Logo: <image src="<%=u.icon%>" width="50" height="50"/></div>   
-                <button class="bnt" onclick="Close()"  >LogOut </button>
+                <button class="bnt" type="sumbit"  >LogOut </button>
             </div></div>
             </form>
             
