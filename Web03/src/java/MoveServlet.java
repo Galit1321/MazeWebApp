@@ -6,22 +6,28 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.util.Pair;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import objects.Model;
+import objects.User;
+import objects.singleMaze;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
- * @author גליתונופר
+ * @author revit
  */
-@WebServlet(urlPatterns = {"/SingleServlet"})
-public class SingleServlet extends HttpServlet {
-
-    
-
+@WebServlet(urlPatterns = {"/MoveServlet"})
+public class MoveServlet extends HttpServlet {
+    private Model m;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,10 +45,10 @@ public class SingleServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SingleServlet</title>");            
+            out.println("<title>Servlet MoveServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SingleServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MoveServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +66,7 @@ public class SingleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
+        processRequest(request, response);
     }
 
     /**
@@ -74,19 +80,41 @@ public class SingleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String submit=request.getParameter("button");
-       if ( submit==null){
-           //noting is press
-           }else if ( submit.equals("SingleGame")){
-             HttpSession session = request.getSession(false);
-             request.getRequestDispatcher("single.jsp").forward(request, response);
-       }else {//we chose multiplayer
-            processRequest(request, response);
-            HttpSession session = request.getSession(false);
-            request.getRequestDispatcher("Multiplayer.jsp").forward(request, response);
-       }
-    
+        processRequest(request, response);
+        HttpSession session = request.getSession(false);
+        User u = (User) session.getAttribute("Curr");
+        this.m = u.mode;
+            Pair p = u.myMaze.move(request.getParameter("move"));
+            if (u.myMaze.getCurrrnt().equals(p))//we didnt move at all 
+            {
+                return;
+            }
+            int myRow = (int) p.getKey();
+            int myCol = (int) p.getValue();
+            u.myMaze.setCurrent(p);
+            //Position in the string.
+            int pos = (u.myMaze.getSize() * myRow) + myRow;
+           // if (MyMaze.solv[pos].Equals('2'))
+           // {
+            //    MyMaze.lastClue.Add(pos);
+            //}
+           //     if ((this.Coordinate.Equals(MyMaze.End)))//we reach goal in maze;
+            //{
+              //  Winner = true;
+           // }
+        JSONObject obj = new JSONObject();
+        if (m.getJson() != null) {
+            try {
+                int id = (myRow * 10) + myCol;
+                obj.put("location", id);
+               // this.sendrq = false;
+               // counter = 100;
+            } catch (JSONException ex) {
+                Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
+    }
+    
 
     /**
      * Returns a short description of the servlet.

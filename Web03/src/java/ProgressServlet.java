@@ -76,7 +76,8 @@ public class ProgressServlet extends HttpServlet {
             Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         m.getMsn();
-            
+        m.sendMsn("solve "+m.getJson().maze.getName()+ " 0");
+        m.getMsn();
     });
 
     @Override
@@ -85,7 +86,7 @@ public class ProgressServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
         this.m = u.mode;
-        System.out.print(u);
+//        System.out.print(u);
         if (!this.sendrq) {
             String msn = "generate maze" + random.nextInt(100) + " 1";
             m.sendMsn(msn);

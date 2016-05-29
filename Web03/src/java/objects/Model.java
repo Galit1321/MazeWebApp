@@ -54,11 +54,7 @@ public class Model {
                 i++;
             }
             this.json = new ConvertFromJson(s);
-            System.out.print(s);
-            for (Map.Entry<String, String> entry : this.json.Serlize.entrySet()) {
-                System.out.println(entry.getKey());
-                System.out.println(entry.getValue());
-            }
+         
 
         } catch (Exception e) {
         }

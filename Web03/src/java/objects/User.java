@@ -17,6 +17,7 @@ public class User {
     public String mail;
     public String icon;
     public Model mode;
+    public singleMaze myMaze;
 
     public User(String name, String un, String pw, String mail, String icon) {
         this.name = name;
@@ -54,4 +55,12 @@ public class User {
         return this.password.equals(pass);
     }
 
+    public void setMaze(singleMaze maze) {
+        this.myMaze = maze;
+    }
+    
+    public singleMaze getMaze() {
+        return this.myMaze;
+    }
+    
 }
