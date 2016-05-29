@@ -1,11 +1,17 @@
 <%@page import="objects.User"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<%-- 
+    Document   : Multiplayer
+    Created on : May 29, 2016, 2:58:28 PM
+    Author     : revit
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Single Game</title>
+        <title> Multiplayer Game</title>
          <script src="Maze.js"></script>
-            <link  rel="stylesheet" type="text/css" href="Single.css">
+            <link  rel="stylesheet" type="text/css" href="Multiplayer.css">
     </head>
     <body>
         <div >
@@ -23,17 +29,14 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script type="text/javascript">
             $(function ($) {
-                $(document).ready(function() {
-                $.ajaxSetup({ cache: false });
-                });
                 function long_polling() {
                     $.getJSON('Progress', function (data) {
                         $('.progressBar').width(data.progress).text(data.progress + '%');
                         if (data.progress < 100)
                         { long_polling();}
                         else {
-                          generate_table(data.Maze, 13, data.Start_i,data.Start_j,data.End_i, data.End_j, "<%=u.icon%>");
-
+                            generate_table(data.Maze, 13, 0, 4, 3, 4);
+                            generate_table(data.Maze, 13, 3,3,1,5);
                              $('.progressBar').hide();
                         }
                     });
@@ -41,4 +44,5 @@
                 long_polling();
             });
         </script>
-    </body></html>
+    </body>
+</html>

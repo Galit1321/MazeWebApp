@@ -34,12 +34,12 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
             if ((i === (parseInt(startRow) *2) && j === (parseInt(startCol) * 2))) {
                // var u = session.getAttribute("Curr");
             //   cell.style.background = "yellow";
-           // var str = "url(" + icon + ")";
+            var str = "url(" + icon + ")";
                cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
             } 
             if (i === (parseInt(endRow) * 2) && j === (parseInt(endCol) * 2)) {
-                cell.style.backgroundImage = "url('/../pic/yellowflower.jpg')";
+                cell.style.backgroundImage = "url('/../pic/flower2.jpg')";
                 cell.style.backgroundSize = "cover";
             }
             x++;
