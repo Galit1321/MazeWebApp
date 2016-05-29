@@ -23,3 +23,7 @@ and open the template in the editor.
      text-shadow: 1px 1px 0 rgba(140,140,140,0.6) , -1px -1px 1px rgba(0,0,0,0.67) ;
      font: normal 30px/1 "Aladin", Helvetica, sans-serif;
 }
+.Main{
+    position: absolute;
+    left: 50%;
+}
