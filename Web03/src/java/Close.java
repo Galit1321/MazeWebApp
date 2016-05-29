@@ -38,7 +38,7 @@ public class Close extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Close</title>");            
+            out.println("<title>Servlet Close</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Close at " + request.getContextPath() + "</h1>");
@@ -75,7 +75,11 @@ public class Close extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
-        
+        u.Close();
+        if (session != null) {
+            session.invalidate();
+        }
+        response.sendRedirect("login.jsp");
     }
 
     /**
