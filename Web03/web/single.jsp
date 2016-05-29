@@ -32,7 +32,8 @@
                         if (data.progress < 100)
                         { long_polling();}
                         else {
-                          generate_table(data.Maze, 13, data.Start_i,data.Start_j,data.End_i, data.End_j, "<%=u.icon%>");
+                          //generate_table(data.Maze, 13, data.Start_i,data.Start_j,data.End_i, data.End_j, "<%=u.icon%>");
+                          generate_table(data.Maze, 13, 3,4,5, 1, "<%=u.icon%>");
 
                              $('.progressBar').hide();
                         }
