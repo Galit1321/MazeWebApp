@@ -34,7 +34,7 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
             if ((i === (parseInt(startRow) *2) && j === (parseInt(startCol) * 2))) {
                // var u = session.getAttribute("Curr");
             //   cell.style.background = "yellow";
-            var str = "url(" + icon + ")";
+           // var str = "url(" + icon + ")";
                cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
             } 
@@ -55,6 +55,7 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
     tbl.style.borderSpacing="0px";
     tbl.style.width = "500px";
     tbl.style.height = "500px";
+    tbl.style.borderSpacing="0px";
     // appends <table> into <body>
     body.appendChild(tbl);
     // sets the border attribute of tbl to 2;
