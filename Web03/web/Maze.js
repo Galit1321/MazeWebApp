@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 
+
+
+
 function generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon) {
     // get the reference for the body
     var body=document.getElementsByClassName("Main")[0];
+    
    // var body = document.getElementsByTagName("body")[0];
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
@@ -21,26 +25,23 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
             // node the contents of the <td>, and put the <td> at
             // the end of the table row
             var cell = document.createElement("td");
-            //var cellText = document.createTextNode("cell in row "+i+", column "+j);
-            //cell.appendChild(cellText);
-            //cell.style.width = "10px";
-            //cell.style.height = "10px";
-            // cell.style.border="0px";
-            //cell.style.borderSpacing = "0px";
             row.appendChild(cell);
             if (mazeString.charAt(x) === '1') {
                 cell.style.background = "purple";
             }
-            if ((i === (parseInt(startRow) *2) && j === (parseInt(startCol) * 2))) {
-               // var u = session.getAttribute("Curr");
-            //   cell.style.background = "yellow";
-               var str = "url(" + icon + ")";
-               cell.style.backgroundImage = str;
+            if ((i === (parseInt(startRow) )) && (j === (parseInt(startCol) ))) {
+               //cell.style.background = "yellow";
+                var str = "url(" + icon + ")";
+                cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
+                //console.log("str");
             } 
-            if (i === (parseInt(endRow) * 2) && j === (parseInt(endCol) * 2)) {
-                cell.style.backgroundImage = "url('/../pic/yellowflower.jpg')";
+            if ((i === (parseInt(endRow) )) && (j === (parseInt(endCol)))) {
+                //cell.style.background = "blue";
+
+                cell.style.backgroundImage = "url('/../pic/flower2.jpg')";
                 cell.style.backgroundSize = "cover";
+                //console.log(cell.prototype.background);
             }
             x++;
         }

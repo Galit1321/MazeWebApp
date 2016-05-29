@@ -5,6 +5,8 @@
  */
 package objects;
 
+import java.io.IOException;
+
 /**
  *
  * @author גליתונופר
@@ -17,7 +19,8 @@ public class User {
     public String mail;
     public String icon;
     public Model mode;
-
+    
+    
     public User(String name, String un, String pw, String mail, String icon) {
         this.name = name;
         this.mail = mail;
@@ -53,5 +56,16 @@ public class User {
     public boolean checkPassword(String pass) {
         return this.password.equals(pass);
     }
+    
+    public singleMaze getMaze(){
+    return this.mode.getJson().maze;
+    }
+    
+    public String getSol(){
+     return this.mode.getJson().solv.getMaze();
+    }
 
+    public void Close() throws IOException{
+        this.mode.Close();
+    }
 }

@@ -18,6 +18,7 @@ public class ConvertFromJson {
     public Play move;
    public String Type;
     public Gson deserializer = new Gson();
+    public singleMaze solv;
 
     
     
@@ -43,8 +44,7 @@ public class ConvertFromJson {
                     CreateMaze();
                     break;
                 case "2":
-                    CreateMaze();
-                   
+                    GetSol();
                     break;
                 case "3":
                    ConvertStartGame();
@@ -71,6 +71,7 @@ public class ConvertFromJson {
             singleMaze m = new singleMaze(start,end,maze,n);
            this.maze = m;
         }
+        
         
         /// create coordinate of start and end of serlize sting in this.Serlize
         /// </summary>
@@ -125,4 +126,13 @@ public class ConvertFromJson {
             String move = this.Serlize.get("Move");
             this.move=new Play(name, move);
         }
+
+    private void GetSol() {
+        String maze = this.Serlize.get("Maze");
+            String n = this.Serlize.get("Name");
+            Pair start = CreatePair(this.Serlize.get("Start"));
+            Pair end = CreatePair(this.Serlize.get("End"));
+            singleMaze m = new singleMaze(start,end,maze,n);
+           this.solv = m;
+    }
 }

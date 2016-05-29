@@ -37,7 +37,10 @@ public class Model {
         }
     }
 
-   
+  public void Close() throws IOException{
+  out1.close();
+  in.close();
+  } 
 
     public void sendMsn(String msg) {
         out1.println(msg);

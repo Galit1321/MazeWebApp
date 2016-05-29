@@ -13,6 +13,7 @@ public class singleMaze {
     private Pair end;
     private String name;
     private String maze;
+   
 
     public singleMaze(Pair start, Pair end, String maze, String name) {
         this.start = start;

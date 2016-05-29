@@ -28,7 +28,7 @@ import org.json.JSONObject;
 @WebServlet(urlPatterns = {"/Progress"})
 public class ProgressServlet extends HttpServlet {
 
-    public Model model;
+   // public Model model;
     private static int counter = 0;
     private Random random = new Random();
     private Boolean sendrq = false;
@@ -76,7 +76,8 @@ public class ProgressServlet extends HttpServlet {
             Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         m.getMsn();
-            
+        m.sendMsn("solve "+m.getJson().maze.getName()+" 0");
+        m.getMsn();    
     });
 
     @Override
