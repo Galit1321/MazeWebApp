@@ -12,11 +12,8 @@ public class singleMaze {
     private String maze;
     private Pair currentPosition;
     private int size;
-<<<<<<< HEAD
     private int clue;
   
-=======
->>>>>>> remotes/origin/stam1
 
     public singleMaze(Pair start, Pair end, String maze, String name) {
         this.start = start;
@@ -26,10 +23,7 @@ public class singleMaze {
         this.currentPosition = start;
         //need to change size
         this.size = 13;
-<<<<<<< HEAD
         this.clue = this.size * ((int) start.getKey()) + (int) this.start.getValue();
-=======
->>>>>>> remotes/origin/stam1
     }
 
     public singleMaze(Pair start, Pair end, String maze) {
@@ -39,7 +33,6 @@ public class singleMaze {
         this.currentPosition = start;
         ////////////////////////////
         this.size = 13;
-<<<<<<< HEAD
     }
 
     public int getClue() {
@@ -49,9 +42,6 @@ public class singleMaze {
     public void setClue(int pos){
     this.clue=pos;
     }
-=======
-    }
->>>>>>> remotes/origin/stam1
 
     public Pair getStart() {
         return this.start;
@@ -84,10 +74,7 @@ public class singleMaze {
     public int getSize() {
         return this.size;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> remotes/origin/stam1
     public Pair move(String direction) {
         int row = (Integer) this.currentPosition.getKey();
         int col = (Integer) this.currentPosition.getValue();
@@ -117,9 +104,5 @@ public class singleMaze {
         }
         return new Pair(row, col);
     }
-<<<<<<< HEAD
    
-=======
-
->>>>>>> remotes/origin/stam1
 }

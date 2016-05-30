@@ -20,14 +20,9 @@ public class User {
     public String mail;
     public String icon;
     public Model mode;
-<<<<<<< HEAD
     private singleMaze myMaze;
     //public String solStr;
    
-=======
-    public singleMaze myMaze;
-
->>>>>>> remotes/origin/stam1
     public User(String name, String un, String pw, String mail, String icon) {
         this.name = name;
         this.mail = mail;
@@ -40,7 +35,7 @@ public class User {
 
   
     public String getSolStr() {
-        return this.mode.getJson().solv.getMaze();
+        return this.mode.getJson().sol.getMaze();
     }
  public int GetNxtClue()
         {
@@ -92,7 +87,6 @@ public class User {
 
     public void setMaze(singleMaze maze) {
         this.myMaze = maze;
-<<<<<<< HEAD
        
     }
 
@@ -103,12 +97,4 @@ public class User {
     public void Close() throws IOException {
         this.mode.Close();
     }
-=======
-    }
-    
-    public singleMaze getMaze() {
-        return this.myMaze;
-    }
-    
->>>>>>> remotes/origin/stam1
 }

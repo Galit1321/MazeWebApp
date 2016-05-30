@@ -81,13 +81,7 @@ public class SingleServlet extends HttpServlet {
            }else if ( submit.equals("SingleGame")){
              request.getRequestDispatcher("single.jsp").forward(request, response);
        }else {//we chose multiplayer
-<<<<<<< HEAD
             request.getRequestDispatcher("GameLounge.jsp").forward(request, response);
-=======
-            processRequest(request, response);
-            HttpSession session = request.getSession(false);
-            request.getRequestDispatcher("Multiplayer.jsp").forward(request, response);
->>>>>>> remotes/origin/stam1
        }
     
     }

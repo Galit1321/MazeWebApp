@@ -50,13 +50,8 @@ public class ProgressServlet extends HttpServlet {
             Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         m.getMsn();
-<<<<<<< HEAD
         m.sendMsn("solve "+m.getJson().maze.getName()+" 0");
         m.getMsn();    
-=======
-        m.sendMsn("solve "+m.getJson().maze.getName()+ " 0");
-        m.getMsn();
->>>>>>> remotes/origin/stam1
     });
 
     @Override
@@ -65,10 +60,6 @@ public class ProgressServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
         this.m = u.mode;
-<<<<<<< HEAD
-=======
-//        System.out.print(u);
->>>>>>> remotes/origin/stam1
         if (!this.sendrq) {
             String msn = "generate maze" + random.nextInt(100) + " 1";
             m.sendMsn(msn);
