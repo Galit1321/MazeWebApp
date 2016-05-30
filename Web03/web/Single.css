@@ -7,6 +7,14 @@ body{
   
 }
 
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("pic/flower back single.jpg");
+    background-size: cover;
+  
+}
+
 .sqr{
     background-image: url("sqr1.jpg");
     background-size: cover;
