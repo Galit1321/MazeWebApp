@@ -19,8 +19,8 @@ public class User {
     public String mail;
     public String icon;
     public Model mode;
- 
-    
+    public singleMaze myMaze;
+
     public User(String name, String un, String pw, String mail, String icon) {
         this.name = name;
         this.mail = mail;
@@ -56,16 +56,15 @@ public class User {
     public boolean checkPassword(String pass) {
         return this.password.equals(pass);
     }
-    
-    public singleMaze getMaze(){
-    return this.mode.getJson().maze;
-    }
-    
-    public String getSol(){
-     return this.mode.getJson().solv.getMaze();
-    }
 
-    public void Close() throws IOException{
-        this.mode.Close();
+    public void setMaze(singleMaze maze) {
+        this.myMaze = maze;
     }
+    
+    public singleMaze getMaze() {
+        return this.myMaze;
+    }
+  public void Close() throws IOException{
+  this.mode.Close();
+  }  
 }

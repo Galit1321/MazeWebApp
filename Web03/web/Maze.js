@@ -3,17 +3,43 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ 
+ function Move(evt){
+     $(window).keydown(function(evt) {
+  if (evt.which == 38) { // up
+    $.post("MoveServlet",
+                   {
+                     move: "up"
+                     },
+                function(data){
+                  var cell = document.getElementById(data.location);
+                  cell.style.background = "blue";
+                // cell.style.backgroundImage = myImg; 
+                 // cell.style.opacity="1";
+                 // cell.style.backgroundSize = "contain";
+                //cell.style.borderRadius = "13px";
+             });
+  }
+}).keyup(function(evt) {
+  if (evt.which == 17) { // ctrl
+    ctrlPressed = false;
+  }
+});
 
+
+
+
+ }
 
 
 
 function generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon) {
     // get the reference for the body
     var body=document.getElementsByClassName("Main")[0];
-    
    // var body = document.getElementsByTagName("body")[0];
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
+   
     var tblBody = document.createElement("tbody");
     var x = 0;
     // creating all cells
@@ -25,18 +51,20 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
             // node the contents of the <td>, and put the <td> at
             // the end of the table row
             var cell = document.createElement("td");
+            cell.setAttribute('id', (i*10 + j));
             row.appendChild(cell);
+            
             if (mazeString.charAt(x) === '1') {
                 cell.style.background = "purple";
             }
-            if ((i === (parseInt(startRow) )) && (j === (parseInt(startCol) ))) {
+            if ((i === (parseInt(startRow))) && (j === (parseInt(startCol)))) {
                //cell.style.background = "yellow";
                 var str = "url(" + icon + ")";
                 cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
                 //console.log("str");
             } 
-            if ((i === (parseInt(endRow) )) && (j === (parseInt(endCol)))) {
+            if ((i === (parseInt(endRow))) && (j === (parseInt(endCol)))) {
                 //cell.style.background = "blue";
 
                 cell.style.backgroundImage = "url('/../pic/flower2.jpg')";
@@ -62,5 +90,3 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
     // sets the border attribute of tbl to 2;
     //tbl.setAttribute("border", "2");
 }
-
-
