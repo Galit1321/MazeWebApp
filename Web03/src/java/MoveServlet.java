@@ -65,11 +65,6 @@ public class MoveServlet extends HttpServlet {
         int r=(int)u.getMaze().getCurrrnt().getKey();
         int c=(int)u.getMaze().getCurrrnt().getValue();
         int oldpos = (u.getMaze().getSize() * r) + c;     
-        try {
-            obj.put("Prv",oldpos);
-        } catch (JSONException ex) {
-            Logger.getLogger(MoveServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
         int myRow = (int) p.getKey();
         int myCol = (int) p.getValue();
         u.getMaze().setCurrent(p);
@@ -80,6 +75,7 @@ public class MoveServlet extends HttpServlet {
             u.getMaze().setClue(pos);
         }
         try {
+              obj.put("Prv",oldpos);
             obj.put("location", pos);
         } catch (JSONException ex) {
             Logger.getLogger(MoveServlet.class.getName()).log(Level.SEVERE, null, ex);

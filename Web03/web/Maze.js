@@ -21,10 +21,18 @@ function Move(direction) {
 }
 function Clue() {
     $.getJSON('Hint', function (data) {
-          var cell = document.getElementById(data.Hint);
-    cell.style.background = "white";
+        var cell = document.getElementById(data.Hint);
+        cell.style.background = "white";
     });
-  
+}
+
+function Reset() {
+    $.getJSON('Reset', function (data) {
+        var cell = document.getElementById(data.Prv);
+        cell.style.background = "pink";
+        var start = document.getElementById(data.Start);
+        start.style.background = "red";
+    });
 }
 function generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon) {
     // get the reference for the body
