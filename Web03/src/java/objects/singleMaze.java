@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.util.Pair;
 
 public class singleMaze {
@@ -102,5 +104,5 @@ public class singleMaze {
         }
         return new Pair(row, col);
     }
-
+   
 }

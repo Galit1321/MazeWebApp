@@ -86,7 +86,6 @@ public class ProgressServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
         this.m = u.mode;
-        System.out.print(u);
         if (!this.sendrq) {
             String msn = "generate maze" + random.nextInt(100) + " 1";
             m.sendMsn(msn);
@@ -104,8 +103,8 @@ public class ProgressServlet extends HttpServlet {
             try {
                 singleMaze s = m.getJson().maze;
                 u.setMaze(s);
-                singleMaze sol = m.getJson().solv;
-                u.setSolStr(sol.getMaze());
+              // singleMaze sol = m.getJson().solv;
+               // u.setSolStr(sol.getMaze());
                 obj.put("Maze", s.getMaze());
                 obj.put("Name", s.getName());
                 obj.put("Start_i", s.getStart().getKey());

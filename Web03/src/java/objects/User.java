@@ -6,6 +6,7 @@
 package objects;
 
 import java.io.IOException;
+import javafx.util.Pair;
 
 /**
  *
@@ -20,7 +21,7 @@ public class User {
     public String icon;
     public Model mode;
     private singleMaze myMaze;
-    private String solStr;
+    //public String solStr;
    
     public User(String name, String un, String pw, String mail, String icon) {
         this.name = name;
@@ -32,13 +33,30 @@ public class User {
         
     }
 
-    public void setSolStr(String s) {
-        this.solStr = s;
-    }
-
+  
     public String getSolStr() {
-        return this.solStr;
+        return this.mode.getJson().solv.getMaze();
     }
+ public int GetNxtClue()
+        {
+            Pair p;
+            int pos;
+            String[] dir ={ "up", "down", "left", "right" };
+            for (int i=0; i<4;i++)
+            {
+                p= this.myMaze.move(dir[i]);////check the dirction
+                if (p != null)
+                {
+                   pos = (int)p.getKey()*this.myMaze.getSize()+(int)p.getValue();
+                   char[] solv=this.getSolStr().toCharArray();
+                    if (solv[pos]=='2')
+            {
+                        return pos;
+                    }
+                }
+            }  
+            return this.myMaze.getClue(); 
+        }
 
     /*
     override eq to check if it contain in 

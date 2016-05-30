@@ -6,7 +6,7 @@
 function Move(direction) {
     $.post("MoveServlet",
             {
-                move:direction
+                move: direction
             },
             function (data) {
                 var cell = document.getElementById(data.Prv);
@@ -19,7 +19,13 @@ function Move(direction) {
                 //cell.style.borderRadius = "13px";
             });
 }
-
+function Clue() {
+    $.getJSON('Hint', function (data) {
+          var cell = document.getElementById(data.Hint);
+    cell.style.background = "white";
+    });
+  
+}
 function generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon) {
     // get the reference for the body
     var body = document.getElementsByClassName("Main")[0];
