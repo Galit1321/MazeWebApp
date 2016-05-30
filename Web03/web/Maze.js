@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+var iconUrl;
+
 function Move(direction) {
     $.post("MoveServlet",
             {
@@ -12,7 +15,8 @@ function Move(direction) {
                 var cell = document.getElementById(data.Prv);
                 cell.style.background = "pink";
                 var cell = document.getElementById(data.location);
-                cell.style.background = "blue";
+                cell.style.backgroundImage = iconUrl;
+                cell.style.backgroundSize = "cover";
                 // cell.style.backgroundImage = myImg; 
                 // cell.style.opacity="1";
                 // cell.style.backgroundSize = "contain";
@@ -61,6 +65,7 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
             if ((i === (parseInt(startRow))) && (j === (parseInt(startCol)))) {
                 //cell.style.background = "yellow";
                 var str = "url(" + icon + ")";
+                iconUrl = str;
                 cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
                 //console.log("str");
