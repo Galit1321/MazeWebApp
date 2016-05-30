@@ -19,8 +19,9 @@ public class User {
     public String mail;
     public String icon;
     public Model mode;
-    public singleMaze myMaze;
-
+    private singleMaze myMaze;
+    private String solStr;
+   
     public User(String name, String un, String pw, String mail, String icon) {
         this.name = name;
         this.mail = mail;
@@ -28,6 +29,15 @@ public class User {
         this.userName = un;
         this.password = pw;
         this.icon = icon;
+        
+    }
+
+    public void setSolStr(String s) {
+        this.solStr = s;
+    }
+
+    public String getSolStr() {
+        return this.solStr;
     }
 
     /*
@@ -59,12 +69,14 @@ public class User {
 
     public void setMaze(singleMaze maze) {
         this.myMaze = maze;
+       
     }
-    
+
     public singleMaze getMaze() {
         return this.myMaze;
     }
-  public void Close() throws IOException{
-  this.mode.Close();
-  }  
+
+    public void Close() throws IOException {
+        this.mode.Close();
+    }
 }

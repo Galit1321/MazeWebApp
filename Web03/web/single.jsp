@@ -33,34 +33,16 @@
             });
             $(document).keyup(function (e) {
                 if (e.keyCode == 40) {
-                    $.post("MoveServlet",
-                            {
-                                move: "down"
-                            },
-                            function (data) {
-                                var cell = document.getElementById(data.location);
-                                cell.style.background = "blue";
-                                // cell.style.backgroundImage = myImg; 
-                                // cell.style.opacity="1";
-                                // cell.style.backgroundSize = "contain";
-                                //cell.style.borderRadius = "13px";
-                            });
+                    Move("down");
                 }
                 if (e.keyCode == 38) { // up
-                    $.post("MoveServlet",
-                            {
-                                move: "up"
-                            },
-                            function (data) { 
-                                 var cell = document.getElementById(data.Prv);
-                                cell.style.background = "pink";
-                                var cell = document.getElementById(data.location);
-                                cell.style.background = "blue";
-                                // cell.style.backgroundImage = myImg; 
-                                // cell.style.opacity="1";
-                                // cell.style.backgroundSize = "contain";
-                                //cell.style.borderRadius = "13px";
-                            });
+                    Move("up");
+                }
+                if (e.keyCode == 37) { //left
+                    Move("left");
+                }
+                if (e.keyCode == 39) { //right
+                    Move("right");
                 }
             });
             function long_polling() {

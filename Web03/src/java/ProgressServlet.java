@@ -103,6 +103,9 @@ public class ProgressServlet extends HttpServlet {
         if (m.getJson() != null) {
             try {
                 singleMaze s = m.getJson().maze;
+                u.setMaze(s);
+                singleMaze sol = m.getJson().solv;
+                u.setSolStr(sol.getMaze());
                 obj.put("Maze", s.getMaze());
                 obj.put("Name", s.getName());
                 obj.put("Start_i", s.getStart().getKey());
