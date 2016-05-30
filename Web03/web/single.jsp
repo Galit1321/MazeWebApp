@@ -7,7 +7,7 @@
         <script src="Maze.js"></script>
         <link  rel="stylesheet" type="text/css" href="Single.css">
     </head>
-    <body onkeydown="Move()" >
+    <body >
         <div >
             <% User u = (User) session.getAttribute("Curr");%>
             <form action="Close" method="post" >
@@ -31,6 +31,38 @@
             $(document).ready(function () {
                 $.ajaxSetup({cache: false});
             });
+            $(document).keyup(function (e) {
+                if (e.keyCode == 40) {
+                    $.post("MoveServlet",
+                            {
+                                move: "down"
+                            },
+                            function (data) {
+                                var cell = document.getElementById(data.location);
+                                cell.style.background = "blue";
+                                // cell.style.backgroundImage = myImg; 
+                                // cell.style.opacity="1";
+                                // cell.style.backgroundSize = "contain";
+                                //cell.style.borderRadius = "13px";
+                            });
+                }
+                if (e.keyCode == 38) { // up
+                    $.post("MoveServlet",
+                            {
+                                move: "up"
+                            },
+                            function (data) { 
+                                 var cell = document.getElementById(data.Prv);
+                                cell.style.background = "pink";
+                                var cell = document.getElementById(data.location);
+                                cell.style.background = "blue";
+                                // cell.style.backgroundImage = myImg; 
+                                // cell.style.opacity="1";
+                                // cell.style.backgroundSize = "contain";
+                                //cell.style.borderRadius = "13px";
+                            });
+                }
+            });
             function long_polling() {
                 $.getJSON('Progress', function (data) {
                     $('.progressBar').width(data.progress).text(data.progress + '%');
@@ -41,7 +73,7 @@
 
                         generate_table(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
                         $('.progressBar').hide();
-                       
+
                     }
                 });
             }
