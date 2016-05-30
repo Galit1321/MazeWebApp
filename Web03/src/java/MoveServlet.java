@@ -62,31 +62,25 @@ public class MoveServlet extends HttpServlet {
         this.m = u.mode;
         Pair p = u.getMaze().move(request.getParameter("move"));
         JSONObject obj = new JSONObject();
-     /*  if (u.getMaze().getCurrrnt().equals(p))//we didnt move at all 
-        {
-           int id = -1;
-            try {
-                obj.put("location", id);
-            } catch (JSONException ex) {
-                Logger.getLogger(MoveServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }*/
+        int r=(int)u.getMaze().getCurrrnt().getKey();
+        int c=(int)u.getMaze().getCurrrnt().getValue();
+        int oldpos = (u.getMaze().getSize() * r) + c;     
+        try {
+            obj.put("Prv",oldpos);
+        } catch (JSONException ex) {
+            Logger.getLogger(MoveServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         int myRow = (int) p.getKey();
         int myCol = (int) p.getValue();
         u.getMaze().setCurrent(p);
         //Position in the string.
-        int pos = (u.getMaze().getSize() * myRow) + myRow;
-        int id = (myRow * 10) + myCol;
+        int pos = (u.getMaze().getSize() * myRow) + myCol;
+        char[] solarr=u.getSolStr().toCharArray();
+        if (solarr[pos]=='2'){
+            u.getMaze().setClue(pos);
+        }
         try {
-            obj.put("location", id);
-            // if (MyMaze.solv[pos].Equals('2'))
-            // {
-            //    MyMaze.lastClue.Add(pos);
-            //}
-            //     if ((this.Coordinate.Equals(MyMaze.End)))//we reach goal in maze;
-            //{
-            //  Winner = true;
-            // }
+            obj.put("location", pos);
         } catch (JSONException ex) {
             Logger.getLogger(MoveServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
