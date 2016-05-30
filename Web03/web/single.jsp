@@ -22,7 +22,7 @@
     <div class="Main">
         <button type="submit" class="BtnS" name="act"  title="Hint" onclick="Clue()"  > Hint </button>
         <button type="submit" class="BtnS" name="act" title="Restart" onclick="Reset()" > Restart </button>
-        <button type="submit" class="BtnS" name="act" title="Back"> Back </button>
+        <button type="submit" class="BtnS" name="act" title="Back" onclick="history.back();"> Back </button>
         <div class="progressBar" style="background-color:green;width:0px">0%</div>
     </div>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
