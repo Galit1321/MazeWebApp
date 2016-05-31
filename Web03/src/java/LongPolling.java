@@ -35,64 +35,71 @@ public class LongPolling extends HttpServlet {
     private AsyncContext asyncContext;
     private Model m;
     private HttpSession session;
- private  int counter = 0;
- private User u;
+    private int counter = 0;
+    private User u;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         session = request.getSession(false);
-        AsyncContext async = request.startAsync();
-          async.setTimeout(0);
-          asyncContext = async;
-        Thread generator = new Thread() {       
-        @Override
-        public void run() {
-           Random random = new Random();
-           while (!Thread.currentThread().isInterrupted()) {
-               try {
-                   Thread.sleep(random.nextInt(200));
-                   if (asyncContext != null) {
-                       User usr = (User) session.getAttribute("Curr");
-                       m= usr.mode;
-                        JSONObject obj = new JSONObject();
-                        m.getMsn();
-                         singleMaze s = m.getJson().maze;
-                u.setMaze(s);
-              // singleMaze sol = m.getJson().solv;
-               // u.setSolStr(sol.getMaze());
-                obj.put("Maze", s.getMaze());
-                obj.put("Name", s.getName());
-                obj.put("Start_i", s.getStart().getKey());
-                obj.put("Start_j", s.getStart().getValue());
-                obj.put("End_i", s.getEnd().getKey());
-                obj.put("End_j", s.getEnd().getValue());
-                HttpServletResponse peer = (HttpServletResponse) asyncContext.getResponse();
-                       try {
+        AsyncContext async = request.startAsync(request, response);
+        async.setTimeout(0);
+        asyncContext = async;
+        Thread generator = new Thread() {
+            @Override
+            public void run() {
+                Random random = new Random();
+                while (!Thread.currentThread().isInterrupted()) {
+                    try {
+                        Thread.sleep(random.nextInt(200));
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(LongPolling.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                        if (asyncContext != null) {
+                            u = (User) session.getAttribute("Curr");
+                            m = u.mode;
+                            JSONObject obj = new JSONObject();
+                            if(random.nextInt(10) == 7) {
+                                counter += 10;
+                                if (counter > 90) {
+                                    counter -= 10;
+                                }
+                            }
                            
-                           peer.getWriter().write(obj.toString());
-                           
-                       } catch (IOException ex) {
-                           Logger.getLogger(LongPolling.class.getName()).log(Level.SEVERE, null, ex);
-                       }
-                       peer.setStatus(HttpServletResponse.SC_OK);
-                       peer.setContentType("application/json");
-                       asyncContext.complete();
-                       break;
-                   }
-               } catch (InterruptedException ex) {
-                   Logger.getLogger(LongPolling.class.getName()).log(Level.SEVERE, null, ex);
-               } catch (JSONException ex) {
-                   Logger.getLogger(LongPolling.class.getName()).log(Level.SEVERE, null, ex);
-               }
-           }
+                                try {
+                                     if ( m.getJson().maze!=null) {
+                                    singleMaze s = m.getJson().maze;
+                                    u.setMaze(s);
+                                    m.sendMsn("solve "+s.getName()+" 1");
+                                    // singleMaze sol = m.getJson().solv;
+                                    // u.setSolStr(sol.getMaze());
+                                    obj.put("Maze", s.getMaze());
+                                    obj.put("Name", s.getName());
+                                    obj.put("Start_i", s.getStart().getKey());
+                                    obj.put("Start_j", s.getStart().getValue());
+                                    obj.put("End_i", s.getEnd().getKey());
+                                    obj.put("End_j", s.getEnd().getValue());
+                                    counter = 100;
+                                }  obj.put("progress", counter);
+                                } catch (JSONException ex) {
+                                    Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                HttpServletResponse peer = (HttpServletResponse) asyncContext.getResponse();
+                                try {
+
+                                    peer.getWriter().write(obj.toString());
+
+                                } catch (IOException ex) {
+                                    Logger.getLogger(LongPolling.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                peer.setStatus(HttpServletResponse.SC_OK);
+                                peer.setContentType("application/json");
+                                asyncContext.complete();
+                                break;
+                            }
+                    }
+                }
+            };  
+            generator.start ();
         }
-    };
-    generator.start();
     }
-}
-
-                
-            
-        
-    
-
