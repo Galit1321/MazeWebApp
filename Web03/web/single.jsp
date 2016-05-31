@@ -52,10 +52,9 @@
                     {
                         long_polling();
                     } else {
-
+                       
                         generate_table(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
-                        $('.progressBar').hide();
-
+                        $('.progressBar').hide();      
                     }
                 });
             }

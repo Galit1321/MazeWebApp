@@ -12,6 +12,7 @@ function Move(direction) {
                 move: direction
             },
             function (data) {
+
                 var cell = document.getElementById(data.Prv);
                 cell.style.background = "pink";
                 var cell = document.getElementById(data.location);
@@ -35,7 +36,8 @@ function Reset() {
         var cell = document.getElementById(data.Prv);
         cell.style.background = "pink";
         var start = document.getElementById(data.Start);
-        start.style.background = "red";
+        start.style.backgroundImage = iconUrl;
+        start.style.backgroundSize = "cover";
     });
 }
 function generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon) {

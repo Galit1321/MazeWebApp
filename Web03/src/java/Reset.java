@@ -47,6 +47,7 @@ public class Reset extends HttpServlet {
         int myRow = (int) u.getMaze().getStart().getKey();
         int myCol = (int) u.getMaze().getStart().getValue();
         int pos= (u.getMaze().getSize() * myRow) + myCol;
+        u.getMaze().setCurrent(u.getMaze().getStart());
         try {
             obj.put("Prv",oldpos);
             obj.put("Start", pos);

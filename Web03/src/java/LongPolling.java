@@ -80,6 +80,7 @@ public class LongPolling extends HttpServlet {
                                     obj.put("End_i", s.getEnd().getKey());
                                     obj.put("End_j", s.getEnd().getValue());
                                     counter = 100;
+                                   
                                 }  obj.put("progress", counter);
                                 } catch (JSONException ex) {
                                     Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);

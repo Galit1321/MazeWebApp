@@ -42,7 +42,7 @@ public class SingleServlet extends HttpServlet {
         if (submit == null) {
             //noting is press
         } else if (submit.equals("SingleGame")) {
-           // 
+           
             String msn = "generate maze" + random.nextInt(100) + " 1";
             usr.mode.sendMsn(msn);
             request.getRequestDispatcher("single.jsp").forward(request, response);
