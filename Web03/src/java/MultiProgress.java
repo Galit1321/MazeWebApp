@@ -28,7 +28,8 @@ import org.json.JSONObject;
  *
  * @author גליתונופר
  */
-@WebServlet(urlPatterns = {"/MultiProgress"})
+@WebServlet(name ="MultiProgress", urlPatterns = {"/MultiProgress"},asyncSupported = true)
+//@WebServlet(name = "MultiProgress",urlPatterns = {"/MultiProgress"},sayncSupported = true)
 public class MultiProgress extends HttpServlet {
 
       private AsyncContext asyncContext;
@@ -79,16 +80,22 @@ public class MultiProgress extends HttpServlet {
                                      if ( m.getJson().g!=null) {
                                     Game game = m.getJson().g;
                                     singleMaze s=game.getYou();
+                                    singleMaze other=game.getOther();
                                     u.setMaze(s);
-                                    m.sendMsn("solve "+s.getName()+" 1");
-                                    // singleMaze sol = m.getJson().solv;
-                                    // u.setSolStr(sol.getMaze());
+                                    m.sendMsn("solve "+game.getName()+" 1");                                    
                                     obj.put("Maze", s.getMaze());
                                     obj.put("Name", s.getName());
                                     obj.put("Start_i", s.getStart().getKey());
                                     obj.put("Start_j", s.getStart().getValue());
                                     obj.put("End_i", s.getEnd().getKey());
                                     obj.put("End_j", s.getEnd().getValue());
+                                    ////////
+                                    
+                                   // obj.put("OpName", s.getName());
+                                   obj.put("OpStart_i", other.getStart().getKey());
+                                    obj.put("OpStart_j", other.getStart().getValue());
+                                    obj.put("OpEnd_i", other.getEnd().getKey());
+                                    obj.put("OpEnd_j", other.getEnd().getValue());
                                     counter = 100;
                                 }  obj.put("progress", counter);
                                 } catch (JSONException ex) {

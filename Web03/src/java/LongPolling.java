@@ -42,7 +42,7 @@ public class LongPolling extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         session = request.getSession(false);
-        AsyncContext async = request.startAsync(request, response);
+        AsyncContext async = request.startAsync();
         async.setTimeout(0);
         asyncContext = async;
         Thread generator = new Thread() {

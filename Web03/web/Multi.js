@@ -81,7 +81,7 @@ function generate_Other(mazeString, size, startRow, startCol, endRow, endCol, ic
             row.appendChild(cell);
 
             if (mazeString.charAt(x) === '1') {
-                cell.style.background = "purple";
+                cell.style.background = "red";
             }
             if ((i === (parseInt(startRow))) && (j === (parseInt(startCol)))) {
                 //cell.style.background = "yellow";

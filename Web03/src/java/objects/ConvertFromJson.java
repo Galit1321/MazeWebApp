@@ -111,7 +111,7 @@ public class ConvertFromJson {
             String name=this.Serlize.get("Name");
             String mazename=this.Serlize.get("MazeName");
             singleMaze u=WithoutName(this.Serlize.get("You"));
-            //u.Name= this.Serlize.get("MazeName");
+           // u= this.Serlize.get("MazeName");
             singleMaze other= WithoutName(this.Serlize.get("Other"));
             Game g = new Game(name, mazename, u, other);
            this.g=g;

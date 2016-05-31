@@ -27,7 +27,7 @@ public class Game {
    
 
     public String getMaze() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return you.getMaze();
     }
 
     public String getName() {
@@ -41,5 +41,5 @@ public class Game {
     public singleMaze getOther(){
     return this.other;
     }
-
+  
 }

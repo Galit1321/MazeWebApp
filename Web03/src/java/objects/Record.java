@@ -24,7 +24,7 @@ import org.json.simple.JSONObject;
 
 
 
-@WebServlet(name = "MazeServlet", urlPatterns = {"/secured/MazeServlet"},asyncSupported = true)
+@WebServlet(name = "MazeServlet", urlPatterns = {"/secured/MazeServlet"},sayncSupported = true)
 public class MazeServlet extends HttpServlet {
 
     private AsyncContext asyncContext;
