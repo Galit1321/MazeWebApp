@@ -12,7 +12,6 @@ function Move(direction) {
                 move: direction
             },
             function (data) {
-               
                 var cell = document.getElementById(data.Prv);
                 cell.style.background = "pink";
                 var cell = document.getElementById(data.location);

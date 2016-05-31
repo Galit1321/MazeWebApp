@@ -68,6 +68,7 @@ public class MoveServlet extends HttpServlet {
         int myRow = (int) p.getKey();
         int myCol = (int) p.getValue();
         u.getMaze().setCurrent(p);
+        
         //Position in the string.
         int pos = (u.getMaze().getSize() * myRow) + myCol;
         char[] solarr=u.getSolStr().toCharArray();
@@ -77,6 +78,7 @@ public class MoveServlet extends HttpServlet {
         try {
               obj.put("Prv",oldpos);
             obj.put("location", pos);
+            obj.put("Won", u.getMaze().getEnd().equals(p));
         } catch (JSONException ex) {
             Logger.getLogger(MoveServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
