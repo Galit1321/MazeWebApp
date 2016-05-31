@@ -37,6 +37,13 @@ public class User {
     public String getSolStr() {
         return this.mode.getJson().sol.getMaze();
     }
+    
+    public void clean(){
+    this.myMaze=null;
+    this.mode.getJson().maze=null;
+    this.mode.getJson().sol=null;
+    
+    }
  public int GetNxtClue()
         {
             Pair p;
@@ -49,13 +56,13 @@ public class User {
                 {
                    pos = (int)p.getKey()*this.myMaze.getSize()+(int)p.getValue();
                    char[] solv=this.getSolStr().toCharArray();
-                    if (solv[pos]=='2')
+                    if (solv[pos]=='2' && (!(this.myMaze.getClue().contains(pos))))
             {
                         return pos;
                     }
                 }
             }  
-            return this.myMaze.getClue(); 
+            return this.myMaze.getClue().get(this.myMaze.getClue().size()-1); 
         }
 
     /*

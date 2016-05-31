@@ -21,13 +21,14 @@ public class ConvertFromJson {
     public Gson deserializer = new Gson();
 
     
-    
+       public ConvertFromJson(){
+       }
     
     /// <summary>
     /// constructor that get serlize string and turn it to a dictionary 
     /// </summary>
     /// <param name="json">selize dict</param>
-    public ConvertFromJson(String json) {
+    public void deserlize(String json) {
         Map<String, String> map = new HashMap<String, String>();
         map = (Map<String,String>) deserializer.fromJson(json, map.getClass());
        // Map<String, String> dic = deserializer.fromJson(response, String);

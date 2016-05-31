@@ -33,6 +33,7 @@ public class ProgressServlet extends HttpServlet {
     private Random random = new Random();
     private Boolean sendrq = false;
     private Model m;// = Model.getInstance();
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -43,7 +44,17 @@ public class ProgressServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    public Thread t = new Thread(() -> {
+  //  public 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        User u = (User) session.getAttribute("Curr");
+        this.m = u.mode;
+        if (!this.sendrq) {
+            counter=0;
+            this.sendrq = true;
+           Thread t = new Thread(() -> {
         try {
             Thread.sleep(random.nextInt(1000));
         } catch (InterruptedException ex) {
@@ -53,18 +64,7 @@ public class ProgressServlet extends HttpServlet {
         m.sendMsn("solve "+m.getJson().maze.getName()+" 0");
         m.getMsn();    
     });
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        User u = (User) session.getAttribute("Curr");
-        this.m = u.mode;
-        if (!this.sendrq) {
-            String msn = "generate maze" + random.nextInt(100) + " 1";
-            m.sendMsn(msn);
-            this.sendrq = true;
-            t.start();
+           t.start();
         }
         if (random.nextInt(10) == 7) {
             counter += 10;
@@ -73,7 +73,7 @@ public class ProgressServlet extends HttpServlet {
             }
         }
         JSONObject obj = new JSONObject();
-        if (m.getJson() != null) {
+        if (m.dataReceive) {
             try {
                 singleMaze s = m.getJson().maze;
                 u.setMaze(s);
@@ -90,7 +90,6 @@ public class ProgressServlet extends HttpServlet {
             } catch (JSONException ex) {
                 Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
         try {
             obj.put("progress", counter);

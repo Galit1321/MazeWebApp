@@ -26,11 +26,13 @@ public class Model {
     private BufferedReader in;
     private ConvertFromJson json;
     private Socket socket;
-
+    public Boolean dataReceive;
     public Model()  {
 
         try {
             socket = new Socket("127.1.1.0", 5555);
+            json=new ConvertFromJson();
+          
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -39,6 +41,7 @@ public class Model {
 
     public void Start() {
         try{
+              this.dataReceive=false;
         out1 = new PrintWriter(socket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }catch(Exception e){
@@ -55,6 +58,7 @@ public class Model {
     }
 
     public String getMsn() {
+        this.dataReceive=false;
         char[] c = new char[4001];
         try {
             in.read(c);
@@ -64,11 +68,12 @@ public class Model {
                 s += c[i];
                 i++;
             }
-            this.json = new ConvertFromJson(s);
-         
+           json.deserlize(s);
+           System.out.println(s);
 
         } catch (Exception e) {
         }
+        this.dataReceive=true;
         return c.toString();
     }
 

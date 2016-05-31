@@ -6,12 +6,14 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import objects.User;
 
 /**
  *
@@ -20,48 +22,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/SingleServlet"})
 public class SingleServlet extends HttpServlet {
 
-    
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SingleServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SingleServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-         
-    }
+    private Random random = new Random();
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -74,16 +35,22 @@ public class SingleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         HttpSession session = request.getSession(false);
-         String submit=request.getParameter("button");
-       if ( submit==null){
-           //noting is press
-           }else if ( submit.equals("SingleGame")){
-             request.getRequestDispatcher("single.jsp").forward(request, response);
-       }else {//we chose multiplayer
+        HttpSession session = request.getSession(false);
+        User usr = (User) session.getAttribute("Curr");
+        String submit = request.getParameter("button");
+       // usr.clean();
+        if (submit == null) {
+            //noting is press
+        } else if (submit.equals("SingleGame")) {
+           // 
+            String msn = "generate maze" + random.nextInt(100) + " 1";
+            usr.mode.sendMsn(msn);
+            request.getRequestDispatcher("single.jsp").forward(request, response);
+        } else {//we chose multiplayer
+             String msn = "multiplayer game" + random.nextInt(100);
             request.getRequestDispatcher("GameLounge.jsp").forward(request, response);
-       }
-    
+        }
+
     }
 
     /**
