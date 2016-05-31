@@ -21,11 +21,11 @@
             <form action="SingleServlet" method="post">
                 <div class="Main">
                     <div >
-                        <button class="btn1" name="button"  type="submit" value="SingleGame" >Single Game</button>
+                        <button class="btn1" name="button" style="margin: 0 auto;" type="submit" value="SingleGame" >SingleGame</button>
                     </div>
                     <div> <input  value="m" hidden/></div>
                     <div >
-                        <button class="btn2" name="button" type="submit" value="MultiGame" >MultiGame</button>
+                        <button class="btn2" name="button" type="submit" style="margin: 0 auto;" value="MultiGame" >MultiGame</button>
                     </div>  
                 </div>
 
