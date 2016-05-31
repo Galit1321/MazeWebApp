@@ -8,3 +8,51 @@ and open the template in the editor.
     Author     : revit
 */
 
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("pic/images-of-flowers-6.jpg");
+    background-size: cover;
+  
+}
+
+.btnP {
+	-moz-box-shadow:inset 0px 1px 0px 0px #f567ca;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f567ca;
+	box-shadow:inset 0px 1px 0px 0px #f567ca;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f78bc6), color-stop(1, #d16da2));
+	background:-moz-linear-gradient(top, #f78bc6 5%, #d16da2 100%);
+	background:-webkit-linear-gradient(top, #f78bc6 5%, #d16da2 100%);
+	background:-o-linear-gradient(top, #f78bc6 5%, #d16da2 100%);
+	background:-ms-linear-gradient(top, #f78bc6 5%, #d16da2 100%);
+	background:linear-gradient(to bottom, #f78bc6 5%, #d16da2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f78bc6', endColorstr='#d16da2',GradientType=0);
+	background-color:#f78bc6;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:2px solid #cf7cb9;
+	display:inline-block;
+	cursor:pointer;
+	color:#e0e0e0;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:8px 36px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e62b8f;
+}
+.btnP:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d16da2), color-stop(1, #f78bc6));
+	background:-moz-linear-gradient(top, #d16da2 5%, #f78bc6 100%);
+	background:-webkit-linear-gradient(top, #d16da2 5%, #f78bc6 100%);
+	background:-o-linear-gradient(top, #d16da2 5%, #f78bc6 100%);
+	background:-ms-linear-gradient(top, #d16da2 5%, #f78bc6 100%);
+	background:linear-gradient(to bottom, #d16da2 5%, #f78bc6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d16da2', endColorstr='#f78bc6',GradientType=0);
+	background-color:#d16da2;
+}
+.btnP:active {
+	position:relative;
+	top:1px;
+}
