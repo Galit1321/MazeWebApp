@@ -37,6 +37,13 @@ public class User {
     public String getSolStr() {
         return this.mode.getJson().sol.getMaze();
     }
+    
+    public void clean(){
+    this.myMaze=null;
+    this.mode.getJson().maze=null;
+    this.mode.getJson().sol=null;
+    
+    }
  public int GetNxtClue()
         {
             Pair p;
