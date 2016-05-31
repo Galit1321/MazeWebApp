@@ -51,7 +51,7 @@ public class ProgressServlet extends HttpServlet {
         User u = (User) session.getAttribute("Curr");
         this.m = u.mode;
         if (!this.sendrq) {
-            
+            counter=0;
             this.sendrq = true;
            Thread t = new Thread(() -> {
         try {

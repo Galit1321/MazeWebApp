@@ -32,7 +32,7 @@ public class Model {
         try {
             socket = new Socket("127.1.1.0", 5555);
             json=new ConvertFromJson();
-            this.dataReceive=false;
+          
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -41,6 +41,7 @@ public class Model {
 
     public void Start() {
         try{
+              this.dataReceive=false;
         out1 = new PrintWriter(socket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }catch(Exception e){
