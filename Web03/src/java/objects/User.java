@@ -56,13 +56,13 @@ public class User {
                 {
                    pos = (int)p.getKey()*this.myMaze.getSize()+(int)p.getValue();
                    char[] solv=this.getSolStr().toCharArray();
-                    if (solv[pos]=='2')
+                    if (solv[pos]=='2' && (!(this.myMaze.getClue().contains(pos))))
             {
                         return pos;
                     }
                 }
             }  
-            return this.myMaze.getClue(); 
+            return this.myMaze.getClue().get(this.myMaze.getClue().size()-1); 
         }
 
     /*

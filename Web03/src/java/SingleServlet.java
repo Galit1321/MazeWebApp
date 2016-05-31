@@ -47,6 +47,7 @@ public class SingleServlet extends HttpServlet {
             usr.mode.sendMsn(msn);
             request.getRequestDispatcher("single.jsp").forward(request, response);
         } else {//we chose multiplayer
+             String msn = "multiplayer game" + random.nextInt(100);
             request.getRequestDispatcher("GameLounge.jsp").forward(request, response);
         }
 

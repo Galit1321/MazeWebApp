@@ -33,6 +33,7 @@ public class ProgressServlet extends HttpServlet {
     private Random random = new Random();
     private Boolean sendrq = false;
     private Model m;// = Model.getInstance();
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

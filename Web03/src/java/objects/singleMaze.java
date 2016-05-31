@@ -12,7 +12,7 @@ public class singleMaze {
     private String maze;
     private Pair currentPosition;
     private int size;
-    private int clue;
+    private List<Integer> clue;
   
 
     public singleMaze(Pair start, Pair end, String maze, String name) {
@@ -23,7 +23,9 @@ public class singleMaze {
         this.currentPosition = start;
         //need to change size
         this.size = 13;
-        this.clue = this.size * ((int) start.getKey()) + (int) this.start.getValue();
+        int first=this.size * ((int) start.getKey()) + (int) this.start.getValue();
+        this.clue=new ArrayList<Integer>();
+        this.clue.add(first);
     }
 
     public singleMaze(Pair start, Pair end, String maze) {
@@ -35,12 +37,12 @@ public class singleMaze {
         this.size = 13;
     }
 
-    public int getClue() {
+    public List<Integer> getClue() {
         return this.clue;
     }
     
     public void setClue(int pos){
-    this.clue=pos;
+    this.clue.add(pos);
     }
 
     public Pair getStart() {

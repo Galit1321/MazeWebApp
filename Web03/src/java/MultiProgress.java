@@ -84,13 +84,23 @@ public class MultiProgress extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession session = request.getSession(false);
+         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
         this.m = u.mode;
-        //System.out.print(u);
         if (!this.sendrq) {
+            counter=0;
             this.sendrq = true;
-            t.start();
+           Thread t = new Thread(() -> {
+        try {
+            Thread.sleep(random.nextInt(1000));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        m.getMsn();
+        m.sendMsn("solve "+m.getJson().g.getYou().getName()+" 0");
+        m.getMsn();    
+    });
+           t.start();
         }
         if (random.nextInt(10) == 7) {
             counter += 10;
@@ -99,24 +109,23 @@ public class MultiProgress extends HttpServlet {
             }
         }
         JSONObject obj = new JSONObject();
-        if (m.getJson() != null) {
+        if (m.dataReceive) {
             try {
-                Game game = m.getJson().g;
-                singleMaze s=game.getYou();//get my maze
+                singleMaze s = m.getJson().g.getYou();
+                u.setMaze(s);
+              // singleMaze sol = m.getJson().solv;
+               // u.setSolStr(sol.getMaze());
                 obj.put("Maze", s.getMaze());
                 obj.put("Name", s.getName());
                 obj.put("Start_i", s.getStart().getKey());
                 obj.put("Start_j", s.getStart().getValue());
                 obj.put("End_i", s.getEnd().getKey());
                 obj.put("End_j", s.getEnd().getValue());
-                //get oppenent maze is the same 
-                // singleMaze s=game.getOther();//get my maze
                 this.sendrq = false;
                 counter = 100;
             } catch (JSONException ex) {
                 Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
         try {
             obj.put("progress", counter);
