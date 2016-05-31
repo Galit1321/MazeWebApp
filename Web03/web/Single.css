@@ -7,13 +7,6 @@ body{
   
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    background-image: url("pic/flower back single.jpg");
-    background-size: cover;
-  
-}
 
 .sqr{
     background-image: url("sqr1.jpg");
@@ -32,7 +25,14 @@ body{
 }
 .Main{
     position: absolute;
-    left: 50%;
+    left: 30%;
+    top: 10%
+}
+
+.Other{
+    position: absolute;
+    top:10%;
+    left: 70%;
 }
 
 .BtnS {

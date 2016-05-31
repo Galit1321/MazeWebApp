@@ -22,16 +22,25 @@ public class Receiver {
     private BufferedReader in;
     private ConvertFromJson json;
     private Boolean StopRec;
+    private Boolean datarec;
+    private String Answ;
 
     public Receiver(Socket s) throws IOException {
         this.socket = s;
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
+        datarec = false;
+        this.json = new ConvertFromJson();
+        StopRec = false;
     }
 
-    public String getMsn() {
+    public Boolean getDataRec() {
+        return this.datarec;
+    }
+
+    public void getMsn() {
         while (!StopRec)//while we want the thread to work
         {
+            datarec = false;
             char[] c = new char[4001];
             try {
 
@@ -50,17 +59,22 @@ public class Receiver {
                 }
             } catch (Exception e) {
             }
-            return c.toString();
+            datarec = true;
+            this.Answ = c.toString();
         }
-        return "";
+
+    }
+
+    public String getAnw() {
+        return this.Answ;
     }
 
     public void stop() throws IOException {
         in.close();
         this.StopRec = true;
     }
-    
-    public ConvertFromJson getJson(){
-    return this.json;
+
+    public ConvertFromJson getJson() {
+        return this.json;
     }
 }

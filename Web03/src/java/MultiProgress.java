@@ -70,16 +70,6 @@ public class MultiProgress extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-       public Thread t = new Thread(() -> {
-        try {
-            Thread.sleep(random.nextInt(1000));
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        m.getMsn();
-        m.sendMsn("solve "+m.getJson().maze.getName()+" 0");
-        m.getMsn();    
-    });
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -96,9 +86,9 @@ public class MultiProgress extends HttpServlet {
         } catch (InterruptedException ex) {
             Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        m.getMsn();
+       
         m.sendMsn("solve "+m.getJson().g.getYou().getName()+" 0");
-        m.getMsn();    
+        
     });
            t.start();
         }
@@ -109,7 +99,7 @@ public class MultiProgress extends HttpServlet {
             }
         }
         JSONObject obj = new JSONObject();
-        if (m.dataReceive) {
+        if (m.getJson().g!=null) {
             try {
                 singleMaze s = m.getJson().g.getYou();
                 u.setMaze(s);

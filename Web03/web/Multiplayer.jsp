@@ -10,7 +10,7 @@
 <html>
     <head>
         <title> Multiplayer Game</title>
-        <script src="Maze.js"></script>
+        <script src="Multi.js"></script>
         <link  rel="stylesheet" type="text/css" href="Multiplayer.css">
     </head>
     <body>
@@ -26,6 +26,9 @@
             <button type="submit" class="BtnS" name="act" title="Restart"> Restart </button>
             <button type="submit" class="BtnS" name="act" title="Back"> Back </button>
         </div>
+        <div class="Other">
+          
+        </div>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script type="text/javascript">
             $(function ($) {
@@ -39,8 +42,8 @@
                         {
                             long_polling();
                         } else {
-                            generate_table(data.Maze, 13, 0, 4, 3, 4);
-                            generate_table(data.Maze, 13, 3, 3, 1, 5);
+                             generate_table(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
+                        
                             $('.progressBar').hide();
                         }
                     });

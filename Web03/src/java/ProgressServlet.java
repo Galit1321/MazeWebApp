@@ -60,9 +60,9 @@ public class ProgressServlet extends HttpServlet {
         } catch (InterruptedException ex) {
             Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        m.getMsn();
+       // m.getMsn();
         m.sendMsn("solve "+m.getJson().maze.getName()+" 0");
-        m.getMsn();    
+           
     });
            t.start();
         }
@@ -73,7 +73,7 @@ public class ProgressServlet extends HttpServlet {
             }
         }
         JSONObject obj = new JSONObject();
-        if (m.dataReceive) {
+        if (m.getRec().getDataRec()) {
             try {
                 singleMaze s = m.getJson().maze;
                 u.setMaze(s);
