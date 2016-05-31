@@ -17,10 +17,6 @@ function Move(direction) {
                 var cell = document.getElementById(data.location);
                 cell.style.backgroundImage = iconUrl;
                 cell.style.backgroundSize = "cover";
-                // cell.style.backgroundImage = myImg; 
-                // cell.style.opacity="1";
-                // cell.style.backgroundSize = "contain";
-                //cell.style.borderRadius = "13px";
             });
 }
 function Clue() {
@@ -35,7 +31,9 @@ function Reset() {
         var cell = document.getElementById(data.Prv);
         cell.style.background = "pink";
         var start = document.getElementById(data.Start);
-        start.style.background = "red";
+        start.style.backgroundImage = iconUrl;
+        start.style.backgroundSize = "cover";
+       // document.setUserData()
     });
 }
 function generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon) {

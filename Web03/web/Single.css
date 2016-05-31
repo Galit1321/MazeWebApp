@@ -7,14 +7,6 @@ body{
   
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    background-image: url("pic/flower back single.jpg");
-    background-size: cover;
-  
-}
-
 .sqr{
     background-image: url("sqr1.jpg");
     background-size: cover;
@@ -72,6 +64,47 @@ body{
 	background-color:#1ca5ba;
 }
 .BtnS:active {
+	position:relative;
+	top:1px;
+}
+
+.gsBtn {
+	-moz-box-shadow:inset 0px 1px 3px 0px #c3d4d2;
+	-webkit-box-shadow:inset 0px 1px 3px 0px #c3d4d2;
+	box-shadow:inset 0px 1px 3px 0px #c3d4d2;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #859490), color-stop(1, #cacccc));
+	background:-moz-linear-gradient(top, #859490 5%, #cacccc 100%);
+	background:-webkit-linear-gradient(top, #859490 5%, #cacccc 100%);
+	background:-o-linear-gradient(top, #859490 5%, #cacccc 100%);
+	background:-ms-linear-gradient(top, #859490 5%, #cacccc 100%);
+	background:linear-gradient(to bottom, #859490 5%, #cacccc 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#859490', endColorstr='#cacccc',GradientType=0);
+	background-color:#859490;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:2px solid #a3a6a5;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:4px 13px;
+	text-decoration:none;
+	text-shadow:0px -1px 5px #edf0f0;
+}
+.gsBtn:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cacccc), color-stop(1, #859490));
+	background:-moz-linear-gradient(top, #cacccc 5%, #859490 100%);
+	background:-webkit-linear-gradient(top, #cacccc 5%, #859490 100%);
+	background:-o-linear-gradient(top, #cacccc 5%, #859490 100%);
+	background:-ms-linear-gradient(top, #cacccc 5%, #859490 100%);
+	background:linear-gradient(to bottom, #cacccc 5%, #859490 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cacccc', endColorstr='#859490',GradientType=0);
+	background-color:#cacccc;
+}
+.gsBtn:active {
 	position:relative;
 	top:1px;
 }

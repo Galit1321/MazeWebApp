@@ -1,0 +1,17 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 31, 2016, 4:39:16 PM
+    Author     : revit
+*/
+
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("pic/7-flower-wallpaper.jpg");
+    background-size: cover;
+  
+}
