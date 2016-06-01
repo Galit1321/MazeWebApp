@@ -10,7 +10,7 @@
 <html>
     <head>
         <title> Multiplayer Game</title>
-        <script src="Multi.js"></script>
+        <script src="Maze.js"></script>
         <link  rel="stylesheet" type="text/css" href="Multiplayer.css">
     </head>
     <body>
@@ -27,13 +27,27 @@
             <button type="submit" class="BtnS" name="act" title="Back"> Back </button>
         </div>
         <div class="Other">
-          
+
         </div>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script type="text/javascript">
             $(function ($) {
                 $(document).ready(function () {
                     $.ajaxSetup({cache: false});
+                });
+                $(document).keyup(function (e) {
+                    if (e.keyCode == 40) {
+                        Move("down");
+                    }
+                    if (e.keyCode == 38) { // up
+                        Move("up");
+                    }
+                    if (e.keyCode == 37) { //left
+                        Move("left");
+                    }
+                    if (e.keyCode == 39) { //right
+                        Move("right");
+                    }
                 });
                 function long_polling2() {
                     $.getJSON('MultiProgress', function (data) {
@@ -42,8 +56,8 @@
                         {
                             long_polling2();
                         } else {
-                             generate_table(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
-                            generate_Other(data.Maze, 13, data.OpStart_i.toString(), data.OpStart_j.toString(), data.OpEnd_i.toString(), data.OpEnd_j.toString(), "<%=u.icon%>")
+                            generate_table(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
+                             generate_table(data.Maze, 13, data.OpStart_i.toString(), data.OpStart_j.toString(), data.OpEnd_i.toString(), data.OpEnd_j.toString(), "<%=u.icon%>")
                             $('.progressBar').hide();
                         }
                     });

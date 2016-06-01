@@ -32,11 +32,11 @@ import org.json.JSONObject;
 //@WebServlet(name = "MultiProgress",urlPatterns = {"/MultiProgress"},sayncSupported = true)
 public class MultiProgress extends HttpServlet {
 
-      private AsyncContext asyncContext;
-    private Model m;
-    private HttpSession session;
-    private int counter;
-    private User u;
+      public AsyncContext asyncContext;
+    private Model m;//the model to send msn
+   private HttpSession session;
+  private int counter;
+  private User u;
    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,10 +77,10 @@ public class MultiProgress extends HttpServlet {
                                 }
                             }
                                 try {
-                                     if ( m.getJson().g!=null) {
+                                   if ( m.getJson().g!=null) {
                                     Game game = m.getJson().g;
                                     singleMaze s=game.getYou();
-                                    singleMaze other=game.getOther();
+                                   singleMaze other=game.getOther();
                                     u.setMaze(s);
                                     m.sendMsn("solve "+game.getName()+" 1");                                    
                                     obj.put("Maze", s.getMaze());
@@ -91,7 +91,7 @@ public class MultiProgress extends HttpServlet {
                                     obj.put("End_j", s.getEnd().getValue());
                                     ////////
                                     
-                                   // obj.put("OpName", s.getName());
+                                    //obj.put("OpName", s.getName());
                                    obj.put("OpStart_i", other.getStart().getKey());
                                     obj.put("OpStart_j", other.getStart().getValue());
                                     obj.put("OpEnd_i", other.getEnd().getKey());
