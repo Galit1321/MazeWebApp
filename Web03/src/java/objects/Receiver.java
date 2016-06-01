@@ -59,6 +59,8 @@ public class Receiver {
                     System.out.println(entry.getValue());
                 }
             } catch (Exception e) {
+                ///to change
+                StopRec=false;
             }
             datarec = true;
           

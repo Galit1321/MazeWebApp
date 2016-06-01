@@ -21,22 +21,20 @@ import java.util.logging.Logger;
  */
 public class Model {
 
-    // public Map<String, User> Users;
     private PrintWriter out1;
-  //  private BufferedReader in;
- //   private ConvertFromJson json;
     private Socket socket;
-  
-   private static Thread t;
-   private Receiver rec;
-    public Model()  {
+
+    private static Thread t;
+    private Receiver rec;
+
+    public Model() {
 
         try {
             socket = new Socket("127.1.1.0", 5555);
-         //   json=new ConvertFromJson();
-            rec=new Receiver(socket);
-            t=new Thread(()-> {
-            rec.getMsn();
+            //   json=new ConvertFromJson();
+            rec = new Receiver(socket);
+            t = new Thread(() -> {
+                rec.getMsn();
             });
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
@@ -45,48 +43,33 @@ public class Model {
     }
 
     public void Start() {
-        try{
-          t.start();
-        out1 = new PrintWriter(socket.getOutputStream(), true);
-      //  in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-    }catch(Exception e){
+        try {
+            t.start();
+            out1 = new PrintWriter(socket.getOutputStream(), true);
+            //  in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        } catch (Exception e) {
+        }
     }
+
+    public Receiver getRec() {
+        return rec;
     }
-public  Receiver getRec(){
-return rec;
-}
+
+    /*
+close the connection and buffer
+of receive and send msg
+     */
     public void Close() throws IOException {
         out1.close();
-       // in.close();
+        socket.close();
+        rec.stop();
     }
 
     public void sendMsn(String msg) {
         out1.println(msg);
     }
 
-  /*  public String getMsn() {
-        this.dataReceive=false;
-        char[] c = new char[4001];
-        try {
-            in.read(c);
-            int i = 0;
-            String s = "";
-            while (c[i] != 0) {
-                s += c[i];
-                i++;
-            }
-           json.deserlize(s);
-           System.out.println(s);
 
-        } catch (Exception e) {
-        }
-        this.dataReceive=true;
-        return c.toString();
-    }*/
-
-    /**
-     * public Map<String, User> getUsers() { return Users; }
-     */
     public ConvertFromJson getJson() {
         return this.rec.getJson();
     }

@@ -27,7 +27,6 @@ public class singleMaze {
         this.clue=new ArrayList<Integer>();
         this.clue.add(first);
     }
-
     public singleMaze(Pair start, Pair end, String maze) {
         this.start = start;
         this.end = end;
@@ -35,6 +34,9 @@ public class singleMaze {
         this.currentPosition = start;
         ////////////////////////////
         this.size = 13;
+        int first=this.size * ((int) start.getKey()) + (int) this.start.getValue();
+        this.clue=new ArrayList<Integer>();
+        this.clue.add(first);
     }
 
     public List<Integer> getClue() {

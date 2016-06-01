@@ -7,7 +7,7 @@
         <script src="Maze.js"></script>
         <link  rel="stylesheet" type="text/css" href="Single.css">
     </head>
-    <body >
+    <body onload="long_polling()" >
         <div >
             <% User u = (User) session.getAttribute("Curr");%>
             <form action="Close" method="post" >
@@ -33,16 +33,16 @@
             });
             $(document).keyup(function (e) {
                 if (e.keyCode == 40) {
-                    Move("down");
+                    Move("down","s");
                 }
                 if (e.keyCode == 38) { // up
-                    Move("up");
+                    Move("up","s");
                 }
                 if (e.keyCode == 37) { //left
-                    Move("left");
+                    Move("left","s");
                 }
                 if (e.keyCode == 39) { //right
-                    Move("right");
+                    Move("right","s");
                 }
             });
             function long_polling() {

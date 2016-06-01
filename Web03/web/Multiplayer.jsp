@@ -22,9 +22,9 @@
             </div></div>
         <div class="progressBar" style="background-color:green;width:0px">0%</div>
         <div class="Main">
-            <button type="submit" class="BtnS" name="act" title="Hint"> Hint </button>
-            <button type="submit" class="BtnS" name="act" title="Restart"> Restart </button>
-            <button type="submit" class="BtnS" name="act" title="Back"> Back </button>
+            <button type="submit" class="BtnS" name="act" title="Hint" onclick="Clue()"> Hint </button>
+            <button type="submit" class="BtnS" name="act" title="Restart" onclick="Reset()" > Restart </button>
+            <button type="submit" class="BtnS" name="act" title="Back" onclick="Close()"> Back </button>
         </div>
         <div class="Other">
 
@@ -37,18 +37,22 @@
                 });
                 $(document).keyup(function (e) {
                     if (e.keyCode == 40) {
-                        Move("down");
+                        Move("down","m");
                     }
                     if (e.keyCode == 38) { // up
-                        Move("up");
+                        Move("up","m");
                     }
                     if (e.keyCode == 37) { //left
-                        Move("left");
+                        Move("left","m");
                     }
                     if (e.keyCode == 39) { //right
-                        Move("right");
+                        Move("right","m");
                     }
                 });
+                function Close(){
+            <% u.mode.sendMsn("close "+u.mode.getJson().g.getMazeName());%>;
+                    
+                }
                 function long_polling2() {
                     $.getJSON('MultiProgress', function (data) {
                         $('.progressBar').width(data.progress).text(data.progress + '%');

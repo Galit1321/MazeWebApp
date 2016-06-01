@@ -6,10 +6,11 @@
 
 var iconUrl;
 
-function Move(direction) {
+function Move(direction,kind) {
     $.post("MoveServlet",
             {
-                move: direction
+                move: direction,
+                game: kind
             },
             function (data) {
 

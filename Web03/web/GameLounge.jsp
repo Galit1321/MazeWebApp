@@ -9,20 +9,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Game Lounge</title>
+        <link  rel="stylesheet" type="text/css" href="GameLounge.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
         <form action="GameLounge" method="post">
-            <div>Username:
+            <div class="st">
+                <div>Game Name:
                     <div>
-                        <input type="text" name="act" />
+                        <input type="text" class="btn1" width="150px" name="act" />
                     </div>
                 </div>
-                <div>Send:</div>
-                <button type="sumbit" name="bnt" value="Send"/>
+               
+                <button type="sumbit" name="bnt" class="btn1" value="Send"/>
+            </div>
         </form>
-        
-                
+
+
     </body>
 </html>

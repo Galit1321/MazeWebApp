@@ -33,8 +33,8 @@ import org.json.JSONObject;
 public class MultiProgress extends HttpServlet {
 
       public AsyncContext asyncContext;
-    private Model m;//the model to send msn
-   private HttpSession session;
+   public Model m;//the model to send msn
+   public HttpSession session;
   private int counter;
   private User u;
    

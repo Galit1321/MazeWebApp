@@ -33,7 +33,9 @@ public class Game {
     public String getName() {
         return this.mazename;
     }
-
+    public String getMazeName(){
+    return this.name;
+    }
     public singleMaze getYou() {
         return this.you;
     } 

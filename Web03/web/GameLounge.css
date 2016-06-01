@@ -1,0 +1,77 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 31, 2016, 4:39:16 PM
+    Author     : revit
+*/
+
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("pic/7-flower-wallpaper.jpg");
+    background-size: cover;
+  
+}
+
+.st{
+    padding: auto;
+    background-color: crimson;
+    width: 350px;
+    height: 300px;
+    border-style: double;
+    border-radius: inherit;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    margin: -150px 0 0 -150px;
+    text-align: center;
+    font-size: 40px;
+    color: #FFF8DC;
+    font-weight: normal;
+    font-family: cursive;
+    text-shadow:  0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px;
+}
+
+.btn1 {
+	-moz-box-shadow:inset 0px 1px 0px 0px #9e9859;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #9e9859;
+	box-shadow:inset 0px 1px 0px 0px #9e9859;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eae0c2), color-stop(1, #ccc2a6));
+	background:-moz-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-webkit-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-o-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-ms-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eae0c2', endColorstr='#ccc2a6',GradientType=0);
+	background-color:#eae0c2;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:3px solid #b8a985;
+	display:inline-block;
+	cursor:pointer;
+	color:#52593c;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:15px 40px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.btn1:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ccc2a6), color-stop(1, #eae0c2));
+	background:-moz-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+	background:-webkit-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+	background:-o-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+	background:-ms-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+	background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccc2a6', endColorstr='#eae0c2',GradientType=0);
+	background-color:#ccc2a6;
+}
+.btn1:active {
+	position:relative;
+	top:1px;
+}
