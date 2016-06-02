@@ -11,7 +11,7 @@
     <head>
         <title> Multiplayer Game</title>
         <script src="Maze.js"></script>
-        <link  rel="stylesheet" type="text/css" href="secured/Multiplayer.css">
+        <link  rel="stylesheet" type="text/css" href="Multiplayer.css">
     </head>
     <body>
         <div >
@@ -54,7 +54,7 @@
                     
                 }
                 function long_polling2() {
-                    $.getJSON('MultiProgress', function (data) {
+                    $.getJSON('/secured/MultiProgress', function (data) {
                         $('.progressBar').width(data.progress).text(data.progress + '%');
                         if (data.progress < 100)
                         {

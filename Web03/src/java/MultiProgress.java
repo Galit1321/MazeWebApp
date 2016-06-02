@@ -32,7 +32,7 @@ import org.json.JSONObject;
  *
  * @author גליתונופר
  */
-@WebServlet(name ="MultiProgress", urlPatterns = {"/MultiProgress"},asyncSupported = true)
+@WebServlet(name ="MultiProgress", urlPatterns = {"/secured/MultiProgress"},asyncSupported = true)
 //@WebServlet(name = "MultiProgress",urlPatterns = {"/MultiProgress"},sayncSupported = true)
 public class MultiProgress extends HttpServlet {
 
