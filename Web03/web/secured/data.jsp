@@ -12,7 +12,7 @@
     </head>
     <body>
         <div>
-            <from action="data" method="post">
+            <from action="Close" method="post">
                 <div >
                     <% User u = (User) session.getAttribute("Curr");%>
                     <div class="sqr">

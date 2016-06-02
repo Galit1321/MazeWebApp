@@ -14,8 +14,7 @@ body{
     border-style: double;
     border-width: thick;
     position: absolute;
-    background-position-x: 0;
-    background-position-y: 0;
+    right: 1%;
     width: fit-content;
     box-sizing: border-box;
      color: rgba(48,48,48,1);  
@@ -72,6 +71,46 @@ body{
 	background-color:#1ca5ba;
 }
 .BtnS:active {
+	position:relative;
+	top:1px;
+}
+.gsBtn {
+	-moz-box-shadow:inset 0px 1px 3px 0px #cccccc;
+	-webkit-box-shadow:inset 0px 1px 3px 0px #cccccc;
+	box-shadow:inset 0px 1px 3px 0px #cccccc;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #a7b8b4), color-stop(1, #c9d1d1));
+	background:-moz-linear-gradient(top, #a7b8b4 5%, #c9d1d1 100%);
+	background:-webkit-linear-gradient(top, #a7b8b4 5%, #c9d1d1 100%);
+	background:-o-linear-gradient(top, #a7b8b4 5%, #c9d1d1 100%);
+	background:-ms-linear-gradient(top, #a7b8b4 5%, #c9d1d1 100%);
+	background:linear-gradient(to bottom, #a7b8b4 5%, #c9d1d1 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7b8b4', endColorstr='#c9d1d1',GradientType=0);
+	background-color:#a7b8b4;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:2px solid #5c736c;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Courier New;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+.gsBtn:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c9d1d1), color-stop(1, #a7b8b4));
+	background:-moz-linear-gradient(top, #c9d1d1 5%, #a7b8b4 100%);
+	background:-webkit-linear-gradient(top, #c9d1d1 5%, #a7b8b4 100%);
+	background:-o-linear-gradient(top, #c9d1d1 5%, #a7b8b4 100%);
+	background:-ms-linear-gradient(top, #c9d1d1 5%, #a7b8b4 100%);
+	background:linear-gradient(to bottom, #c9d1d1 5%, #a7b8b4 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9d1d1', endColorstr='#a7b8b4',GradientType=0);
+	background-color:#c9d1d1;
+}
+.gsBtn:active {
 	position:relative;
 	top:1px;
 }
