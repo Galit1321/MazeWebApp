@@ -39,7 +39,8 @@ function Move(direction, kind) {
 function Clue() {
     $.getJSON("/secured/Hint", function (data) {
         var cell = document.getElementById(data.Hint);
-        cell.style.background = "white";
+        cell.style.backgroundImage = "url('/../pic/Questionmark.gif')";
+        cell.style.backgroundSize = "cover";
     });
 }
 
