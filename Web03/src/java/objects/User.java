@@ -21,7 +21,18 @@ public class User {
     public String icon;
     public Model mode;
     private singleMaze myMaze;
+    private singleMaze other;
     //public String solStr;
+
+  
+   
+    public singleMaze getOther() {
+        return other;
+    }
+
+    public void setOther(singleMaze other) {
+        this.other = other;
+    }
    
     public User(String name, String un, String pw, String mail, String icon) {
         this.name = name;
@@ -51,7 +62,7 @@ public class User {
             String[] dir ={ "up", "down", "left", "right" };
             for (int i=0; i<4;i++)
             {
-                p= this.myMaze.move(dir[i]);////check the dirction
+                p= this.myMaze.move(this.getMaze().getCurrrnt(),dir[i]);////check the dirction
                 if (p != null)
                 {
                    pos = (int)p.getKey()*this.myMaze.getSize()+(int)p.getValue();

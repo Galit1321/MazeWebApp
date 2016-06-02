@@ -79,9 +79,9 @@ public class singleMaze {
         return this.size;
     }
 
-    public Pair move(String direction) {
-        int row = (Integer) this.currentPosition.getKey();
-        int col = (Integer) this.currentPosition.getValue();
+    public Pair move(Pair cor,String direction) {
+        int row = (Integer) cor.getKey();
+        int col = (Integer) cor.getValue();
         int pos = (this.size * row) + col;//the place of cor in maze string
         char[] stringMaze = this.maze.toCharArray();
         switch (direction) {

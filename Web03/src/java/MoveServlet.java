@@ -31,7 +31,7 @@ import org.json.JSONObject;
 @WebServlet(name = "MoveServlet" ,urlPatterns = {"/secured/MoveServlet"}, asyncSupported = true)
 public class MoveServlet extends HttpServlet {
     
-    private Model m;
+    public Model m;
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -48,7 +48,7 @@ public class MoveServlet extends HttpServlet {
         User u = (User) session.getAttribute("Curr");
         this.m = u.mode;
         String move = request.getParameter("move");
-        Pair p = u.getMaze().move(move);
+        Pair p = u.getMaze().move(u.getMaze().getCurrrnt(),move);
         if (request.getParameter("game").equals("m")) {
             m.sendMsn("play " + move);
         }

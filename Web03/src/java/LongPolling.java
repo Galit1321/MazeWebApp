@@ -39,7 +39,7 @@ public class LongPolling extends HttpServlet {
 
    public AsyncContext asyncContext;
     private Model m;
-    private HttpSession session;
+    public HttpSession session;
     private int counter = 0;
     private User u;
 
@@ -72,7 +72,7 @@ public class LongPolling extends HttpServlet {
                             }
                            
                                 try {
-                                     if ( m.getJson().maze!=null) {
+                                    if ( m.getJson().maze!=null) {
                                     singleMaze s = m.getJson().maze;
                                     u.setMaze(s);
                                     m.sendMsn("solve "+s.getName()+" 1");

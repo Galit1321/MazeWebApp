@@ -92,7 +92,8 @@ public class GameLounge extends HttpServlet {
         this.m = u.mode;
         String msn = "multiplayer " + act;
         m.sendMsn(msn);
-        request.getRequestDispatcher("Multiplayer.jsp").forward(request, response);
+        response.sendRedirect("Multiplayer.jsp");
+        //request.getRequestDispatcher("Multiplayer.jsp").forward(request, response);
     }
 
 }

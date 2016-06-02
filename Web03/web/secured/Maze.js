@@ -114,7 +114,6 @@ function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, ico
     // var body = document.getElementsByTagName("body")[0];
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
-
     var tblBody = document.createElement("tbody");
     var x = 0;
     // creating all cells
@@ -126,7 +125,7 @@ function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, ico
             // node the contents of the <td>, and put the <td> at
             // the end of the table row
             var cell = document.createElement("td");
-            cell.setAttribute('id', (i * parseInt(size) + j));
+            cell.setAttribute('id', (-1) * (i * parseInt(size) + j));
             row.appendChild(cell);
             if (mazeString.charAt(x) === '1') {
                 cell.style.background = "black";
@@ -134,8 +133,7 @@ function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, ico
             if ((i === (parseInt(endRow))) && (j === (parseInt(endCol)))) {
 
                 //cell.style.background = "yellow";
-                var str = "url(" + icon + ")";
-                iconUrl = str;
+                var str = "url('/../pic/pest-control.png')";
                 cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
                 //console.log("str");
@@ -164,4 +162,17 @@ function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, ico
     other.appendChild(tbl);
     // sets the border attribute of tbl to 2;
     //tbl.setAttribute("border", "2");
+   
+}
+
+function UpdateMove() {
+    $.getJSON("/secured/Moves", function (data) {
+        var cell = document.getElementById(data.Pos);
+        cell.style.background = "red";
+        //  var cell = document.getElementById(data.location);
+        cell.style.backgroundImage = "url('/../pic/pest-control.png')";
+        cell.style.backgroundSize = "cover";
+        
+    });
+    UpdateMove();
 }

@@ -15,14 +15,38 @@ public class ConvertFromJson {
     public Map<String, String> Serlize;
     public singleMaze maze;
     public Game g;
-    public Play move;
+    public String move;
    public String Type;
    public singleMaze sol;
     public Gson deserializer = new Gson();
+    private Boolean gotMove;
+    private Boolean inSession;
+
+    public String getMove() {
+        return move;
+    }
+
+    public void setMove(String move) {
+        this.move = move;
+    }
+
+    public Boolean getGotMove() {
+        return gotMove;
+    }
+
+    public void setGotMove(Boolean gotMove) {
+        this.gotMove = gotMove;
+    }
 
     
        public ConvertFromJson(){
+           gotMove=false;
+           this.inSession=false;
        }
+
+    public Boolean getInSession() {
+        return inSession;
+    }
     
     /// <summary>
     /// constructor that get serlize string and turn it to a dictionary 
@@ -45,19 +69,18 @@ public class ConvertFromJson {
                     CreateMaze();
                     break;
                 case "2":
-                    CreateSol();
-                   
+                    CreateSol(); 
                     break;
                 case "3":
+                   
                    ConvertStartGame();
                     break;
                 case "4":
                     ConvertPlay();
                     break;
-                case "6":
-                    ConvertPlay();
-                    break;
-
+                case "5":
+                    this.inSession=false;
+                
             }
     }
          /***
@@ -108,6 +131,7 @@ public class ConvertFromJson {
         /// </summary>
         public void ConvertStartGame()
         {
+              this.inSession=true;
             String name=this.Serlize.get("Name");
             String mazename=this.Serlize.get("MazeName");
             singleMaze u=WithoutName(this.Serlize.get("You"));
@@ -123,9 +147,10 @@ public class ConvertFromJson {
 
         public void ConvertPlay()
         {
-            String name=this.Serlize.get("Name");
-            String move = this.Serlize.get("Move");
-            this.move=new Play(name, move);
+             gotMove=true;
+           // String name=this.Serlize.get("Name");
+             this.move = this.Serlize.get("Move");
+           
         }
 
     private void CreateSol() {

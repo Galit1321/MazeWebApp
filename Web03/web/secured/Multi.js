@@ -7,7 +7,6 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
     // var body = document.getElementsByTagName("body")[0];
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
-
     var tblBody = document.createElement("tbody");
     var x = 0;
     // creating all cells
@@ -42,7 +41,6 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
             }
             x++;
         }
-
         // add the row to the end of the table body
         tblBody.appendChild(row);
     }

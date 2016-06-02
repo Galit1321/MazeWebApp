@@ -49,12 +49,9 @@
                         Move("right","m");
                     }
                 });
-                function Close(){
-            <% u.mode.sendMsn("close "+u.mode.getJson().g.getMazeName());%>;
-                    
-                }
+           
                 function long_polling2() {
-                    $.getJSON('secured/MultiProgress', function (data) {
+                    $.getJSON('/secured/MultiProgress', function (data) {
                         $('.progressBar').width(data.progress).text(data.progress + '%');
                         if (data.progress < 100)
                         {
@@ -63,6 +60,9 @@
                             generate_Game(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
                             // generate_table(data.Maze, 13, data.OpStart_i.toString(), data.OpStart_j.toString(), data.OpEnd_i.toString(), data.OpEnd_j.toString(), )
                             $('.progressBar').hide();
+                            
+                            //window.location=window.location;
+                            UpdateMove();
                         }
                     });
                 }
