@@ -132,7 +132,11 @@ function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, ico
                 cell.style.background = "black";
             }
             if ((i === (parseInt(endRow))) && (j === (parseInt(endCol)))) {
-                cell.style.backgroundImage = "url('/pic/pest-control.png')";
+
+                //cell.style.background = "yellow";
+                var str = "url(" + icon + ")";
+                iconUrl = str;
+                cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
                 //console.log("str");
             }
