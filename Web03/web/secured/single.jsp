@@ -7,7 +7,7 @@
         <script src="Maze.js"></script>
         <link  rel="stylesheet" type="text/css" href="Single.css">
     </head>
-    <body onload="long_polling()" >
+    <body  >
         <div >
             <% User u = (User) session.getAttribute("Curr");%>
             <form action="Close" method="post" >
@@ -22,7 +22,7 @@
     <div class="Main">
         <button type="submit" class="BtnS" name="act"  title="Hint" onclick="Clue()"  > Hint </button>
         <button type="submit" class="BtnS" name="act" title="Restart" onclick="Reset()" > Restart </button>
-        <button type="submit" class="BtnS" name="act" title="Back" onclick="history.back();"> Back </button>
+        <button type="submit" class="BtnS" name="act" title="Back" onclick="Back()"> Back </button>
         <div class="progressBar" style="background-color:green;width:0px">0%</div>
     </div>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -45,6 +45,7 @@
                         Move("right", "s");
                     }
                 });
+<<<<<<< HEAD
                 function long_polling() {
                     $.getJSON('/secured/LongPolling', function (data) {
                         $('.progressBar').width(data.progress).text(data.progress + '%');
@@ -63,3 +64,10 @@
             });
     </script>
 </body></html>
+=======
+            }
+            long_polling();
+        });
+    </script>*/
+</body></html>
+>>>>>>> 2001c3a1cef36316f08fdba46fb009732e585b8f
