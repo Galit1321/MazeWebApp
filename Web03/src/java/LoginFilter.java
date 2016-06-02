@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ׳’׳׳™׳×׳•׳ ׳•׳₪׳¨
  */
-@WebFilter(filterName = "LoginFilter", urlPatterns = {"/secured/*"})
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"/secured/*"}, asyncSupported = true)
 public class LoginFilter implements Filter {
 
     @Override

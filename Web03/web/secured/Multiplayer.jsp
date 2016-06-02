@@ -11,7 +11,7 @@
     <head>
         <title> Multiplayer Game</title>
         <script src="Maze.js"></script>
-        <link  rel="stylesheet" type="text/css" href="Multiplayer.css">
+        <link  rel="stylesheet" type="text/css" href="secured/Multiplayer.css">
     </head>
     <body>
         <div >

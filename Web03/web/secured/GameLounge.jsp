@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Game Lounge</title>
-        <link  rel="stylesheet" type="text/css" href="GameLounge.css">
+        <link  rel="stylesheet" type="text/css" href="secured/GameLounge.css">
     </head>
     <body>
         <form action="GameLounge" method="post">

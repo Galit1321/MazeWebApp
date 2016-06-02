@@ -25,7 +25,7 @@ import org.json.JSONObject;
  *
  * @author גליתונופר
  */
-@WebServlet(urlPatterns = {"/GameLounge"})
+@WebServlet(urlPatterns = {"/secured/GameLounge"}, asyncSupported = true)
 public class GameLounge extends HttpServlet {
 
     private static int counter = 0;

@@ -7,13 +7,12 @@
 var iconUrl;
 
 function Move(direction,kind) {
-    $.post("MoveServlet",
+    $.post("/secured/MoveServlet",
             {
                 move: direction,
                 game: kind
             },
             function (data) {
-
                 var cell = document.getElementById(data.Prv);
                 cell.style.background = "pink";
                 var cell = document.getElementById(data.location);
@@ -26,14 +25,14 @@ function Move(direction,kind) {
             });
 }
 function Clue() {
-    $.getJSON('Hint', function (data) {
+    $.getJSON("/secured/Hint", function (data) {
         var cell = document.getElementById(data.Hint);
         cell.style.background = "white";
     });
 }
 
 function Reset() {
-    $.getJSON('Reset', function (data) {
+    $.getJSON("/secured/Reset", function (data) {
         var cell = document.getElementById(data.Prv);
         cell.style.background = "pink";
         var start = document.getElementById(data.Start);

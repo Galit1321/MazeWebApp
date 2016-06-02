@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Private data</title>
-        <link  rel="stylesheet" type="text/css" href="secured/data.css">
+        <link  rel="stylesheet" type="text/css" href="data.css">
     </head>
     <body>
         <div>

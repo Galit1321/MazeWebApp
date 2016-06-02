@@ -1,8 +1,13 @@
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,10 +34,10 @@ import org.json.JSONObject;
  *
  * @author Sechiya Zori
  */
-@WebServlet(name = "LongPolling", urlPatterns = {"/LongPolling"}, asyncSupported = true)
+@WebServlet(name = "LongPolling", urlPatterns = {"/secured/LongPolling"}, asyncSupported = true)
 public class LongPolling extends HttpServlet {
 
-    private AsyncContext asyncContext;
+   public AsyncContext asyncContext;
     private Model m;
     private HttpSession session;
     private int counter = 0;
@@ -83,7 +88,7 @@ public class LongPolling extends HttpServlet {
                                    
                                 }  obj.put("progress", counter);
                                 } catch (JSONException ex) {
-                                    Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
+                                    Logger.getLogger(LongPolling.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                                 HttpServletResponse peer = (HttpServletResponse) asyncContext.getResponse();
                                 try {

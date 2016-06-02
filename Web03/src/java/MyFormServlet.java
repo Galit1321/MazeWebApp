@@ -7,6 +7,7 @@
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,54 +17,34 @@ import javax.servlet.http.HttpSession;
 import objects.Model;
 import objects.User;
 
-
-@WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"})
+@WebServlet(name = "MyFormServlet", urlPatterns = {"/MyFormServlet"}, asyncSupported = true)
 public class MyFormServlet extends HttpServlet {
-    public Map<String, User> Users=new HashMap<>();
- //   public Model m=Model.getInstance();
-    
+
+    //   public Model m=Model.getInstance();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {     
-       response.sendRedirect("login.jsp");
+            throws ServletException, IOException {
+        response.sendRedirect("login.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String act = request.getParameter("act");
-        if (act == null) {
-            //no button has been selected
-        } else if (act.equals("Subscribe")) {
-            response.sendRedirect("Subscribe.jsp");
-        }else if (act.equals("Done")) {
-           AddUser(request);
-           response.sendRedirect("login.jsp");
-        }
-        else if (act.equals("Enter")) {
-             User curr =Users.get(request.getParameter("username"));
-            if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
-                curr.mode.Start();
-                request.getSession().setAttribute("Curr", curr);
-                request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);  
-                //esponse.sendRedirect("secured/MyPrivateData");
-            } else {
-                request.setAttribute("error", true);
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
+        SharedInfo si = SharedInfo.getSharedInfo();
+        Map<String, User> Users = si.getUserList();
+        User curr = Users.get(request.getParameter("username"));
+        if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
+            curr.mode.Start();
+            HttpSession session = request.getSession();
+            session.setAttribute("Curr", curr);
+           // request.setAttribute("Curr", curr);
+            //RequestDispatcher rd = getServletContext().getRequestDispatcher("/secured/MyPrivateData");
+            //d.forward(request, response);
+            //request.getRequestDispatcher("secured/MyPrivateData").forward(request, response);  
+             response.sendRedirect("/secured/MyPrivateData");
         } else {
             request.setAttribute("error", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-    }
-
-    public void AddUser(HttpServletRequest request) {
-        
-        String name = request.getParameter("name");
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
-        String mail = request.getParameter("mail");
-        String icon =request.getParameter("myCheck");
-        Users.put(userName, new User(name, userName, password, mail, icon));
     }
 }

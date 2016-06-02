@@ -19,7 +19,7 @@ import objects.User;
  *
  * @author גליתונופר
  */
-@WebServlet(urlPatterns = {"/SingleServlet"})
+@WebServlet(urlPatterns = {"/secured/SingleServlet"}, asyncSupported = true)
 public class SingleServlet extends HttpServlet {
 
     private Random random = new Random();
@@ -46,7 +46,6 @@ public class SingleServlet extends HttpServlet {
             usr.mode.sendMsn(msn);
             request.getRequestDispatcher("single.jsp").forward(request, response);
         } else {//we chose multiplayer
-            
             request.getRequestDispatcher("GameLounge.jsp").forward(request, response);
         }
 

@@ -1,11 +1,10 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Calendar"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>My Form</title>
-       <script src="jquery-1.12.2.min.js"></script>
+     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
         <script src="login.js"></script>
         <link  rel="stylesheet" type="text/css" href="loginStyle.css">
     </head>
@@ -24,11 +23,14 @@
                     <div class="text">Wrong username/password. Please try again</div>
                     <% }%>
                 <div>
-                    <input type="submit" class="bnt" name="act" value="Subscribe"/>
                     <input type="submit" class="bnt" name="act" value="Enter"/>
                 </div>
 
             </form>
+                <form action="SubscribeServlet" method="get">
+                         <input type="submit" class="bnt" name="act" value="Subscribe"/>
+                </form>
+                
         </div>
 
     </body>

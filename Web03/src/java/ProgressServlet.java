@@ -1,8 +1,11 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +28,7 @@ import org.json.JSONObject;
  *
  * @author revit
  */
-@WebServlet(urlPatterns = {"/Progress"})
+@WebServlet(urlPatterns = {"/Progress"}, asyncSupported = true)
 public class ProgressServlet extends HttpServlet {
 
    // public Model model;

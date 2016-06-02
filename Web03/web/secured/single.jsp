@@ -46,18 +46,19 @@
                 }
             });
             function long_polling() {
-                $.getJSON('LongPolling', function (data) {
+                $.getJSON('/secured/LongPolling', function (data) {
                     $('.progressBar').width(data.progress).text(data.progress + '%');
                     if (data.progress < 100)
                     {
                         long_polling();
-                    } else {
-                       
+                    } else {        
                         generate_table(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
                         $('.progressBar').hide();      
                     }
                 });
             }
+          
+
             long_polling();
         });
     </script>
