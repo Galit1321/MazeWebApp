@@ -22,6 +22,7 @@ public class SharedInfo {
     static  private Map<String, User> userList;
     static private boolean initiated=false;
     static private SharedInfo myinfo;
+    private String size;
     private SharedInfo(){
         userList = new HashMap<>();
     }
@@ -42,4 +43,10 @@ public class SharedInfo {
         SharedInfo.userList.put(name, userList);
     }
     
+    public void SetSize(String s) {
+        size = s;
+    }
+    public String GetSize(){
+        return size;
+    }
 }

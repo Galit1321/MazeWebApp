@@ -7,7 +7,7 @@
         <script src="Maze.js"></script>
         <link  rel="stylesheet" type="text/css" href="Single.css">
     </head>
-    <body onload="long_polling()" >
+    <body  >
         <div >
             <% User u = (User) session.getAttribute("Curr");%>
             <form action="Close" method="post" >
@@ -52,7 +52,7 @@
                         {
                             long_polling();
                         } else {
-                            generate_table(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
+                            generate_table(data.Maze,<%=session.getAttribute("Size")%>, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
                             $('.progressBar').hide();
                         }
                     });
