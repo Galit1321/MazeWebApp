@@ -5,6 +5,7 @@
  */
 
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.RequestDispatcher;
@@ -32,11 +33,15 @@ public class MyFormServlet extends HttpServlet {
             throws ServletException, IOException {
         SharedInfo si = SharedInfo.getSharedInfo();
         Map<String, User> Users = si.getUserList();
+        String sizeFromWeb = getServletContext().getInitParameter("size");
+        int s = (parseInt(sizeFromWeb) * 2) - 1;
+        sizeFromWeb = Integer.toString(s);
         User curr = Users.get(request.getParameter("username"));
         if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
-            curr.mode.Start();
+            curr.mode.Start(getServletContext().getInitParameter("IP"), getServletContext().getInitParameter("port"));
             HttpSession session = request.getSession();
             session.setAttribute("Curr", curr);
+            session.setAttribute("Size", sizeFromWeb);
            // request.setAttribute("Curr", curr);
             //RequestDispatcher rd = getServletContext().getRequestDispatcher("/secured/MyPrivateData");
             //d.forward(request, response);

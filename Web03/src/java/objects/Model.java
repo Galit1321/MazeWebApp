@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +30,11 @@ public class Model {
 
     public Model() {
 
-        try {
-            socket = new Socket("127.1.1.0", 5555);
+    }
+
+    public void Start(String IP, String port) {
+                try {
+            socket = new Socket(IP, parseInt(port));
             //   json=new ConvertFromJson();
             rec = new Receiver(socket);
             t = new Thread(() -> {
@@ -39,10 +43,6 @@ public class Model {
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    }
-
-    public void Start() {
         try {
             t.start();
             out1 = new PrintWriter(socket.getOutputStream(), true);

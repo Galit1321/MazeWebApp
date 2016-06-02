@@ -25,6 +25,11 @@ function Move(direction, kind) {
                 var cell = document.getElementById(data.location);
                 cell.style.backgroundImage = iconUrl;
                 cell.style.backgroundSize = "cover";
+                
+                if (data.Won === true) {
+                    alert("Yow Won! :)");
+                    history.back();
+                }
                 // cell.style.backgroundImage = myImg; 
                 // cell.style.opacity="1";
                 // cell.style.backgroundSize = "contain";
