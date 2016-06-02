@@ -12,26 +12,23 @@
     </head>
     <body>
         <div>
-            <div >
-                <% User u = (User) session.getAttribute("Curr");%>
-                <div class="sqr">
-                    <div>Name: <%=u.name%></div>
-                    <div>Logo: <image src="<%=u.icon%>" width="50" height="50"/></div>
-                </div></div>
-            <form action="SingleServlet" method="post">
-                <div class="Main">
-                    <div >
-                        <button class="btn1" name="button"  type="submit" value="SingleGame" >Single Game</button>
+            <from action="data" method="post">
+                <div >
+                    <% User u = (User) session.getAttribute("Curr");%>
+                    <div class="sqr">
+                        <div>Name: <%=u.name%></div>
+                        <div><image src="<%=u.icon%>" width="50" height="50"/></div>
+                        <button class="gsBtn" name="logOut" type="submit" value="LogOut">LogOut</button>
+                    </div></div>
+            </from>
+                <form action="SingleServlet" method="post">
+                    <div class="Main">
+                        <button class="oBtn" name="button"  type="submit" value="SingleGame" >Single Game</button>
+                        <button class="pBtn" name="button" type="submit" value="MultiGame" >MultiGame</button>
                     </div>
-                    <div> <input  value="m" hidden/></div>
-                    <div >
-                        <button class="btn2" name="button" type="submit" value="MultiGame" >MultiGame</button>
-                    </div>  
-                </div>
-
-            </form>
-
+                </form> 
         </div>
-
+        <img src="pic/logo.jpg" alt="logo" width="150" height="150">
+        <h1 style="color: mediumturquoise">Flower Maze</h1>
     </body>
 </html>
