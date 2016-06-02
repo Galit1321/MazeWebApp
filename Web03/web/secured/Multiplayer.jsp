@@ -24,7 +24,7 @@
         <div class="Main">
             <button type="submit" class="BtnS" name="act" title="Hint" onclick="Clue()"> Hint </button>
             <button type="submit" class="BtnS" name="act" title="Restart" onclick="Reset()" > Restart </button>
-            <button type="submit" class="BtnS" name="act" title="Back" onclick="Close()"> Back </button>
+            <button type="submit" class="BtnS" name="act"  title="Back" onclick="Close()"> Back </button>
         </div>
         <div class="Other">
 
@@ -54,14 +54,14 @@
                     
                 }
                 function long_polling2() {
-                    $.getJSON('/secured/MultiProgress', function (data) {
+                    $.getJSON('secured/MultiProgress', function (data) {
                         $('.progressBar').width(data.progress).text(data.progress + '%');
                         if (data.progress < 100)
                         {
                             long_polling2();
                         } else {
-                            generate_table(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
-                             generate_table(data.Maze, 13, data.OpStart_i.toString(), data.OpStart_j.toString(), data.OpEnd_i.toString(), data.OpEnd_j.toString(), "<%=u.icon%>")
+                            generate_Game(data.Maze, 13, data.Start_i.toString(), data.Start_j.toString(), data.End_i.toString(), data.End_j.toString(), "<%=u.icon%>");
+                            // generate_table(data.Maze, 13, data.OpStart_i.toString(), data.OpStart_j.toString(), data.OpEnd_i.toString(), data.OpEnd_j.toString(), )
                             $('.progressBar').hide();
                         }
                     });

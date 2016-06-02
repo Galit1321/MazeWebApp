@@ -8,3 +8,14 @@ and open the template in the editor.
     Author     : revit
 */
 
+.Main{
+    position: absolute;
+    left: 10%;
+    top: 10%
+}
+
+.Other{
+    position: absolute;
+    top:10%;
+    left: 70%;
+}
