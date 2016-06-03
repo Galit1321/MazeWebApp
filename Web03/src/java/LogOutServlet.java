@@ -1,31 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import objects.Model;
 import objects.User;
-import objects.singleMaze;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  *
- * Lounge of the game.
+ * @author revit
  */
-@WebServlet(urlPatterns = {"/secured/GameLounge"}, asyncSupported = true)
-public class GameLounge extends HttpServlet {
-
-    private static int counter = 0;
-    private Random random = new Random();
-    private Boolean sendrq = false;
-    private Model m;// = Model.getInstance();
+@WebServlet(name = "LogOutServlet", urlPatterns = {"/LogOutServlet"})
+public class LogOutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +38,10 @@ public class GameLounge extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GameLounge</title>");
+            out.println("<title>Servlet LogOutServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GameLounge at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LogOutServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,7 +59,7 @@ public class GameLounge extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("GameLounge.jsp");
+        processRequest(request, response);
     }
 
     /**
@@ -79,15 +73,25 @@ public class GameLounge extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
-        String act = request.getParameter("act");
-        this.m = u.mode;
-        String msn = "multiplayer " + act;
-        m.sendMsn(msn);
-        response.sendRedirect("Multiplayer.jsp");
-        //request.getRequestDispatcher("Multiplayer.jsp").forward(request, response);
+        u.Close();
+        if (session != null) {
+            session.invalidate();
+        }
+
+        response.sendRedirect("login.jsp");
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }
