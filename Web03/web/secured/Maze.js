@@ -117,8 +117,8 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
     //tbl.setAttribute("border", "2");
 }
 function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, icon) {
-    generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon);
-    var other = document.getElementsByClassName("Other")[0];
+   generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon);
+    var other = document.getElementsByClassName("other")[0];
     // var body = document.getElementsByTagName("body")[0];
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");

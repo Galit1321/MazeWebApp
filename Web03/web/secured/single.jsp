@@ -10,13 +10,13 @@
     <body  >
         <div >
             <% User u = (User) session.getAttribute("Curr");%>
-            <form action="Close" method="post" >
                 <div class="sqr">
                     <div>Name: <%=u.name%></div>
-                    <div>Logo: <image src="<%=u.icon%>" width="50" height="50"/></div>   
+                    <div>Logo: <image src="<%=u.icon%>" width="50" height="50"/></div> 
+                    <form action="../LogOutServlet" method="post" >
                     <button class="gsBtn" type="sumbit"  >LogOut </button>
+                    </form>
                 </div></div>
-    </form>
 
 
     <div class="Main">
