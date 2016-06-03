@@ -40,13 +40,10 @@ public class Close extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
-        u.Close();
-        if (session != null) {
-            session.invalidate();
-          response.sendRedirect("/../login.jsp");
-          return;       
-        }
-        response.sendRedirect("/../login.jsp");
+       String r= (String)session.getAttribute("Game");
+        u.mode.sendMsn("close "+r);
+        session.removeAttribute("Game");
+        response.sendRedirect("/secured/MyPrivateData");
     }
 
     /**

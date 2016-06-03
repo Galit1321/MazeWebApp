@@ -57,6 +57,8 @@ function Reset() {
     }
 
 }
+
+
 function generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon) {
     // get the reference for the body
     var body = document.getElementsByClassName("Main")[0];
