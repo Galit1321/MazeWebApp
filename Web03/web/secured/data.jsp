@@ -1,4 +1,3 @@
-
 <%@page import="java.util.List"%>
 <%@page import="objects.User"%>
 <%@page import="java.util.ArrayList"%>
@@ -33,4 +32,4 @@
         <img src="pic/logo.jpg" alt="logo" width="150" height="150">
         <h1 style="color: mediumturquoise">Flower Maze</h1>
     </body>
-</html>
+</html>>
