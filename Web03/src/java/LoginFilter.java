@@ -11,18 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author ׳’׳׳™׳×׳•׳ ׳•׳₪׳¨
+ * Login - the first page.
  */
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/secured/*"}, asyncSupported = true)
 public class LoginFilter implements Filter {
 
+    /**
+     * 
+     * @param request
+     * @param response
+     * @param chain
+     * @throws IOException
+     * @throws ServletException 
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -34,10 +36,18 @@ public class LoginFilter implements Filter {
         }
     }
 
+    /**
+     * init.
+     * @param filterConfig
+     * @throws ServletException 
+     */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
+    /**
+     * destroy.
+     */
     @Override
     public void destroy() {
     }

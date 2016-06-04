@@ -1,14 +1,4 @@
 
-
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Math.random;
@@ -31,8 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *
- * @author Sechiya Zori
+ * Long polling.
  */
 @WebServlet(name = "LongPolling", urlPatterns = {"/secured/LongPolling"}, asyncSupported = true)
 public class LongPolling extends HttpServlet {
@@ -43,6 +32,13 @@ public class LongPolling extends HttpServlet {
     private int counter = 0;
     private User u;
 
+    /**
+     * do get.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
