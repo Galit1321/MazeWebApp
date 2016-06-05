@@ -78,7 +78,7 @@ public class LogOutServlet extends HttpServlet {
         User u = (User) session.getAttribute("Curr");
         u.Close();
         if (session != null) {
-            session.invalidate();
+            session.invalidate();  
         }
 
         response.sendRedirect("login.jsp");
