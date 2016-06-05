@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import objects.Model;
 import objects.User;
-import objects.singleMaze;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Move.
+ * Move. - 
  */
 @WebServlet(name = "MoveServlet" ,urlPatterns = {"/secured/MoveServlet"}, asyncSupported = true)
 public class MoveServlet extends HttpServlet {
@@ -26,7 +25,7 @@ public class MoveServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * Send the moves as Json.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

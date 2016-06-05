@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package objects;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,15 +18,18 @@ public class Model {
 
     private static Thread t;
     private Receiver rec;
-
-    public Model() {
-
-    }
-
+    /**
+     * Constructor.
+     */
+    public Model() {}
+    /**
+     * Start - connect to socket and start.
+     * @param IP - string
+     * @param port - String
+     */
     public void Start(String IP, String port) {
-                try {
+        try {
             socket = new Socket(IP, parseInt(port));
-            //   json=new ConvertFromJson();
             rec = new Receiver(socket);
             t = new Thread(() -> {
                 rec.getMsn();
@@ -46,31 +40,40 @@ public class Model {
         try {
             t.start();
             out1 = new PrintWriter(socket.getOutputStream(), true);
-            //  in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (Exception e) {
         }
     }
-
+    /**
+     * get rec
+     * @return Reciver. 
+     */
     public Receiver getRec() {
         return rec;
     }
 
-    /*
-close the connection and buffer
-of receive and send msg
+    /**
+     * close the connection and buffer
+     * of receive and send msg
+     * @throws IOException 
      */
     public void Close() throws IOException {
         out1.close();
-         rec.stop();
+        rec.stop();
         socket.close();
-       
-    }
 
+    }
+    /**
+     * send msn
+     * @param msg - string 
+     */
     public void sendMsn(String msg) {
         out1.println(msg);
     }
 
-
+    /**
+     * get Json
+     * @return json
+     */
     public ConvertFromJson getJson() {
         return this.rec.getJson();
     }

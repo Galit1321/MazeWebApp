@@ -1,13 +1,5 @@
 
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.io.IOException;
-import java.io.PrintWriter;
-import static java.lang.Math.random;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,8 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *
- * @author גליתונופר
+ * MultiProgress.
  */
 @WebServlet(name = "MultiProgress", urlPatterns = {"/secured/MultiProgress"}, asyncSupported = true)
 //@WebServlet(name = "MultiProgress",urlPatterns = {"/MultiProgress"},sayncSupported = true)
@@ -39,6 +30,10 @@ public class MultiProgress extends HttpServlet {
      private int counter = 0;
     public User u;
 
+    /**
+     * init.
+     * @throws ServletException 
+     */
     @Override
     public void init() throws ServletException {
         counter = 0;
@@ -62,6 +57,7 @@ public class MultiProgress extends HttpServlet {
         async.setTimeout(0);
         asyncContext = async;
         Thread generator = new Thread() {
+            //run the func.
             @Override
             public void run() {
                 Random random = new Random();
@@ -81,6 +77,7 @@ public class MultiProgress extends HttpServlet {
                                 counter -= 10;
                             }
                         }
+                        // if there is a game send the  values.
                         try {
                             if (m.getJson().g != null) {
                                 Game game = m.getJson().g;
@@ -101,11 +98,10 @@ public class MultiProgress extends HttpServlet {
                             }
                             obj.put("progress", counter);
                         } catch (JSONException ex) {
-                            Logger.getLogger(ProgressServlet.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(MultiProgress.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         HttpServletResponse peer = (HttpServletResponse) asyncContext.getResponse();
                         try {
-
                             peer.getWriter().write(obj.toString());
 
                         } catch (IOException ex) {

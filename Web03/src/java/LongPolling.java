@@ -1,11 +1,8 @@
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import static java.lang.Math.random;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.util.Pair;
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import objects.Model;
-import objects.Receiver;
 import objects.User;
 import objects.singleMaze;
 import org.json.JSONException;
@@ -34,8 +30,8 @@ public class LongPolling extends HttpServlet {
 
     /**
      * do get.
-     * @param request
-     * @param response
+     * @param request - get request.
+     * @param response - the response.
      * @throws ServletException
      * @throws IOException 
      */
@@ -48,8 +44,10 @@ public class LongPolling extends HttpServlet {
         asyncContext = async;
         Thread generator = new Thread() {
             @Override
+            //run.
             public void run() {
                 Random random = new Random();
+                //while for thread.
                 while (!Thread.currentThread().isInterrupted()) {
                     try {
                         Thread.sleep(random.nextInt(200));
@@ -68,12 +66,11 @@ public class LongPolling extends HttpServlet {
                             }
                            
                                 try {
+                                    //if there is a mase send all the values for maze.
                                     if ( m.getJson().maze!=null) {
                                     singleMaze s = m.getJson().maze;
                                     u.setMaze(s);
                                     m.sendMsn("solve "+s.getName()+" 1");
-                                    // singleMaze sol = m.getJson().solv;
-                                    // u.setSolStr(sol.getMaze());
                                     obj.put("Maze", s.getMaze());
                                     obj.put("Name", s.getName());
                                     obj.put("Start_i", s.getStart().getKey());

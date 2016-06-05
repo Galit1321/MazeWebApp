@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import objects.User;
 
 /**
- * Log out.
+ * Log out. - gat back to the login page.
  */
 @WebServlet(name = "LogOutServlet", urlPatterns = {"/LogOutServlet"})
 public class LogOutServlet extends HttpServlet {

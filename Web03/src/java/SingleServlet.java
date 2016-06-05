@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +9,7 @@ import javax.servlet.http.HttpSession;
 import objects.User;
 
 /**
- *
- * @author גליתונופר
+ * Single Servlet.
  */
 @WebServlet(urlPatterns = {"/secured/SingleServlet"}, asyncSupported = true)
 public class SingleServlet extends HttpServlet {
@@ -26,7 +18,7 @@ public class SingleServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * Create maze.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

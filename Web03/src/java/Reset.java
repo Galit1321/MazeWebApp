@@ -1,12 +1,4 @@
 
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -22,16 +14,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *
- * @author גליתונופר
+ * Reset - restart the game.
  */
 @WebServlet(urlPatterns = {"/secured/Reset"}, asyncSupported = true)
 public class Reset extends HttpServlet {
 
-   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method. Return to the start of the
+     * game.
      *
      * @param request servlet request
      * @param response servlet response
@@ -43,27 +34,25 @@ public class Reset extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         User u = (User) session.getAttribute("Curr");
-         JSONObject obj = new JSONObject();
-          int r=(int)u.getMaze().getCurrrnt().getKey();
-        int c=(int)u.getMaze().getCurrrnt().getValue();
-        int oldpos = (u.getMaze().getSize() * r) + c; 
+        JSONObject obj = new JSONObject();
+        int r = (int) u.getMaze().getCurrrnt().getKey();
+        int c = (int) u.getMaze().getCurrrnt().getValue();
+        int oldpos = (u.getMaze().getSize() * r) + c;
         int myRow = (int) u.getMaze().getStart().getKey();
         int myCol = (int) u.getMaze().getStart().getValue();
-        int pos= (u.getMaze().getSize() * myRow) + myCol;
+        int pos = (u.getMaze().getSize() * myRow) + myCol;
         u.getMaze().setCurrent(u.getMaze().getStart());
+        //send the old and tnes position.
         try {
-            obj.put("Prv",oldpos);
+            obj.put("Prv", oldpos);
             obj.put("Start", pos);
         } catch (JSONException ex) {
             Logger.getLogger(MoveServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-         response.setContentType("appliation/json");
+        response.setContentType("appliation/json");
         try (PrintWriter out = response.getWriter()) {
             out.println(obj);
         }
     }
-
-   
-
 
 }

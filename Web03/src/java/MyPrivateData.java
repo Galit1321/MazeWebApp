@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,31 +6,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import objects.User;
-
 
 /**
- *
- * 
+ * MyPrivteData. - the menu.
  */
 @WebServlet(name = "MyPrivateData", urlPatterns = {"/secured/MyPrivateData"}, asyncSupported = true)
 public class MyPrivateData extends HttpServlet {
 
+    /**
+     * Open the menu.
+     * @param request - session
+     * @param response - 
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
           HttpSession session = request.getSession(false);
-        //  User u=(User)request.getAttribute("curr");
-     // session.setAttribute("Curr", u);
        request.getRequestDispatcher("data.jsp").forward(request, response); 
     }
 
+    /**
+     * Open the menu.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     // HttpSession session = request.getSession(false);
-     // User u=(User)request.getAttribute("curr");
-      //.setAttribute("Curr", u);
       request.getRequestDispatcher("data.jsp").forward(request, response);
     }
 

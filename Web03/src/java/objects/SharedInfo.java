@@ -1,21 +1,11 @@
 
-import com.sun.javafx.UnmodifiableArrayList;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import objects.User;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author revit
+ * SharedInfo - keep info for everyone.
+ * Singelton.
  */
 public class SharedInfo {
     
@@ -23,10 +13,16 @@ public class SharedInfo {
     static private boolean initiated=false;
     static private SharedInfo myinfo;
     private String size;
+    /**
+     * private Costructor.
+     */
     private SharedInfo(){
         userList = new HashMap<>();
     }
-    
+    /**
+     * get shareInfo
+     * @return Shared info.
+     */
     public static SharedInfo getSharedInfo(){
         if (!initiated){
             myinfo = new SharedInfo();
@@ -34,22 +30,40 @@ public class SharedInfo {
         }
         return myinfo;
     }
-
+    /**
+     * get user list
+     * @return user list.
+     */
     public static Map<String,User> getUserList() {
         return userList;
     }
-
+    /**
+     * add user to the list
+     * @param name - String
+     * @param userList - User
+     */
     public void addUserList(String name, User userList) {
         SharedInfo.userList.put(name, userList);
     }
-    
+    /**
+     * set size
+     * @param s - string - size. 
+     */
     public void SetSize(String s) {
         size = s;
     }
+    /**
+     * get size.
+     * @return size
+     */
     public String GetSize(){
         return size;
     }
-    
+    /**
+     * check if name in the list.
+     * @param name - String
+     * @return true if the name in false else.
+     */
     public Boolean CheckIfNameInList(String name) {
         if (SharedInfo.userList.get(name) == null) {
             return false;
