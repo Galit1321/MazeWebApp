@@ -51,7 +51,7 @@ public class Moves extends HttpServlet {
         async.setTimeout(0);
         asyncContext = async;
         Thread generator = new Thread() {
-           
+            @Override
             public void run() {
                 while ((m.getJson().getInSession()) && (m.getJson().getGotMove())) {
                     try {
