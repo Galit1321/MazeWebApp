@@ -25,7 +25,8 @@
                 </form>
             </div></div>
     </div>
-    <div class="progressBar" style="background-color:green;width:0px">0%</div>
+    
+    <div class="progressBar" >0%</div>
 
     <table>
         <tr>
@@ -62,7 +63,7 @@
 
                 function long_polling2() {
                     $.getJSON('/secured/MultiProgress', function (data) {
-                        $('.progressBar').width(data.progress).text(data.progress + '%');
+                        $('.progressBar').width(data.progress * 10).text(data.progress + '%');
                         if (data.progress < 100)
                         {
                             long_polling2();
