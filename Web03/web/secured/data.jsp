@@ -30,6 +30,6 @@
             </form> 
         </div>
         <img src="pic/logo.jpg" alt="logo" width="150" height="150">
-        <h1 style="color: mediumturquoise">Flower Maze</h1>
+        <h2 style="color: mediumturquoise">Flower Maze</h2>
     </body>
 </html>>

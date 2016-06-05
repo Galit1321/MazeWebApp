@@ -8,7 +8,7 @@ var iconUrl;
 
 
 function Back() {
-    confirm("Are you sure?");
+    if (confirm("Are you sure?"))
     {
         history.back();
     }
@@ -84,18 +84,14 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
                 cell.style.background = "purple";
             }
             if ((i === (parseInt(startRow))) && (j === (parseInt(startCol)))) {
-                //cell.style.background = "yellow";
                 var str = "url(" + icon + ")";
                 iconUrl = str;
                 cell.style.backgroundImage = str;
                 cell.style.backgroundSize = "cover";
-                //console.log("str");
             }
             if ((i === (parseInt(endRow))) && (j === (parseInt(endCol)))) {
-                //cell.style.background = "blue";
                 cell.style.backgroundImage = "url('/../pic/flower2.jpg')";
                 cell.style.backgroundSize = "cover";
-                //console.log(cell.prototype.background);
             }
             x++;
         }
@@ -113,13 +109,10 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
     tbl.style.borderSpacing = "0px";
     // appends <table> into <body>
     body.appendChild(tbl);
-    // sets the border attribute of tbl to 2;
-    //tbl.setAttribute("border", "2");
 }
 function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, icon) {
    generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon);
     var other = document.getElementsByClassName("other")[0];
-    // var body = document.getElementsByTagName("body")[0];
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
     var tblBody = document.createElement("tbody");
