@@ -56,11 +56,7 @@ public class Receiver {
                 }
                 this.json.deserlize(s);
                 this.Answ = s;
-                System.out.print(s);
-                for (Map.Entry<String, String> entry : this.json.Serlize.entrySet()) {
-                    System.out.println(entry.getKey());
-                    System.out.println(entry.getValue());
-                }
+             
             } catch (Exception e) {
                 ///to change
                 StopRec=false;

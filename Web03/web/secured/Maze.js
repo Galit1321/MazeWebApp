@@ -14,27 +14,85 @@ function Back() {
     }
 }
 function Move(direction, kind) {
-    $.post("/secured/MoveServlet",
-            {
-                move: direction,
-                game: kind
-            },
-            function (data) {
-                var cell = document.getElementById(data.Prv);
-                cell.style.background = "pink";
-                var cell = document.getElementById(data.location);
-                cell.style.backgroundImage = iconUrl;
-                cell.style.backgroundSize = "cover";
-                
-                if (data.Won === true) {
-                    alert("Yow Won! :)");
-                    history.back();
-                }
-                // cell.style.backgroundImage = myImg; 
-                // cell.style.opacity="1";
-                // cell.style.backgroundSize = "contain";
-                //cell.style.borderRadius = "13px";
-            });
+
+    switch (direction) {
+        case "up":
+            $.post("/secured/UpServlet",
+                    {
+                        game: kind
+                    },
+                    function (data) {
+                        var cell = document.getElementById(data.Prv);
+                        cell.style.background = "pink";
+                        var cell = document.getElementById(data.location);
+                        cell.style.backgroundImage = iconUrl;
+                        cell.style.backgroundSize = "cover";
+
+                        if (data.Won === true) {
+                            alert("Yow Won! :)");
+                            history.back();
+                        }
+                    });
+            break;
+        case "down":
+            $.post("/secured/DownServlet",
+                    {
+                        game: kind
+                    },
+                    function (data) {
+                        var cell = document.getElementById(data.Prv);
+                        cell.style.background = "pink";
+                        var cell = document.getElementById(data.location);
+                        cell.style.backgroundImage = iconUrl;
+                        cell.style.backgroundSize = "cover";
+
+                        if (data.Won === true) {
+                            alert("Yow Won! :)");
+                            history.back();
+                        }
+                    });
+            break;
+        case "right":
+            $.post("/secured/RightServlet",
+                    {
+                        game: kind
+                    },
+                    function (data) {
+                        var cell = document.getElementById(data.Prv);
+                        cell.style.background = "pink";
+                        var cell = document.getElementById(data.location);
+                        cell.style.backgroundImage = iconUrl;
+                        cell.style.backgroundSize = "cover";
+
+                        if (data.Won === true) {
+                            alert("Yow Won! :)");
+                            history.back();
+                        }
+                    });
+            break;
+
+        case "left":
+            $.post("/secured/LeftServlet",
+                    {
+                        game: kind
+                    },
+                    function (data) {
+                        var cell = document.getElementById(data.Prv);
+                        cell.style.background = "pink";
+                        var cell = document.getElementById(data.location);
+                        cell.style.backgroundImage = iconUrl;
+                        cell.style.backgroundSize = "cover";
+
+                        if (data.Won === true) {
+                            alert("Yow Won! :)");
+                            history.back();
+                        }
+                    });
+            break;
+        default :
+            break;
+    }
+
 }
 function Clue() {
     $.getJSON("/secured/Hint", function (data) {
@@ -111,7 +169,7 @@ function generate_table(mazeString, size, startRow, startCol, endRow, endCol, ic
     body.appendChild(tbl);
 }
 function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, icon) {
-   generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon);
+    generate_table(mazeString, size, startRow, startCol, endRow, endCol, icon);
     var other = document.getElementsByClassName("other")[0];
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
@@ -126,7 +184,7 @@ function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, ico
             // node the contents of the <td>, and put the <td> at
             // the end of the table row
             var cell = document.createElement("td");
-            cell.setAttribute('id', (-1) * (i * parseInt(size) + j));
+            cell.setAttribute('id', (-1) * (i * parseInt(size) + j) - 1);
             row.appendChild(cell);
             if (mazeString.charAt(x) === '1') {
                 cell.style.background = "black";
@@ -163,22 +221,23 @@ function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, ico
     other.appendChild(tbl);
     // sets the border attribute of tbl to 2;
     //tbl.setAttribute("border", "2");
-   
+
 }
 
 function UpdateMove() {
     $.getJSON('/secured/Moves', function (data) {
-        
+        var prev = document.getElementById(data.old);
         var cell = document.getElementById(data.Pos);
-        cell.style.background = "red";
+        prev.style.background = "red";
         //  var cell = document.getElementById(data.location);
         cell.style.backgroundImage = "url('/../pic/pest-control.png')";
         cell.style.backgroundSize = "cover";
-        if (!data.stop){
-          UpdateMove();
-    }else {
-        
-    }
+        if (!data.stop) {
+            UpdateMove();
+        }
+        if (data.Won) {
+            alert("you lost,better luck next time");
+
+        }
     });
-  
 }

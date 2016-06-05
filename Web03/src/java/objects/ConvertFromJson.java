@@ -1,7 +1,9 @@
 package objects;
 
 import com.google.gson.Gson;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javafx.util.Pair;
 
@@ -13,7 +15,8 @@ public class ConvertFromJson {
     public Map<String, String> Serlize;
     public singleMaze maze;
     public Game g;
-    public String move;
+    public List<String> moves;
+   // public String move;
     public String Type;
     public singleMaze sol;
     public Gson deserializer = new Gson();
@@ -25,18 +28,14 @@ public class ConvertFromJson {
      *
      * @return move.
      */
-    public String getMove() {
+    public String getMove() 
+    {
+        String move=moves.get(0);
+        this.moves.remove(0);
         return move;
     }
 
-    /**
-     * set move.
-     *
-     * @param move - string move.
-     */
-    public void setMove(String move) {
-        this.move = move;
-    }
+    
 
     /**
      * get got move.
@@ -61,15 +60,19 @@ public class ConvertFromJson {
      */
     public ConvertFromJson() {
         gotMove = false;
+        
         this.inSession = false;
     }
-
+    public void resetLst(){
+    this.moves=new ArrayList<>();
+    }
     /**
      * in session
      * @return inSession.
      */
     public Boolean getInSession() {
         return inSession;
+        
     }
 
     /// <summary>
@@ -96,7 +99,7 @@ public class ConvertFromJson {
                 CreateSol();
                 break;
             case "3":
-
+                resetLst();
                 ConvertStartGame();
                 break;
             case "4":
@@ -160,6 +163,8 @@ public class ConvertFromJson {
         // u= this.Serlize.get("MazeName");
         singleMaze other = WithoutName(this.Serlize.get("Other"));
         Game g = new Game(name, mazename, u, other);
+        //this.numOfMove=0;
+        resetLst();
         this.g = g;
     }
 
@@ -167,12 +172,12 @@ public class ConvertFromJson {
     ///   convert a move of the yriv 
     /// </summary>
     public void ConvertPlay() {
+        String[] s= this.Serlize.get("Move").split("\r");
+       // this.move=s[0];
         gotMove = true;
-        // String name=this.Serlize.get("Name");
-        this.move = this.Serlize.get("Move");
-
+        this.moves.add(s[0]);
+         
     }
-
     /**
      * CreateSol
      * create the solution.
