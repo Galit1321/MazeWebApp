@@ -21,7 +21,7 @@
                     </div>
                 </div>
                
-                <button type="sumbit" name="bnt" class="btn1" value="Send"/>
+                <button type="sumbit" name="bnt" class="btn1" value="Send" title="Send">Send</button>
             </div>
         </form>
 

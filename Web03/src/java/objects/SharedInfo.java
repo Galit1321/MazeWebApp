@@ -39,7 +39,7 @@ public class SharedInfo {
         return userList;
     }
 
-    public static void addUserList(String name, User userList) {
+    public void addUserList(String name, User userList) {
         SharedInfo.userList.put(name, userList);
     }
     
@@ -48,5 +48,13 @@ public class SharedInfo {
     }
     public String GetSize(){
         return size;
+    }
+    
+    public Boolean CheckIfNameInList(String name) {
+        if (SharedInfo.userList.get(name) == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

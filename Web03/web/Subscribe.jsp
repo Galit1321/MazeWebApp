@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div>Password:</div>
-                <input class="Field" type="password" name="password" required />
+                    <input class="Field" type="password" name="password" required />
                 <div> First and Last Name<input  class="Field" type="text" name="name" required  /></div>
                 <div> Email <input class="Field"  type="email" id="myEmail" name="mail" required /> </div>
                 <div>Logo
@@ -37,7 +37,7 @@
                         </div>
                         <div>
                             <input type="radio" name="myCheck" value="pic/butterfly.png"/>
-                        <image  src="pic/butterfly.png" name="icon" width="50" height="50"/>
+                            <image  src="pic/butterfly.png" name="icon" width="50" height="50"/>
                             <input type="radio" name="myCheck" value="pic/butterfly02.png"/>
                             <image  src="pic/butterfly02.png" name="icon" width="50" height="50"/>
                         </div>
