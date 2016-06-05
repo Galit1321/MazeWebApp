@@ -1,3 +1,4 @@
+package objects;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +57,7 @@ public class SharedInfo {
      * get size.
      * @return size
      */
-    public String GetSize(){
+    public String getSize(){
         return size;
     }
     /**

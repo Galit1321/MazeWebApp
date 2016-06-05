@@ -23,15 +23,16 @@ public class singleMaze {
      * @param end - pair
      * @param maze - string
      * @param name - string
+     * @param size - String
      */
-    public singleMaze(Pair start, Pair end, String maze, String name) {
+    public singleMaze(Pair start, Pair end, String maze, String name, int size) {
         this.start = start;
         this.end = end;
         this.maze = maze;
         this.name = name;
         this.currentPosition = start;
         //need to change size
-        this.size = 13;
+        this.size =  size;
         int first = this.size * ((int) start.getKey()) + (int) this.start.getValue();
         this.clue = new ArrayList<Integer>();
         this.clue.add(first);
@@ -42,14 +43,15 @@ public class singleMaze {
      * @param start - pair
      * @param end - pair
      * @param maze - String.
+     * @param size 
      */
-    public singleMaze(Pair start, Pair end, String maze) {
+    public singleMaze(Pair start, Pair end, String maze, int size) {
         this.start = start;
         this.end = end;
         this.maze = maze;
         this.currentPosition = start;
         ////////////////////////////
-        this.size = 13;
+        this.size = size;
         int first = this.size * ((int) start.getKey()) + (int) this.start.getValue();
         this.clue = new ArrayList<Integer>();
         this.clue.add(first);

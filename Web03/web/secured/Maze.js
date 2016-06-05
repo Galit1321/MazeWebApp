@@ -30,7 +30,7 @@ function Move(direction, kind) {
 
                         if (data.Won === true) {
                             alert("Yow Won! :)");
-                            history.back();
+                           
                         }
                     });
             break;
@@ -48,7 +48,7 @@ function Move(direction, kind) {
 
                         if (data.Won === true) {
                             alert("Yow Won! :)");
-                            history.back();
+                           
                         }
                     });
             break;
@@ -66,8 +66,7 @@ function Move(direction, kind) {
 
                         if (data.Won === true) {
                             alert("Yow Won! :)");
-                            history.back();
-                        }
+                                                  }
                     });
             break;
 
@@ -85,7 +84,7 @@ function Move(direction, kind) {
 
                         if (data.Won === true) {
                             alert("Yow Won! :)");
-                            history.back();
+                           
                         }
                     });
             break;

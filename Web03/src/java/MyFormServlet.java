@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import objects.SharedInfo;
 import objects.User;
 
 /**
@@ -45,6 +46,7 @@ public class MyFormServlet extends HttpServlet {
         String sizeFromWeb = getServletContext().getInitParameter("size");
         int s = (parseInt(sizeFromWeb) * 2) - 1;
         sizeFromWeb = Integer.toString(s);
+        si.SetSize(sizeFromWeb);
         User curr = Users.get(request.getParameter("username"));
         if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
             curr.mode.Start(getServletContext().getInitParameter("IP"), getServletContext().getInitParameter("port"));
