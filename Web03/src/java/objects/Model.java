@@ -61,8 +61,9 @@ of receive and send msg
      */
     public void Close() throws IOException {
         out1.close();
+         rec.stop();
         socket.close();
-        rec.stop();
+       
     }
 
     public void sendMsn(String msg) {

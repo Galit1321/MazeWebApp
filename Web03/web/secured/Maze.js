@@ -174,13 +174,18 @@ function generate_Game(mazeString, size, startRow, startCol, endRow, endCol, ico
 }
 
 function UpdateMove() {
-    $.getJSON("/secured/Moves", function (data) {
+    $.getJSON('/secured/Moves', function (data) {
+        
         var cell = document.getElementById(data.Pos);
         cell.style.background = "red";
         //  var cell = document.getElementById(data.location);
         cell.style.backgroundImage = "url('/../pic/pest-control.png')";
         cell.style.backgroundSize = "cover";
+        if (!data.stop){
+          UpdateMove();
+    }else {
         
+    }
     });
-    UpdateMove();
+  
 }

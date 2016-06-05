@@ -36,7 +36,7 @@ public class MultiProgress extends HttpServlet {
     public AsyncContext asyncContext;
     public Model m;//the model to send msn
     public HttpSession session;
-    public int counter;
+     private int counter = 0;
     public User u;
 
     @Override

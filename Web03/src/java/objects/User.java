@@ -113,6 +113,7 @@ public class User {
     }
 
     public void Close() throws IOException {
-        this.mode.Close();
+        //clean();
+        //this.mode.Close();
     }
 }

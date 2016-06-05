@@ -39,7 +39,7 @@ public class MyFormServlet extends HttpServlet {
         User curr = Users.get(request.getParameter("username"));
         if ((curr != null) && (curr.checkPassword(request.getParameter("password")))) {
             curr.mode.Start(getServletContext().getInitParameter("IP"), getServletContext().getInitParameter("port"));
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(true);
             session.setAttribute("Curr", curr);
             session.setAttribute("Size", sizeFromWeb);
            // request.setAttribute("Curr", curr);

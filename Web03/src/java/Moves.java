@@ -29,7 +29,7 @@ import org.json.JSONObject;
 @WebServlet(urlPatterns = {"/secured/Moves"}, asyncSupported = true)
 public class Moves extends HttpServlet {
 
-    public AsyncContext asyncContext;
+    private AsyncContext asyncContext;
     private Model m;
     private HttpSession session;
     private User u;
@@ -53,26 +53,33 @@ public class Moves extends HttpServlet {
         Thread generator = new Thread() {
             @Override
             public void run() {
-                while ((m.getJson().getInSession()) && (m.getJson().getGotMove())) {
+                try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Moves.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                /*while ((m.getJson().getInSession()) && (m.getJson().getGotMove())) {
                     try {
                         Thread.sleep(10000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Moves.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
+                }*/
                 if (asyncContext != null) {
-                    u = (User) session.getAttribute("Curr");
-                    m = u.mode;
+                   // u = (User) session.getAttribute("Curr");
+                   // m = u.mode;
                     JSONObject obj = new JSONObject();
-                    Pair p = u.getMaze().move(u.getOther().getCurrrnt(), m.getJson().getMove());
-                    int HimRow = (int) p.getKey();
-                    int HimCol = (int) p.getValue();
-                    u.getOther().setCurrent(p);
-                    u.mode.getJson().setGotMove(Boolean.FALSE);
-                    int pos = -1 * ((HimRow * u.getOther().getSize()) + HimCol);
+                   // Pair p = u.getMaze().move(u.getOther().getCurrrnt(), m.getJson().getMove());
+                   // int HimRow = (int) p.getKey();
+                   // int HimCol = (int) p.getValue();
+                   // u.getOther().setCurrent(p);
+                   // u.mode.getJson().setGotMove(Boolean.FALSE);
+                    //int pos = -1 * ((HimRow * u.getOther().getSize()) + HimCol);
+                    
                     try {
-                        obj.put("Pos", pos);
-                        obj.put("Won", u.getOther().getEnd().equals(p));
+                        obj.put("Pos", -1);
+                        obj.put("stop",true);
+                       // obj.put("Won", u.getOther().getEnd().equals(p));
                     } catch (JSONException ex) {
                         Logger.getLogger(MoveServlet.class.getName()).log(Level.SEVERE, null, ex);
                     }

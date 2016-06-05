@@ -14,7 +14,7 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <link  rel="stylesheet" type="text/css" href="Multiplayer.css">
     </head>
-    <body onload="long_polling2()">
+    <body >
         <div >
             <% User u = (User) session.getAttribute("Curr");%>
             <div class="sqr">
@@ -70,7 +70,7 @@
                             $('.progressBar').hide();
                             
                             //window.location=window.location;
-                            //UpdateMove();
+                            UpdateMove();
                         }
                     });
                 }
